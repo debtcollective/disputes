@@ -3,16 +3,9 @@ cache: yarn
 
 after_success: npx codecov
 
-stages:
-  - test
-  - release
-
 jobs:
   include:
-    - stage: test
-      node_js: lts/*
-      script:
-        - yarn test
+    - script: yarn test
     - stage: release
       node_js: lts/*
       script: skip
