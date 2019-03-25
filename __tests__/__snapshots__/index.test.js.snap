@@ -4,10 +4,26 @@ exports[`With React Testing Library Snapshot Should match Snapshot 1`] = `
 <DocumentFragment>
   <div>
     <p
-      class="sc-bdVaJa rOCEJ"
+      class="pages__HelloWorld-sc-12pwf4k-0 bteQCg"
     >
       Hello World!
     </p>
+    <ul>
+      <li>
+        <a
+          href="posturl1"
+        >
+          1. title 1
+        </a>
+      </li>
+      <li>
+        <a
+          href="posturl2"
+        >
+          2. title 2
+        </a>
+      </li>
+    </ul>
   </div>
 </DocumentFragment>
 `;
