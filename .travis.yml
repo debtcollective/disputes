@@ -8,7 +8,9 @@ after_success: npx codecov
 jobs:
   include:
     - script: yarn test
+
     - stage: release
+      if: branch = master
       node_js: lts/*
       script: skip
       deploy:
