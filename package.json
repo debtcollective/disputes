@@ -15,7 +15,7 @@
     "@babel/core": "7.4.0",
     "babel-jest": "24.5.0",
     "jest": "24.5.0",
-    "react-testing-library": "6.0.3",
+    "react-testing-library": "6.0.4",
     "waait": "1.0.4"
   },
   "scripts": {
