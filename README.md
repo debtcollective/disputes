@@ -1,7 +1,6 @@
 # Dispute Tools
 
-[![Build Status](https://travis-ci.org/debtcollective/disputes.svg?branch=master)](https://travis-ci.org/debtcollective/disputes)
-[![codecov](https://codecov.io/gh/debtcollective/disputes/branch/master/graph/badge.svg)](https://codecov.io/gh/debtcollective/disputes)
+[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
 
 ## How to install

@@ -1,0 +1,28 @@
+{
+  "name": "front-end",
+  "version": "0.0.0",
+  "dependencies": {
+    "apollo-boost": "0.3.1",
+    "graphql": "14.2.1",
+    "isomorphic-unfetch": "3.0.0",
+    "next": "8.0.4",
+    "react": "16.8.6",
+    "react-apollo": "2.5.4",
+    "react-dom": "16.8.6",
+    "styled-components": "4.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.4.3",
+    "babel-jest": "24.5.0",
+    "jest": "24.5.0",
+    "react-testing-library": "6.1.2",
+    "waait": "1.0.4"
+  },
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  }
+}
