@@ -7,7 +7,8 @@
   "private": true,
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon --exec babel-node index.js",
+    "test": "jest"
   },
   "dependencies": {
     "apollo-server": "^2.4.8",
@@ -17,6 +18,12 @@
     "pg": "^7.10.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.4.3",
+    "babel-jest": "^24.7.1",
+    "jest": "^24.7.1",
     "nodemon": "^1.18.11"
   }
 }
