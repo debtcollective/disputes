@@ -1,20 +1,15 @@
 # Dispute Tools
 
-[![Build Status](https://travis-ci.org/debtcollective/disputes.svg?branch=master)](https://travis-ci.org/debtcollective/disputes)
-[![codecov](https://codecov.io/gh/debtcollective/disputes/branch/master/graph/badge.svg)](https://codecov.io/gh/debtcollective/disputes)
+[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
 
-## How to install
+## Installation
 
-Install it and run:
-
-```bash
-yarn
-yarn dev
-```
-
-## Run Tests
+This repository is a monorepo that uses [Lerna](https://github.com/lerna/lerna). To get started run:
 
 ```bash
-yarn test
+yarn global add lerna
+lerna bootstrap
 ```
+
+Go to the README.md of each package for info on how to run them.
