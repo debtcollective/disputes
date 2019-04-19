@@ -6,13 +6,15 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
+    "start": "node -r esm index.js",
+    "dev": "nodemon -r esm index.js",
     "test": "jest",
     "coverage": "jest --coverage"
   },
   "dependencies": {
-    "apollo-server": "^2.4.8",
+    "apollo-server-express": "~2.4.8",
+    "esm": "~3.2.22",
+    "express": "~4.16.4",
     "graphql": "^14.2.1",
     "knex": "^0.16.5",
     "objection": "^1.6.8",
