@@ -1,4 +1,3 @@
 module.exports = {
-  testPathIgnorePatterns: ["<rootDir>/.next/", "<rootDir>/node_modules/"],
-  collectCoverage: true
+  testPathIgnorePatterns: ["<rootDir>/.next/", "<rootDir>/node_modules/"]
 };

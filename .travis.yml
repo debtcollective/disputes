@@ -7,4 +7,4 @@ after_success: npx codecov
 
 jobs:
   include:
-    - script: yarn test
+    - script: yarn test:coverage
