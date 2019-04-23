@@ -17,4 +17,4 @@ jobs:
         provider: script
         skip_cleanup: true
         script:
-          - lerna publish
+          - git checkout master && lerna publish --yes
