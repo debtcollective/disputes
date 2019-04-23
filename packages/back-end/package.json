@@ -9,7 +9,8 @@
     "start": "node -r esm index.js",
     "dev": "nodemon -r esm index.js",
     "test": "jest",
-    "coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "apollo-server-express": "~2.4.8",

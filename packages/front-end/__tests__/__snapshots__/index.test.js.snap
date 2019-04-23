@@ -4,7 +4,7 @@ exports[`With React Testing Library Snapshot Should match Snapshot 1`] = `
 <DocumentFragment>
   <div>
     <p
-      class="pages__HelloWorld-sc-12pwf4k-0 bteQCg"
+      class="pages__HelloWorld-sc-1a2pf1s-0 eyhxRI"
     >
       Hello World!
     </p>
