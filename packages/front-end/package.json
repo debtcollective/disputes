@@ -1,6 +1,8 @@
 {
-  "name": "front-end",
+  "name": "@debtcollective/disputes-front-end",
   "version": "0.0.0",
+  "license": "3-clause BSD",
+  "private": true,
   "dependencies": {
     "apollo-boost": "0.3.1",
     "graphql": "14.2.1",

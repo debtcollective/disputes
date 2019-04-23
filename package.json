@@ -2,6 +2,9 @@
   "name": "disputes",
   "private": true,
   "repository": "https://github.com/debtcollective/disputes.git",
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
     "lerna": "^3.13.3"
   }

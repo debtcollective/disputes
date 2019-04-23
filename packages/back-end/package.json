@@ -1,9 +1,9 @@
 {
-  "name": "back-end",
-  "version": "1.0.0",
+  "name": "@debtcollective/disputes-back-end",
+  "version": "0.0.0",
   "description": "Dispute Tools back-end",
   "main": "index.js",
-  "license": "MIT",
+  "license": "3-clause BSD",
   "private": true,
   "scripts": {
     "start": "node -r esm index.js",
