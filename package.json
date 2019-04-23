@@ -7,7 +7,8 @@
   ],
   "scripts": {
     "test": "lerna run test",
-    "test:coverage": "lerna run test:coverage"
+    "test:coverage": "lerna run test:coverage",
+    "publish": "lerna publish --yes"
   },
   "devDependencies": {
     "lerna": "^3.13.3"
