@@ -3,7 +3,7 @@
   "private": true,
   "repository": "https://github.com/debtcollective/disputes.git",
   "workspaces": [
-    "packages/*"
+    "apps/*"
   ],
   "scripts": {
     "test": "lerna run test",
