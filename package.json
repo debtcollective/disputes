@@ -1,5 +1,5 @@
 {
-  "name": "disputes",
+  "name": "@debtcollective/disputes",
   "private": true,
   "repository": "https://github.com/debtcollective/disputes.git",
   "workspaces": [

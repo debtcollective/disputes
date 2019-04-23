@@ -1,5 +1,5 @@
 {
-  "name": "@debtcollective/disputes-back-end",
+  "name": "@debtcollective/disputes-backend",
   "version": "0.0.0",
   "description": "Dispute Tools back-end",
   "main": "index.js",
