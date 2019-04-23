@@ -1,0 +1,16 @@
+coverage:
+  status:
+    project:
+      default: off
+      backend:
+        flags: backend
+      frontend:
+        flags: frontend
+
+flags:
+  backend:
+    paths:
+      - apps/backend/
+  frontend:
+    paths:
+      - apps/frontend/

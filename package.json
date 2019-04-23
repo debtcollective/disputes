@@ -1,7 +1,15 @@
 {
-  "name": "disputes",
+  "name": "@debtcollective/disputes",
   "private": true,
   "repository": "https://github.com/debtcollective/disputes.git",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "test": "lerna run test",
+    "test:coverage": "lerna run test:coverage",
+    "publish": "lerna publish --yes"
+  },
   "devDependencies": {
     "lerna": "^3.13.3"
   }

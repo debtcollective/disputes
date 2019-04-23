@@ -7,7 +7,7 @@ after_success: npx codecov
 
 jobs:
   include:
-    - script: yarn test
+    - script: yarn test:coverage
 
     - stage: release
       if: branch = master
@@ -17,4 +17,4 @@ jobs:
         provider: script
         skip_cleanup: true
         script:
-          - npx semantic-release
+          - yarn publish
