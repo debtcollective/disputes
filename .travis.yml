@@ -17,4 +17,6 @@ jobs:
         provider: script
         skip_cleanup: true
         script:
-          - git checkout master && lerna publish --yes
+          - git remote add origin https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git
+          - git checkout master
+          - lerna publish --yes
