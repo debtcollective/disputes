@@ -1,6 +1,6 @@
 {
   "name": "@debtcollective/disputes-backend",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Dispute Tools back-end",
   "main": "index.js",
   "license": "3-clause BSD",
