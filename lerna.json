@@ -1,13 +1,16 @@
 {
   "npmClient": "yarn",
-  "packages": [
-    "apps/*"
-  ],
+  "packages": ["apps/*"],
   "version": "0.0.2",
   "useWorkspaces": true,
+  "ignoreChanges": ["**/__fixtures__/**", "**/__tests__/**", "**/*.md"],
   "command": {
     "publish": {
       "conventionalCommits": true
+    },
+    "version": {
+      "conventionalCommits": true,
+      "githubRelease": true
     }
   }
 }
