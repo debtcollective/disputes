@@ -1,7 +1,9 @@
 {
   "npmClient": "yarn",
-  "packages": ["apps/*"],
-  "version": "0.0.0",
+  "packages": [
+    "apps/*"
+  ],
+  "version": "0.0.1",
   "useWorkspaces": true,
   "command": {
     "publish": {
