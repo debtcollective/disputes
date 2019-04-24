@@ -16,4 +16,4 @@ jobs:
       deploy:
         provider: script
         skip_cleanup: true
-        script: "git remote add release https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git && git checkout master && lerna publish --yes --git-remote release"
+        script: "git remote set-url origin https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git && git checkout master && lerna publish --yes"
