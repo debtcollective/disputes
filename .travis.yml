@@ -1,8 +1,7 @@
 language: node_js
 node_js:
-  - "lts/*"
+  - lts/*
 cache: yarn
-
 after_success: npx codecov
 
 jobs:
@@ -16,4 +15,10 @@ jobs:
       deploy:
         provider: script
         skip_cleanup: true
-        script: "echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc && git remote set-url origin https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git && git checkout master && lerna publish --yes --skip-npm"
+        script: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc && git remote set-url origin https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git && git checkout master && lerna publish --yes --skip-npm
+
+notifications:
+  email: false
+  slack:
+    secure: Q1bOmAwZB3a7CpFiQosC1miaiS33OvTraGjukdVedhmKbd2G3HCjYQP9x/lqVv2TNVN1L77dgbKnw+ujYBaFG7JHKT+GTylKIOm/I8l4ZiwmpctQGgFrknOUmOagIO18nWvEKGd+yzK55zbqoV3mOXan/6V04yO8iqVQLX6k1vm2oENU9GUU5tqYcVVHuIRWD7xaRRO9EZ3ClMf3Vp5DUg/2YVRvpk7rqnV2MFAdS4k/ckdwAPqXEMC/MaGvB1pYpbYCDIs3xpf8Apon8hN7gDFO7ZLPUJ0yArPulKui/iEOxfF2vmVTnnr/9ziosNpFG8MJvhJ+lmIaMTwmKDGOjLxP3fwoxszxOR0a0SAiQWB3K/aceFkqsMacLzgjrCCdjpkOzhM9bas/ooZMNIlKaf9VkHoG9UWDdEpJ8G2u+aVixk7Ag5TMDIRy98JQRS1WjFUUnjM07VQR3UZg6oBYH8zt9/ZDWOd5t52AIpnJd+fijtr0RLMUikIFOPXRydV0l57mgen3CWODh3nZwCOBmDHN3FLbf57/Od2sAvVj1YBB5LduXWo8uBRhqVTWjVCfzSvrlYoRJkbrDPFAzvCDa2VJ8a7CNjqJ1AumCt3ixsjuHBEgqUOaGN1muMi/nrV82U9rtrOxCunhE4X8giW6uMhfGYigQCDOrDoPcQOAUGI=
+    on_success: change
