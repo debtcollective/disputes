@@ -2,6 +2,7 @@ import React from "react";
 import Form from "react-jsonschema-form";
 import debtTypes from "../../lib/disputes/dispute-types";
 import usaStates from "../../lib/disputes/usa-states";
+import FieldTemplate from "../../components/FieldTemplate";
 
 const schemas = {
   json: {
@@ -196,6 +197,7 @@ const log = type => console.log.bind(console, type);
 
 export default () => (
   <Form
+    FieldTemplate={FieldTemplate}
     uiSchema={schemas.ui}
     schema={schemas.json}
     onChange={log("changed")}
