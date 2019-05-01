@@ -122,6 +122,29 @@ describe("<FieldTemplate />", () => {
     });
   });
 
+  describe("when schema has format date", () => {
+    const props = { ...baseProps, schema: { type: "string", format: "date" } };
+
+    it("renders a custom input component with type 'date'", () => {
+      const wrapper = render(
+        <FieldTemplate {...props}>
+          <input
+            className="form-control"
+            id={baseProps.id}
+            label={baseProps.label}
+            placeholder="Introduce Foo"
+          />
+        </FieldTemplate>
+      );
+
+      const customInput = wrapper.container.querySelector(
+        `#MU_${baseProps.id}`
+      );
+
+      expect(customInput.type).toEqual("date");
+    });
+  });
+
   describe("when schema has 'enum' property", () => {
     const props = { ...baseProps, schema: { enum: ["foo", "bar"] } };
 

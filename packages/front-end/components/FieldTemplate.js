@@ -32,9 +32,13 @@ export default props => {
     rawErrors
   } = props;
 
+  const inputTypes = {
+    string: schema => (schema.format === "date" ? "date" : "text"),
+    number: () => "number"
+  };
   const [inputValue, setInputValue] = useState("");
-  const inputTypes = { string: "text", number: "number" };
   const fieldTemplateSchemaTypes = ["string", "number"];
+  const labelShrinkTypes = ["date"];
 
   if (has(schema, "enum")) {
     return <SelectField {...props} />;
@@ -44,6 +48,8 @@ export default props => {
     return <PlainTemplate {...props} />;
   }
 
+  const inputType = inputTypes[schema.type](schema);
+
   return (
     <div data-testid={id} className={classNames}>
       {rawDescription && <Typography>{rawDescription}</Typography>}
@@ -52,12 +58,15 @@ export default props => {
         return React.isValidElement(child) ? (
           <React.Fragment>
             <TextField
-              type={inputTypes[schema.type]}
+              type={inputType}
               autoComplete="no"
               id={`MU_${id}`}
               helperText={help}
               label={getLabelText(props)}
               margin="normal"
+              InputLabelProps={{
+                shrink: includes(labelShrinkTypes, inputType)
+              }}
               onChange={e => {
                 child.props.onChange(e.target.value);
                 setInputValue(e.target.value);
