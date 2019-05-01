@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import get from "lodash/get";
-import { Button, Menu, MenuItem } from "@material-ui/core";
+import { Button, Menu, MenuItem, Select } from "@material-ui/core";
 
 export default props => {
   const {
@@ -18,13 +18,11 @@ export default props => {
     uiSchema
   } = props;
 
-  const [anchorEl, setAnchorEl] = useState(null);
-  const handleClose = () => setAnchorEl(null);
-  const handleItemSelection = (option, callback) => {
-    callback(option);
-    handleClose();
+  const [option, setOption] = useState("");
+  const handleOptionSelection = (value, callback) => {
+    callback(value);
+    setOption(value);
   };
-  const toggle = e => setAnchorEl(e.currentTarget);
   const customId = `MU_${id}`;
 
   return (
@@ -37,30 +35,22 @@ export default props => {
 
           return (
             <div id={customId}>
-              <Button
-                aria-owns={anchorEl ? `${customId}-menu` : undefined}
-                aria-haspopup="true"
-                onClick={toggle}
+              <Select
+                value={option}
+                onChange={e =>
+                  handleOptionSelection(e.target.value, child.props.onChange)
+                }
+                displayEmpty
               >
-                {get(uiSchema, "ui:placeholder", "select")}
-              </Button>
-              <Menu
-                id={`${customId}-menu`}
-                anchorEl={anchorEl}
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-              >
+                <MenuItem value="">
+                  {get(uiSchema, "ui:placeholder", "select")}
+                </MenuItem>
                 {schema.enum.map((option, index) => (
-                  <MenuItem
-                    key={option}
-                    onClick={() =>
-                      handleItemSelection(option, child.props.onChange)
-                    }
-                  >
+                  <MenuItem key={option} value={option}>
                     {get(schema, `enumNames[${index}]`, `Option ${index}`)}
                   </MenuItem>
                 ))}
-              </Menu>
+              </Select>
             </div>
           );
         })}
