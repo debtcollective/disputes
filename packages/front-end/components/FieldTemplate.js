@@ -25,7 +25,9 @@ export default props => {
     errors,
     children,
     uiSchema,
-    onKeyChange
+    onKeyChange,
+    rawDescription,
+    rawErrors
   } = props;
 
   const [inputValue, setInputValue] = useState("");
@@ -51,10 +53,8 @@ export default props => {
 
   return (
     <div data-testid={id} className={classNames}>
-      <Typography component={"span"} variant={"body2"}>
-        {description}
-      </Typography>
-      {errors}
+      {rawDescription && <Typography>{rawDescription}</Typography>}
+      {rawErrors && errors}
       {React.Children.map(children, child => {
         return React.isValidElement(child) ? (
           <React.Fragment>
