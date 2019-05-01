@@ -3,28 +3,30 @@ import get from "lodash/get";
 import includes from "lodash/includes";
 import { TextField } from "@material-ui/core";
 
-/**
- * Helper to return the right text to render as field labels
- */
 const getLabelText = ({ label, required }) => {
   const suffix = required ? " *" : "";
 
   return `${label}${suffix}`;
 };
 
-/**
- * Map of possible schema properties type to their pairs of
- * input types in order to render the right custom component
- */
-const inputTypes = {
-  string: schema => (schema.format === "date" ? "date" : "text"),
-  number: () => "number"
+const getInputType = schema => {
+  const resolversByType = {
+    string: schema => (schema.format === "date" ? "date" : "text"),
+    number: () => "number"
+  };
+
+  return resolversByType[schema.type](schema);
 };
 
-/**
- * Collection of input types that requires shrinked label
- */
-const labelShrinkTypes = ["date"];
+const getInputLabelProps = ({ inputType }) => {
+  if (includes(["date"], inputType)) {
+    return {
+      shrink: true
+    };
+  }
+
+  return {};
+};
 
 export default props => {
   const {
@@ -43,7 +45,7 @@ export default props => {
   } = props;
 
   const [inputValue, setInputValue] = useState("");
-  const inputType = inputTypes[schema.type](schema);
+  const inputType = getInputType(schema);
 
   return (
     <div data-testid={id} className={classNames}>
@@ -61,9 +63,7 @@ export default props => {
               helperText={help}
               label={getLabelText(props)}
               margin="normal"
-              InputLabelProps={{
-                shrink: includes(labelShrinkTypes, inputType)
-              }}
+              InputLabelProps={getInputLabelProps({ inputType })}
               onChange={e => {
                 child.props.onChange(e.target.value);
                 setInputValue(e.target.value);
