@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import { HiddenField } from "./styled";
+import { Typography, Hidden } from "@material-ui/core";
 import get from "lodash/get";
 import has from "lodash/has";
 import includes from "lodash/includes";
 import isEmpty from "lodash/isEmpty";
-import TextField from "@material-ui/core/TextField";
+import PlainTemplate from "./PlainTemplate";
+import React, { useState } from "react";
 import SelectField from "./SelectField";
-import { Typography, Hidden } from "@material-ui/core";
-import { HiddenField } from "./styled";
+import TextField from "@material-ui/core/TextField";
 
 const getLabelText = ({ label, required }) => {
   const suffix = required ? " *" : "";
@@ -40,18 +41,7 @@ export default props => {
   }
 
   if (!includes(fieldTemplateSchemaTypes, get(schema, "type"))) {
-    return (
-      <div className={classNames}>
-        <label htmlFor={id}>
-          {label}
-          {required ? "*" : null}
-        </label>
-        {description}
-        {children}
-        {errors}
-        {help}
-      </div>
-    );
+    return <PlainTemplate {...props} />;
   }
 
   return (
