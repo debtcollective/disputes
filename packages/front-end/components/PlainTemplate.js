@@ -14,7 +14,7 @@ export default props => {
   } = props;
 
   return (
-    <div className={classNames}>
+    <div data-testid="plain-template" className={classNames}>
       <label htmlFor={id}>
         {label}
         {required ? "*" : null}

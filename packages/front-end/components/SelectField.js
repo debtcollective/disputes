@@ -14,7 +14,7 @@ export default props => {
   } = props;
 
   return (
-    <div className={classNames}>
+    <div data-testid="select-field" className={classNames}>
       <label htmlFor={id}>
         SelectField -{label}
         {required ? "*" : null}

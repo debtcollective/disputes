@@ -121,4 +121,42 @@ describe("<FieldTemplate />", () => {
       expect(customInput.type).toEqual(inputType[props.schema.type]);
     });
   });
+
+  describe("when schema has 'enum' property", () => {
+    const props = { ...baseProps, schema: { enum: ["foo", "bar"] } };
+
+    it("renders a <SelectField />", () => {
+      const wrapper = render(
+        <FieldTemplate {...props}>
+          <input
+            className="form-control"
+            id={baseProps.id}
+            label={baseProps.label}
+            placeholder="Introduce Foo"
+          />
+        </FieldTemplate>
+      );
+
+      expect(wrapper.getByTestId("select-field")).toBeTruthy();
+    });
+  });
+
+  describe("when schema doesn't match any criteria", () => {
+    const props = { ...baseProps, schema: {} };
+
+    it("renders a <PlainTemplate />", () => {
+      const wrapper = render(
+        <FieldTemplate {...props}>
+          <input
+            className="form-control"
+            id={baseProps.id}
+            label={baseProps.label}
+            placeholder="Introduce Foo"
+          />
+        </FieldTemplate>
+      );
+
+      expect(wrapper.getByTestId("plain-template")).toBeTruthy();
+    });
+  });
 });
