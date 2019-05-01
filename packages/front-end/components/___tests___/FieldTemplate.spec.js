@@ -1,4 +1,5 @@
 import React from "react";
+import sample from "lodash/sample";
 import FieldTemplate from "../FieldTemplate";
 import {
   render,
@@ -16,7 +17,9 @@ describe("<FieldTemplate />", () => {
   afterEach(cleanup);
 
   describe("when schema has type string", () => {
-    const props = { ...baseProps, schema: { type: "string" } };
+    const inputType = { string: "text" };
+    const schemaType = "string";
+    const props = { ...baseProps, schema: { type: schemaType } };
 
     it("renders a custom component in place of child input", () => {
       const wrapper = render(
@@ -32,12 +35,31 @@ describe("<FieldTemplate />", () => {
       );
 
       const childInput = wrapper.container.querySelector(`#${baseProps.id}`);
-      const customdInput = wrapper.container.querySelector(
+      const customInput = wrapper.container.querySelector(
         `#MU_${baseProps.id}`
       );
 
-      expect(customdInput).toBeTruthy();
+      expect(customInput).toBeTruthy();
       expect(childInput).toBe(null);
+    });
+
+    it("renders a custom input component with type equivalent to schema type", () => {
+      const wrapper = render(
+        <FieldTemplate {...props}>
+          <input
+            className="form-control"
+            id={baseProps.id}
+            label={baseProps.label}
+            placeholder="Introduce Foo"
+          />
+        </FieldTemplate>
+      );
+
+      const customInput = wrapper.container.querySelector(
+        `#MU_${baseProps.id}`
+      );
+
+      expect(customInput.type).toEqual(inputType[props.schema.type]);
     });
 
     it("uses child input prop 'onChange' when edit custom input", async () => {
@@ -68,6 +90,31 @@ describe("<FieldTemplate />", () => {
 
       expect(customInput.value).toEqual(fakeText);
       expect(onChange).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe("when schema has type number", () => {
+    const inputType = { number: "number" };
+    const schemaType = "number";
+    const props = { ...baseProps, schema: { type: schemaType } };
+
+    it("renders a custom input component with type equivalent to schema type", () => {
+      const wrapper = render(
+        <FieldTemplate {...props}>
+          <input
+            className="form-control"
+            id={baseProps.id}
+            label={baseProps.label}
+            placeholder="Introduce Foo"
+          />
+        </FieldTemplate>
+      );
+
+      const customInput = wrapper.container.querySelector(
+        `#MU_${baseProps.id}`
+      );
+
+      expect(customInput.type).toEqual(inputType[props.schema.type]);
     });
   });
 });

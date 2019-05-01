@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import get from "lodash/get";
 import has from "lodash/has";
+import includes from "lodash/includes";
 import isEmpty from "lodash/isEmpty";
 import TextField from "@material-ui/core/TextField";
 import SelectField from "./SelectField";
@@ -31,12 +32,14 @@ export default props => {
   } = props;
 
   const [inputValue, setInputValue] = useState("");
+  const inputTypes = { string: "text", number: "number" };
+  const fieldTemplateSchemaTypes = ["string", "number"];
 
   if (has(schema, "enum")) {
     return <SelectField {...props} />;
   }
 
-  if (get(schema, "type") !== "string") {
+  if (!includes(fieldTemplateSchemaTypes, get(schema, "type"))) {
     return (
       <div className={classNames}>
         <label htmlFor={id}>
@@ -59,6 +62,7 @@ export default props => {
         return React.isValidElement(child) ? (
           <React.Fragment>
             <TextField
+              type={inputTypes[schema.type]}
               autoComplete="no"
               id={`MU_${id}`}
               helperText={help}
