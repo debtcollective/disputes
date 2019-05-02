@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "flow-bin": "0.97.0",
-    "husky": "2.1.0",
+    "husky": "2.2.0",
     "jest": "24.7.1",
     "nodemon": "1.18.11",
     "prettier": "1.17.0",
