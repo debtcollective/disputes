@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import get from "lodash/get";
 import includes from "lodash/includes";
 import { TextField } from "@material-ui/core";
+import DateField from "./DateField";
 
 const getLabelText = ({ label, required }) => {
   const suffix = required ? " *" : "";
@@ -46,6 +47,10 @@ export default props => {
 
   const [inputValue, setInputValue] = useState("");
   const inputType = getInputType(schema);
+
+  if (inputType === "date") {
+    return <DateField {...props} />;
+  }
 
   return (
     <div data-testid={id} className={classNames}>
