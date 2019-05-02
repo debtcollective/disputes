@@ -125,7 +125,7 @@ describe("<FieldTemplate />", () => {
   describe("when schema has format date", () => {
     const props = { ...baseProps, schema: { type: "string", format: "date" } };
 
-    it("renders a custom input component with type 'date'", () => {
+    it("renders a custom input component <DatePicker />", () => {
       const wrapper = render(
         <FieldTemplate {...props}>
           <input
@@ -141,7 +141,7 @@ describe("<FieldTemplate />", () => {
         `#MU_${baseProps.id}`
       );
 
-      expect(customInput.type).toEqual("date");
+      expect(wrapper.getByTestId("date-picker")).toBeTruthy();
     });
   });
 

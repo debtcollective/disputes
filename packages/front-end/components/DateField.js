@@ -31,14 +31,16 @@ export default props => {
 
         return (
           <React.Fragment>
-            <DatePicker
-              value={selectedDate}
-              onChange={momentDate => {
-                const value = momentDate.format();
-                child.props.onChange(value);
-                handleDateChange(value);
-              }}
-            />
+            <div id={`#MU_${id}`}>
+              <DatePicker
+                value={selectedDate}
+                onChange={momentDate => {
+                  const value = momentDate.format();
+                  child.props.onChange(value);
+                  handleDateChange(value);
+                }}
+              />
+            </div>
           </React.Fragment>
         );
       })}
