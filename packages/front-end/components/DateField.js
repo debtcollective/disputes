@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import get from "lodash/get";
 import includes from "lodash/includes";
-import { TextField } from "@material-ui/core";
 import { DatePicker } from "material-ui-pickers";
+import { FormHelperText } from "@material-ui/core";
 
 export default props => {
   const {
@@ -10,6 +10,7 @@ export default props => {
     id,
     classNames,
     label,
+    rawHelp,
     help,
     required,
     description,
@@ -21,6 +22,7 @@ export default props => {
   } = props;
 
   const [selectedDate, handleDateChange] = useState(new Date());
+  const hasError = rawErrors !== undefined;
 
   return (
     <div data-testid={id} className={classNames}>
@@ -40,6 +42,7 @@ export default props => {
                   handleDateChange(value);
                 }}
               />
+              <FormHelperText error={hasError} component='div'>{hasError ? rawErrors : rawHelp}</FormHelperText>
             </div>
           </React.Fragment>
         );

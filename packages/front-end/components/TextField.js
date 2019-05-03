@@ -47,6 +47,7 @@ export default props => {
 
   const [inputValue, setInputValue] = useState("");
   const inputType = getInputType(schema);
+  const hasError = rawErrors !== undefined;
 
   if (inputType === "date") {
     return <DateField {...props} />;
@@ -55,17 +56,17 @@ export default props => {
   return (
     <div data-testid={id} className={classNames}>
       {rawDescription && <Typography>{rawDescription}</Typography>}
-      {rawErrors && errors}
       {React.Children.map(children, child => {
         if (!React.isValidElement(child)) return null;
 
         return (
           <React.Fragment>
             <TextField
+              error={hasError}
               type={inputType}
               autoComplete="no"
               id={`MU_${id}`}
-              helperText={help}
+              helperText={hasError ? rawErrors : help}
               label={getLabelText(props)}
               margin="normal"
               InputLabelProps={getInputLabelProps({ inputType })}

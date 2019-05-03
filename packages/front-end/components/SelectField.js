@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import get from "lodash/get";
-import { Button, Menu, MenuItem, Select } from "@material-ui/core";
+import { Button, Menu, MenuItem, Select, FormHelperText } from "@material-ui/core";
 
 export default props => {
   const {
@@ -13,6 +13,7 @@ export default props => {
     description,
     errors,
     children,
+    rawHelp,
     rawDescription,
     rawErrors,
     uiSchema
@@ -23,19 +24,20 @@ export default props => {
     callback(value);
     setOption(value);
   };
+  const hasError = rawErrors !== undefined;
   const customId = `MU_${id}`;
 
   return (
     <div data-testid="select-field">
       <div data-testid={id} className={classNames}>
         {rawDescription && <Typography>{rawDescription}</Typography>}
-        {rawErrors && errors}
         {React.Children.map(children, child => {
           if (!React.isValidElement(child)) return null;
 
           return (
             <div id={customId}>
               <Select
+                error={hasError}
                 value={option}
                 onChange={e =>
                   handleOptionSelection(e.target.value, child.props.onChange)
@@ -51,6 +53,7 @@ export default props => {
                   </MenuItem>
                 ))}
               </Select>
+              <FormHelperText error={hasError} component='div'>{hasError ? rawErrors : rawHelp}</FormHelperText>
             </div>
           );
         })}
