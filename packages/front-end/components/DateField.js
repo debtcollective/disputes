@@ -27,7 +27,6 @@ export default props => {
   return (
     <div data-testid={id} className={classNames}>
       {rawDescription && <Typography>{rawDescription}</Typography>}
-      {rawErrors && errors}
       {React.Children.map(children, child => {
         if (!React.isValidElement(child)) return null;
 
@@ -42,7 +41,9 @@ export default props => {
                   handleDateChange(value);
                 }}
               />
-              <FormHelperText error={hasError} component='div'>{hasError ? rawErrors : rawHelp}</FormHelperText>
+              <FormHelperText error={hasError} component="div">
+                {hasError ? rawErrors : rawHelp}
+              </FormHelperText>
             </div>
           </React.Fragment>
         );
