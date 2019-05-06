@@ -196,6 +196,7 @@ const log = type => console.log.bind(console, type);
 
 export default () => (
   <Form
+    showErrorList={false}
     FieldTemplate={FieldTemplate}
     uiSchema={schemas.ui}
     schema={schemas.json}
