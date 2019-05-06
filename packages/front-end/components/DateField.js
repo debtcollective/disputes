@@ -21,7 +21,7 @@ export default props => {
     uiSchema
   } = props;
 
-  const [selectedDate, handleDateChange] = useState(new Date());
+  const [selectedDate, handleDateChange] = useState(null);
   const hasError = rawErrors !== undefined;
 
   return (
@@ -34,9 +34,10 @@ export default props => {
           <React.Fragment>
             <div id={`#MU_${id}`}>
               <DatePicker
+                disableFuture
                 value={selectedDate}
                 onChange={momentDate => {
-                  const value = momentDate.format();
+                  const value = momentDate.format("L");
                   child.props.onChange(value);
                   handleDateChange(value);
                 }}
