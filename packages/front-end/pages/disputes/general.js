@@ -23,20 +23,6 @@ const schemas = {
     description:
       "This dispute is for all types of debt in collections except student loans.",
     type: "object",
-    required: [
-      "address",
-      "agency-address",
-      "agency-city",
-      "agency-name",
-      "agency-state",
-      "agency-zip-code",
-      "city",
-      "collection-notice-date",
-      "debts",
-      "name",
-      "state",
-      "zip-code"
-    ],
     properties: {
       debts: {
         title: "Amount of Debt Disputed",
@@ -78,6 +64,18 @@ const schemas = {
       personalInformation: {
         title: "Personal Information",
         type: "object",
+        required: [
+          "address",
+          "agency-address",
+          "agency-city",
+          "agency-name",
+          "agency-state",
+          "agency-zip-code",
+          "city",
+          "name",
+          "state",
+          "zip-code"
+        ],
         properties: {
           address: {
             type: "string",
@@ -126,6 +124,7 @@ const schemas = {
       collectionNotice: {
         title: "Collection notice",
         type: "object",
+        required: ["collection-notice-date"],
         properties: {
           "collection-notice-date": {
             type: "string",
