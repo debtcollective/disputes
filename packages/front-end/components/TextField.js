@@ -3,6 +3,7 @@ import get from "lodash/get";
 import includes from "lodash/includes";
 import { TextField } from "@material-ui/core";
 import DateField from "./DateField";
+import NumberField from "./NumberField";
 
 const getLabelText = ({ label, required }) => {
   const suffix = required ? " *" : "";
@@ -19,10 +20,19 @@ const getInputType = schema => {
   return resolversByType[schema.type](schema);
 };
 
-const getInputLabelProps = ({ inputType }) => {
+const getInputProps = ({ inputType }) => {
   if (includes(["date"], inputType)) {
     return {
-      shrink: true
+      InputLabelProps: { shrink: true }
+    };
+  }
+
+  if (includes(["number"], inputType)) {
+    return {
+      type: "text",
+      InputProps: {
+        inputComponent: NumberField
+      }
     };
   }
 
@@ -69,7 +79,7 @@ export default props => {
               helperText={hasError ? rawErrors : help}
               label={getLabelText(props)}
               margin="normal"
-              InputLabelProps={getInputLabelProps({ inputType })}
+              {...getInputProps({ inputType })}
               onChange={e => {
                 child.props.onChange(e.target.value);
                 setInputValue(e.target.value);
