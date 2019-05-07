@@ -17,16 +17,26 @@
     "@babel/core": "7.4.3",
     "babel-jest": "24.7.1",
     "jest": "24.7.1",
+    "lint-staged": "8.1.6",
     "react-testing-library": "7.0.0",
-    "waait": "1.0.4"
+    "waait": "1.0.4",
+    "flow-bin": "0.97.0"
   },
   "scripts": {
+    "build": "next build",
+    "dev": "next",
+    "now-build": "next build",
+    "pre-commit": "lint-staged",
+    "start": "next start",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "test:watch": "jest --watch",
-    "dev": "next",
-    "build": "next build",
-    "start": "next start",
-    "now-build": "next build"
+    "test:watch": "jest --watch"
+  },
+  "lint-staged": {
+    "*.js": [
+      "flow focus-check",
+      "eslint --fix",
+      "git add"
+    ]
   }
 }
