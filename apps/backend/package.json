@@ -13,7 +13,7 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "apollo-server-express": "2.4.8",
+    "apollo-server-express": "2.5.0",
     "esm": "3.2.22",
     "express": "4.16.4",
     "graphql": "14.2.1",
