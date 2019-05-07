@@ -37,7 +37,7 @@ export default props => {
                 disableFuture
                 value={selectedDate}
                 onChange={momentDate => {
-                  const value = momentDate.format("L");
+                  const value = momentDate.format("YYYY-MM-DD");
                   child.props.onChange(value);
                   handleDateChange(value);
                 }}
