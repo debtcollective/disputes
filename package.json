@@ -7,9 +7,21 @@
   ],
   "scripts": {
     "test": "lerna run test",
-    "test:coverage": "lerna run test:coverage"
+    "test:coverage": "lerna run test:coverage",
+    "pretty-quick": "pretty-quick",
+    "pre-commit": "lerna run pre-commit --concurrency 1 --since HEAD"
   },
   "devDependencies": {
-    "lerna": "3.13.4"
+    "husky": "2.2.0",
+    "lerna": "3.13.4",
+    "prettier": "1.17.0",
+    "pretty-quick": "1.10.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && yarn pre-commit",
+      "post-commit": "git update-index --again",
+      "pre-push": "yarn test"
+    }
   }
 }

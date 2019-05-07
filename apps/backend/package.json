@@ -6,8 +6,9 @@
   "license": "3-clause BSD",
   "private": true,
   "scripts": {
-    "start": "node -r esm index.js",
     "dev": "nodemon -r esm index.js",
+    "pre-commit": "lint-staged",
+    "start": "node -r esm index.js",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch"
@@ -23,15 +24,15 @@
   },
   "devDependencies": {
     "flow-bin": "0.97.0",
-    "husky": "2.1.0",
     "jest": "24.7.1",
-    "nodemon": "1.18.11",
-    "prettier": "1.17.0",
-    "pretty-quick": "1.10.0"
+    "lint-staged": "8.1.6",
+    "nodemon": "1.18.11"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
+  "lint-staged": {
+    "*.js": [
+      "flow focus-check",
+      "eslint --fix",
+      "git add"
+    ]
   }
 }
