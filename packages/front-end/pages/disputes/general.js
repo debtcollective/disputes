@@ -47,6 +47,22 @@ const schemas = {
               {
                 properties: {
                   debtType: {
+                    title: debtTypes.labels[0],
+                    enum: [debtTypes.values[0]]
+                  }
+                }
+              },
+              {
+                properties: {
+                  debtType: {
+                    title: debtTypes.labels[1],
+                    enum: [debtTypes.values[1]]
+                  }
+                }
+              },
+              {
+                properties: {
+                  debtType: {
                     title: debtTypes.labels[2],
                     enum: [debtTypes.values[2]]
                   },
@@ -54,8 +70,7 @@ const schemas = {
                     title: "Description",
                     type: "string"
                   }
-                },
-                required: ["debtDescription"]
+                }
               }
             ]
           }
