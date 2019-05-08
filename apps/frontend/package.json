@@ -22,9 +22,9 @@
   },
   "devDependencies": {
     "@babel/core": "7.4.4",
-    "babel-jest": "24.7.1",
+    "babel-jest": "24.8.0",
     "flow-bin": "0.98.1",
-    "jest": "24.7.1",
+    "jest": "24.8.0",
     "lint-staged": "8.1.6",
     "react-testing-library": "7.0.0",
     "waait": "1.0.4"

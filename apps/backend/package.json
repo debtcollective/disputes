@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "flow-bin": "0.98.1",
-    "jest": "24.7.1",
+    "jest": "24.8.0",
     "lint-staged": "8.1.6",
     "nodemon": "1.19.0"
   },
