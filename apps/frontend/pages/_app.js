@@ -2,6 +2,8 @@ import App, { Container } from "next/app";
 import React from "react";
 import withApolloClient from "../lib/with-apollo-client";
 import { ApolloProvider } from "react-apollo";
+import { MuiPickersUtilsProvider } from "material-ui-pickers";
+import MomentUtils from "@date-io/moment";
 
 // next.js custom App - https://nextjs.org/docs/#custom-app
 class MyApp extends App {
@@ -10,7 +12,9 @@ class MyApp extends App {
     return (
       <Container>
         <ApolloProvider client={apolloClient}>
-          <Component {...pageProps} />
+          <MuiPickersUtilsProvider utils={MomentUtils}>
+            <Component {...pageProps} />
+          </MuiPickersUtilsProvider>
         </ApolloProvider>
       </Container>
     );

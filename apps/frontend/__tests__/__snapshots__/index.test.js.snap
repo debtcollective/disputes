@@ -3,6 +3,11 @@
 exports[`With React Testing Library Snapshot Should match Snapshot 1`] = `
 <DocumentFragment>
   <div>
+    <a
+      href="/disputes/general"
+    >
+      General Dispute
+    </a>
     <p
       class="pages__HelloWorld-sc-6ucdmv-0 kFhcAB"
     >

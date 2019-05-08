@@ -1,6 +1,8 @@
+import React from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import styled from "styled-components";
+import Link from "next/link";
 
 const HelloWorld = styled.p`
   color: red;
@@ -23,6 +25,9 @@ export const allPostsQueryVars = {
 export default () => {
   return (
     <div>
+      <Link href="/disputes/general">
+        <a>General Dispute</a>
+      </Link>
       <HelloWorld>Hello World!</HelloWorld>
       <Query query={ALL_POSTS_QUERY} variables={allPostsQueryVars}>
         {({ loading, error, data: { allPosts, _allPostsMeta }, fetchMore }) => {
