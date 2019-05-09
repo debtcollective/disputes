@@ -21,9 +21,18 @@ const Page = () => {
       <Header links={links} />
       <div>
         <Title>Working</Title>
-        <Link href="/disputes/general">
-          <a>General Dispute</a>
-        </Link>
+        <ul>
+          <li>
+            <Link href="/disputes/general">
+              <a>General Dispute</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/disputes/tax/a">
+              <a>Tax Offset Disputes - a</a>
+            </Link>
+          </li>
+        </ul>
       </div>
     </React.Fragment>
   );
