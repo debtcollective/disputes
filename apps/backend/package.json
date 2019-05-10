@@ -9,9 +9,8 @@
     "dev": "nodemon -r esm index.js",
     "pre-commit": "lint-staged",
     "start": "node -r esm index.js",
-    "test": "jest",
-    "test:coverage": "jest --coverage",
-    "test:watch": "jest --watch"
+    "test": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "apollo-server-express": "2.5.0",
@@ -23,6 +22,16 @@
     "pg": "7.10.0"
   },
   "devDependencies": {
+    "@babel/core": "7.4.4",
+    "babel-eslint": "~10.0.1",
+    "babel-jest": "24.8.0",
+    "eslint": "~5.16.0",
+    "eslint-plugin-flowtype": "~3.8.1",
+    "eslint-plugin-graphql": "~3.0.3",
+    "eslint-plugin-import": "~2.17.2",
+    "eslint-plugin-jest": "~22.5.1",
+    "eslint-plugin-node": "~9.0.1",
+    "eslint-plugin-promise": "~4.1.1",
     "flow-bin": "0.98.1",
     "jest": "24.8.0",
     "lint-staged": "8.1.6",
@@ -30,8 +39,12 @@
   },
   "lint-staged": {
     "*.js": [
+      "prettier-eslint --write",
       "flow focus-check",
-      "eslint --fix",
+      "git add"
+    ],
+    "*.{json,md}": [
+      "prettier-eslint --write",
       "git add"
     ]
   }
