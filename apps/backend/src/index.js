@@ -1,6 +1,6 @@
 import express from "express";
 import { ApolloServer, gql } from "apollo-server-express";
-import typeDefs from "./src/schema";
+import typeDefs from "./schema";
 
 const books = [
   {

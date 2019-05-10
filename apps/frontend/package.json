@@ -33,8 +33,7 @@
     "eslint-plugin-react": "~7.13.0",
     "flow-bin": "0.98.1",
     "jest": "24.8.0",
-    "lint-staged": "8.1.6",
-    "prettier-eslint-cli": "~4.7.1",
+    "lint-staged": ">=8",
     "react-testing-library": "7.0.0",
     "waait": "1.0.4"
   },
@@ -52,7 +51,8 @@
     "*.js": [
       "prettier-eslint --write",
       "flow focus-check",
-      "git add"
+      "git add",
+      "eslint --fix"
     ],
     "*.{json,md}": [
       "prettier-eslint --write",

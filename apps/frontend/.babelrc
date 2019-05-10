@@ -1,5 +1,5 @@
 {
-  "presets": ["next/babel"],
+  "parser": "babel-eslint",
   "plugins": [
     [
       "styled-components",
@@ -9,5 +9,6 @@
         "preprocess": false
       }
     ]
-  ]
+  ],
+  "presets": ["next/babel"]
 }

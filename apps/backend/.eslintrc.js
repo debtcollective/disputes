@@ -50,7 +50,7 @@ module.exports = {
       "error",
       {
         env: "apollo",
-        schemaJson: require("src/schema.js")
+        schemaJson: require("./src/schema.js")
       }
     ]
   },
@@ -58,7 +58,6 @@ module.exports = {
   parser: "babel-eslint",
   parserOptions: {
     ecmaVersion: 2018,
-    sourceType: "module",
     ecmaFeatures: {
       jsx: true
     },
