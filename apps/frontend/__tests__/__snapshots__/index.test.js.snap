@@ -72,6 +72,11 @@ exports[`With React Testing Library Snapshot Should match Snapshot 1`] = `
     </div>
   </header>
   <div>
+    <h1
+      class="pages__Title-sc-6ucdmv-0 ixxnbT"
+    >
+      Working
+    </h1>
     <a
       href="/disputes/general"
     >

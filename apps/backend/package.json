@@ -7,9 +7,9 @@
   "private": true,
   "scripts": {
     "pre-commit": "lint-staged",
-    "build": "rm -rf build && babel src -d ./build",
-    "now-build": "yarn build",
     "start": "nodemon --exec babel-node src/index.js",
+    "build": "babel src -d build",
+    "now-build": "yarn build",
     "now-start": "node ./build/index.js",
     "test": "jest --watch",
     "test:coverage": "jest --coverage"

@@ -2,11 +2,11 @@
   "name": "disputes",
   "version": 2,
   "builds": [
-    { "src": "apps/backend/build/index.js", "use": "@now/node" },
+    { "src": "apps/backend/src/index.js", "use": "@now/node" },
     { "src": "apps/frontend/package.json", "use": "@now/next" }
   ],
   "routes": [
-    { "src": "/graphql(.*)", "dest": "apps/backend/build/index.js" },
+    { "src": "/graphql(.*)", "dest": "apps/backend/src/index.js" },
     { "src": "/(.*)", "dest": "apps/frontend/$1" }
   ]
 }
