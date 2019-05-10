@@ -2,11 +2,11 @@ import get from "lodash/get";
 import has from "lodash/has";
 import includes from "lodash/includes";
 import PlainTemplate from "./PlainTemplate";
-import React, { useState } from "react";
+import React from "react";
 import SelectField from "./SelectField";
 import TextField from "./TextField";
 
-export default props => {
+const FieldTemplate = props => {
   const { schema } = props;
 
   if (has(schema, "enum")) {
@@ -19,3 +19,5 @@ export default props => {
 
   return <PlainTemplate {...props} />;
 };
+
+export default FieldTemplate;

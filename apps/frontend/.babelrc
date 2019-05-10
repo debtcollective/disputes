@@ -1,5 +1,4 @@
 {
-  "parser": "babel-eslint",
   "plugins": [
     [
       "styled-components",
@@ -10,5 +9,19 @@
       }
     ]
   ],
-  "presets": ["next/babel"]
+  "presets": [
+    [
+      "next/babel",
+      {
+        "preset-env": {
+          "useBuiltIns": "entry"
+        }
+      }
+    ]
+  ],
+  "env": {
+    "test": {
+      "plugins": ["@babel/plugin-transform-runtime"]
+    }
+  }
 }

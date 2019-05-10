@@ -1,4 +1,4 @@
-import gql from "apollo-boost";
+import { gql } from "apollo-server-express";
 
 const typeDefs = gql`
   type Book {

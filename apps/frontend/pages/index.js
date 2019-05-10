@@ -1,52 +1,25 @@
-import React from "react";
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
-import styled from "styled-components";
+import Header from "@debtcollective/header";
 import Link from "next/link";
+import React from "react";
 
-const HelloWorld = styled.p`
-  color: red;
-`;
+const links = [
+  { href: "/admin/disputes", roles: ["admin"], text: "Admin" },
+  { href: "/disputes/my", text: "My Disputes" },
+  { href: "/", text: "Dispute Your Debt" },
+  { href: "https://community.debtcollective.org", text: "Community" },
+];
 
-export const ALL_POSTS_QUERY = gql`
-  query allPosts($first: Int!, $skip: Int!) {
-    allPosts(orderBy: createdAt_DESC, first: $first, skip: $skip) {
-      id
-      title
-      url
-    }
-  }
-`;
-export const allPostsQueryVars = {
-  skip: 0,
-  first: 10
-};
-
-export default () => {
+const Page = () => {
   return (
-    <div>
-      <Link href="/disputes/general">
-        <a>General Dispute</a>
-      </Link>
-      <HelloWorld>Hello World!</HelloWorld>
-      <Query query={ALL_POSTS_QUERY} variables={allPostsQueryVars}>
-        {({ loading, error, data: { allPosts, _allPostsMeta }, fetchMore }) => {
-          if (error) return <ErrorMessage message="Error loading posts." />;
-          if (loading) return <div>Loading</div>;
-
-          return (
-            <ul>
-              {allPosts.map((post, index) => (
-                <li key={post.id}>
-                  <a href={post.url}>
-                    {index + 1}. {post.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          );
-        }}
-      </Query>
-    </div>
+    <React.Fragment>
+      <Header links={links} />
+      <div>
+        <Link href="/disputes/general">
+          <a>General Dispute</a>
+        </Link>
+      </div>
+    </React.Fragment>
   );
 };
+
+export default Page;

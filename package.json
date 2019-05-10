@@ -19,8 +19,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "yarn pre-commit",
-      "post-commit": "git update-index --again",
-      "pre-push": "yarn test"
+      "post-commit": "git update-index --again"
     }
   }
 }
