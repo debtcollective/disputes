@@ -53,6 +53,10 @@
       "prettier-eslint --write",
       "flow focus-check",
       "git add"
+    ],
+    "*.json": [
+      "prettier-eslint --write",
+      "git add"
     ]
   }
 }
