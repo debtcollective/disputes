@@ -31,7 +31,7 @@ const getInputProps = ({ inputType }) => {
     return {
       type: "text",
       InputProps: {
-        inputComponent: NumberField
+        inputComponent: props => <NumberField {...props} />
       }
     };
   }

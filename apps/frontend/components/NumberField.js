@@ -6,7 +6,6 @@ const NumberField = props => {
 
   return (
     <NumberFormat
-      {...other}
       data-testid="number-field"
       allowNegative={false}
       getInputRef={inputRef}
@@ -19,6 +18,7 @@ const NumberField = props => {
       }}
       thousandSeparator
       prefix="$"
+      {...other}
     />
   );
 };
