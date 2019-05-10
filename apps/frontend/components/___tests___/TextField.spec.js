@@ -1,6 +1,6 @@
 import React from "react";
 import TextField from "../TextField";
-import { render, cleanup } from "react-testing-library";
+import { render, cleanup, fireEvent } from "react-testing-library";
 
 describe("<TextField />", () => {
   const baseProps = {
@@ -30,6 +30,35 @@ describe("<TextField />", () => {
       );
 
       expect(wrapper.getByTestId("date-picker")).toBeTruthy();
+    });
+  });
+
+  describe("when schema has type number", () => {
+    const inputType = { number: "number" };
+    const schemaType = "number";
+    const props = { ...baseProps, schema: { type: schemaType } };
+
+    it("renders an input with currency capabilities", () => {
+      const introducedNumber = 12345;
+      const wrapper = render(
+        <TextField {...props}>
+          <input
+            onChange={jest.fn()}
+            className="form-control"
+            id={baseProps.id}
+            label={baseProps.label}
+            placeholder="Introduce Foo"
+          />
+        </TextField>
+      );
+
+      const customInput = wrapper.container.querySelector(
+        `#MU_${baseProps.id}`
+      );
+
+      fireEvent.change(customInput, { target: { value: introducedNumber } });
+
+      expect(customInput.value).toEqual("$12,345");
     });
   });
 });

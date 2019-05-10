@@ -7,6 +7,7 @@ const NumberField = props => {
   return (
     <NumberFormat
       {...other}
+      data-testid="number-field"
       allowNegative={false}
       getInputRef={inputRef}
       onValueChange={values => {

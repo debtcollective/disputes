@@ -102,12 +102,10 @@ describe("<FieldTemplate />", () => {
     const schemaType = "number";
     const props = { ...baseProps, schema: { type: schemaType } };
 
-    it("renders an input with currency capabilities", () => {
-      const introducedNumber = 12345;
+    it("renders a custom input component <NumberField />", () => {
       const wrapper = render(
         <FieldTemplate {...props}>
           <input
-            onChange={jest.fn()}
             className="form-control"
             id={baseProps.id}
             label={baseProps.label}
@@ -120,9 +118,7 @@ describe("<FieldTemplate />", () => {
         `#MU_${baseProps.id}`
       );
 
-      fireEvent.change(customInput, { target: { value: introducedNumber } });
-
-      expect(customInput.value).toEqual("$12,345");
+      expect(wrapper.getByTestId("number-field")).toBeTruthy();
     });
   });
 
