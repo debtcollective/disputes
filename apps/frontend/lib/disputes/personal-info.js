@@ -30,10 +30,12 @@ export default {
   },
   telephone: {
     type: "number",
+    format: "telephone",
     title: "Your telephone"
   },
   telephoneAlt: {
     type: "number",
+    format: "telephone",
     title: "Your telephone (alt.)"
   },
   "zip-code": {
