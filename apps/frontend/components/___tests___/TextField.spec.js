@@ -4,6 +4,7 @@ import { render, cleanup, fireEvent } from "react-testing-library";
 
 describe("<TextField />", () => {
   const baseProps = {
+    label: "Foo Label",
     id: "root_foo"
   };
 
@@ -36,29 +37,63 @@ describe("<TextField />", () => {
   describe("when schema has type number", () => {
     const inputType = { number: "number" };
     const schemaType = "number";
-    const props = { ...baseProps, schema: { type: schemaType } };
 
-    it("renders an input with currency capabilities", () => {
-      const introducedNumber = 12345;
-      const wrapper = render(
-        <TextField {...props}>
-          <input
-            onChange={jest.fn()}
-            className="form-control"
-            id={baseProps.id}
-            label={baseProps.label}
-            placeholder="Introduce Foo"
-          />
-        </TextField>
-      );
+    describe("when format is currency", () => {
+      const props = {
+        ...baseProps,
+        schema: { type: schemaType, format: "currency" }
+      };
 
-      const customInput = wrapper.container.querySelector(
-        `#MU_${baseProps.id}`
-      );
+      it("renders an input with currency capabilities", () => {
+        const introducedNumber = 5419;
+        const wrapper = render(
+          <TextField {...props}>
+            <input
+              onChange={jest.fn()}
+              className="form-control"
+              id={baseProps.id}
+              label={baseProps.label}
+              placeholder="Introduce Foo"
+            />
+          </TextField>
+        );
 
-      fireEvent.change(customInput, { target: { value: introducedNumber } });
+        const customInput = wrapper.getByTestId("number-field");
 
-      expect(customInput.value).toEqual("$12,345");
+        fireEvent.change(customInput, { target: { value: introducedNumber } });
+
+        expect(customInput.value).toMatchInlineSnapshot(`"$5,419"`);
+      });
+    });
+
+    describe("when format is telephone", () => {
+      const props = {
+        ...baseProps,
+        schema: { type: schemaType, format: "telephone" }
+      };
+
+      it("renders an input with telephone capabilities", () => {
+        const introducedNumber = 2025550179;
+        const wrapper = render(
+          <TextField {...props}>
+            <input
+              onChange={jest.fn()}
+              className="form-control"
+              id={baseProps.id}
+              label={baseProps.label}
+              placeholder="Introduce Foo"
+            />
+          </TextField>
+        );
+
+        wrapper.debug();
+
+        const customInput = wrapper.getByTestId("number-field");
+
+        fireEvent.change(customInput, { target: { value: introducedNumber } });
+
+        expect(customInput.value).toEqual("202-555-0179");
+      });
     });
   });
 });
