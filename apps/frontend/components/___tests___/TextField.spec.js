@@ -4,8 +4,8 @@ import { cleanup, fireEvent, render } from "react-testing-library";
 
 describe("<TextField />", () => {
   const baseProps = {
+    id: "root_foo",
     label: "Foo Label",
-    id: "root_foo"
   };
 
   afterEach(cleanup);
@@ -14,10 +14,9 @@ describe("<TextField />", () => {
     it("renders <DatePicker />", () => {
       const props = {
         ...baseProps,
-        schema: { type: "string", format: "date" }
+        schema: { format: "date", type: "string" },
       };
       const onChange = jest.fn();
-      const customId = `#MU_${baseProps.id}`;
       const wrapper = render(
         <TextField {...props}>
           <input
@@ -35,13 +34,12 @@ describe("<TextField />", () => {
   });
 
   describe("when schema has type number", () => {
-    const inputType = { number: "number" };
     const schemaType = "number";
 
     describe("when format is currency", () => {
       const props = {
         ...baseProps,
-        schema: { type: schemaType, format: "currency" }
+        schema: { format: "currency", type: schemaType },
       };
 
       it("renders an input with currency capabilities", () => {
@@ -62,14 +60,14 @@ describe("<TextField />", () => {
 
         fireEvent.change(customInput, { target: { value: introducedNumber } });
 
-        expect(customInput.value).toMatchInlineSnapshot('"$5,419"');
+        expect(customInput.value).toEqual("$5,419");
       });
     });
 
     describe("when format is telephone", () => {
       const props = {
         ...baseProps,
-        schema: { type: schemaType, format: "telephone" }
+        schema: { format: "telephone", type: schemaType },
       };
 
       it("renders an input with telephone capabilities", () => {
@@ -86,13 +84,11 @@ describe("<TextField />", () => {
           </TextField>
         );
 
-        wrapper.debug();
-
         const customInput = wrapper.getByTestId("number-field");
 
         fireEvent.change(customInput, { target: { value: introducedNumber } });
 
-        expect(customInput.value).toEqual("202-555-0179");
+        expect(customInput.value).toEqual("+1 (202) 555-0179");
       });
     });
   });

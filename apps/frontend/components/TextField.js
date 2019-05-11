@@ -19,7 +19,7 @@ const getInputType = schema => {
   return resolversByType[schema.type](schema);
 };
 
-const getInputProps = ({ inputType }) => {
+const getInputProps = ({ inputType, format }) => {
   if (includes(["date"], inputType)) {
     return {
       InputLabelProps: { shrink: true },
@@ -27,11 +27,13 @@ const getInputProps = ({ inputType }) => {
   }
 
   if (includes(["number"], inputType)) {
+    // NOTE: inputProps and InputProps are different API check https://bit.ly/2JcOxMB
     return {
       InputProps: {
-        inputComponent: function NumberFieldWrapper(props) {
-          return <NumberField {...props} />;
-        },
+        inputComponent: NumberField,
+      },
+      inputProps: {
+        format,
       },
       type: "text",
     };
@@ -75,7 +77,7 @@ const TextField = props => {
               helperText={hasError ? rawErrors : help}
               label={getLabelText(props)}
               margin="normal"
-              {...getInputProps({ inputType })}
+              {...getInputProps({ format: schema.format, inputType })}
               onChange={e => {
                 child.props.onChange(e.target.value);
                 setInputValue(e.target.value);

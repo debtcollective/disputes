@@ -1,8 +1,26 @@
 import NumberFormat from "react-number-format";
 import React from "react";
 
+const getPropsByFormat = format => {
+  switch (format) {
+    case "telephone":
+      return {
+        format: "+1 (###) ###-####",
+        mask: "_",
+      };
+    case "currency":
+      return {
+        prefix: "$",
+        thousandSeparator: true,
+      };
+    default:
+      return {};
+  }
+};
+
 const NumberField = props => {
-  const { inputRef, onChange, ...other } = props;
+  const { inputRef, format, onChange, ...other } = props;
+  const specificFormatProps = getPropsByFormat(format);
 
   return (
     <NumberFormat
@@ -16,8 +34,7 @@ const NumberField = props => {
           },
         });
       }}
-      thousandSeparator
-      prefix="$"
+      {...specificFormatProps}
       {...other}
     />
   );
