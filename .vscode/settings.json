@@ -1,0 +1,16 @@
+{
+  "workbench.colorCustomizations": {
+    "tab.unfocusedActiveBorder": "#fff0"
+  },
+  "colorTabs.titleBackground": true,
+  "colorTabs.config": [
+    {
+      "regex": ".*/backend/.*",
+      "color": "#fcc8ff"
+    },
+    {
+      "regex": ".*/frontend/.*",
+      "color": "#d9ffd8"
+    }
+  ]
+}

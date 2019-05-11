@@ -1,13 +1,25 @@
 {
-  "presets": ["next/babel"],
   "plugins": [
     [
       "styled-components",
       {
-        "ssr": true,
-        "displayName": true,
-        "preprocess": false
+        "ssr": true
       }
     ]
-  ]
+  ],
+  "presets": [
+    [
+      "next/babel",
+      {
+        "preset-env": {
+          "useBuiltIns": "entry"
+        }
+      }
+    ]
+  ],
+  "env": {
+    "test": {
+      "plugins": ["@babel/plugin-transform-runtime"]
+    }
+  }
 }

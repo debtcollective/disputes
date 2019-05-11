@@ -2,33 +2,86 @@
 
 exports[`With React Testing Library Snapshot Should match Snapshot 1`] = `
 <DocumentFragment>
+  <header
+    class="MuiPaper-root-10 MuiPaper-elevation4-16 MuiAppBar-root-1 MuiAppBar-positionStatic-5 MuiAppBar-colorPrimary-8"
+  >
+    <div
+      class="MuiToolbar-root-37 MuiToolbar-regular-39 MuiToolbar-gutters-38 sc-bdVaJa gdvdOJ"
+    >
+      <div>
+        <button
+          aria-label="Menu"
+          class="MuiButtonBase-root-47 MuiIconButton-root-41 MuiIconButton-colorInherit-42"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiIconButton-label-46"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root-50"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+              <path
+                d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+              />
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root-99"
+          />
+        </button>
+      </div>
+      <div>
+        <button
+          class="MuiButtonBase-root-47 MuiButton-root-73 MuiButton-text-75 MuiButton-flat-78 MuiButton-colorInherit-94"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label-74"
+          >
+            Login
+          </span>
+          <span
+            class="MuiTouchRipple-root-99"
+          />
+        </button>
+        <button
+          class="MuiButtonBase-root-47 MuiButton-root-73 MuiButton-text-75 MuiButton-flat-78 MuiButton-colorInherit-94"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label-74"
+          >
+            Signup
+          </span>
+          <span
+            class="MuiTouchRipple-root-99"
+          />
+        </button>
+      </div>
+    </div>
+  </header>
   <div>
+    <h1
+      class="pages__Title-sc-6ucdmv-0 ixxnbT"
+    >
+      Working
+    </h1>
     <a
       href="/disputes/general"
     >
       General Dispute
     </a>
-    <p
-      class="pages__HelloWorld-sc-6ucdmv-0 kFhcAB"
-    >
-      Hello World!
-    </p>
-    <ul>
-      <li>
-        <a
-          href="posturl1"
-        >
-          1. title 1
-        </a>
-      </li>
-      <li>
-        <a
-          href="posturl2"
-        >
-          2. title 2
-        </a>
-      </li>
-    </ul>
   </div>
 </DocumentFragment>
 `;

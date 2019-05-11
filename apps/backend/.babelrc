@@ -1,0 +1,4 @@
+{
+  "plugins": ["import-graphql"],
+  "presets": ["@babel/preset-env"]
+}
