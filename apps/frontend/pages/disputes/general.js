@@ -156,7 +156,7 @@ const schemas = {
         classNames: "prefix-currency",
       },
       debtType: {
-        "ui:help": 'If you don\'t see your type of debt, choose "Other"',
+        "ui:help": "If you don't see your type of debt, choose 'Other'",
         "ui:placeholder": "Select one",
       },
     },
