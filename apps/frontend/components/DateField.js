@@ -4,12 +4,13 @@ import React, { useState } from "react";
 
 const DateField = props => {
   const {
-    id,
-    classNames,
-    rawHelp,
     children,
+    classNames,
+    id,
+    label,
     rawDescription,
     rawErrors,
+    rawHelp,
   } = props;
 
   const [selectedDate, handleDateChange] = useState(null);
@@ -26,6 +27,7 @@ const DateField = props => {
             <div id={`#MU_${id}`}>
               <DatePicker
                 disableFuture
+                placeholder={label}
                 value={selectedDate}
                 onChange={momentDate => {
                   const value = momentDate.format("YYYY-MM-DD");
