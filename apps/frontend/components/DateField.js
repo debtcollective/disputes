@@ -1,24 +1,15 @@
-import React, { useState } from "react";
-import get from "lodash/get";
-import includes from "lodash/includes";
 import { DatePicker } from "material-ui-pickers";
-import { FormHelperText } from "@material-ui/core";
+import { FormHelperText, Typography } from "@material-ui/core";
+import React, { useState } from "react";
 
-export default props => {
+const DateField = props => {
   const {
-    schema,
     id,
     classNames,
-    label,
     rawHelp,
-    help,
-    required,
-    description,
-    errors,
     children,
     rawDescription,
     rawErrors,
-    uiSchema
   } = props;
 
   const [selectedDate, handleDateChange] = useState(null);
@@ -52,3 +43,5 @@ export default props => {
     </div>
   );
 };
+
+export default DateField;

@@ -1,22 +1,22 @@
-import React, { useState } from "react";
 import get from "lodash/get";
-import { Button, Menu, MenuItem, Select, FormHelperText } from "@material-ui/core";
+import {
+  FormHelperText,
+  MenuItem,
+  Select,
+  Typography,
+} from "@material-ui/core";
+import React, { useState } from "react";
 
-export default props => {
+const SelectField = props => {
   const {
     schema,
     id,
     classNames,
-    label,
-    help,
-    required,
-    description,
-    errors,
     children,
     rawHelp,
     rawDescription,
     rawErrors,
-    uiSchema
+    uiSchema,
   } = props;
 
   const [option, setOption] = useState("");
@@ -53,7 +53,9 @@ export default props => {
                   </MenuItem>
                 ))}
               </Select>
-              <FormHelperText error={hasError} component='div'>{hasError ? rawErrors : rawHelp}</FormHelperText>
+              <FormHelperText error={hasError} component="div">
+                {hasError ? rawErrors : rawHelp}
+              </FormHelperText>
             </div>
           );
         })}
@@ -61,3 +63,5 @@ export default props => {
     </div>
   );
 };
+
+export default SelectField;

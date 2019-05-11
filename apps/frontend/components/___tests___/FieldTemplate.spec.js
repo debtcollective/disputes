@@ -2,10 +2,10 @@ import React from "react";
 import sample from "lodash/sample";
 import FieldTemplate from "../FieldTemplate";
 import {
-  render,
+  cleanup,
   fireEvent,
-  waitForElement,
-  cleanup
+  render,
+  waitForElement
 } from "react-testing-library";
 
 describe("<FieldTemplate />", () => {

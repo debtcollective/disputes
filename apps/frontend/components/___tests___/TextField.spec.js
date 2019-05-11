@@ -1,6 +1,6 @@
 import React from "react";
 import TextField from "../TextField";
-import { render, cleanup, fireEvent } from "react-testing-library";
+import { cleanup, fireEvent, render } from "react-testing-library";
 
 describe("<TextField />", () => {
   const baseProps = {
@@ -62,7 +62,7 @@ describe("<TextField />", () => {
 
         fireEvent.change(customInput, { target: { value: introducedNumber } });
 
-        expect(customInput.value).toMatchInlineSnapshot(`"$5,419"`);
+        expect(customInput.value).toMatchInlineSnapshot('"$5,419"');
       });
     });
 

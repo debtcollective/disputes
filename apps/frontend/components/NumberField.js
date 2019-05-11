@@ -1,5 +1,5 @@
-import React from "react";
 import NumberFormat from "react-number-format";
+import React from "react";
 
 const NumberField = props => {
   const { inputRef, onChange, ...other } = props;
@@ -12,8 +12,8 @@ const NumberField = props => {
       onValueChange={values => {
         onChange({
           target: {
-            value: values.floatValue
-          }
+            value: values.floatValue,
+          },
         });
       }}
       thousandSeparator

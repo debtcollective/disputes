@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import get from "lodash/get";
-import includes from "lodash/includes";
-import { TextField } from "@material-ui/core";
 import DateField from "./DateField";
+import includes from "lodash/includes";
 import NumberField from "./NumberField";
+import { TextField as MUTextField, Typography } from "@material-ui/core";
+import React, { useState } from "react";
 
 const getLabelText = ({ label, required }) => {
   const suffix = required ? " *" : "";
@@ -13,8 +12,8 @@ const getLabelText = ({ label, required }) => {
 
 const getInputType = schema => {
   const resolversByType = {
+    number: () => "number",
     string: schema => (schema.format === "date" ? "date" : "text"),
-    number: () => "number"
   };
 
   return resolversByType[schema.type](schema);
@@ -23,36 +22,33 @@ const getInputType = schema => {
 const getInputProps = ({ inputType }) => {
   if (includes(["date"], inputType)) {
     return {
-      InputLabelProps: { shrink: true }
+      InputLabelProps: { shrink: true },
     };
   }
 
   if (includes(["number"], inputType)) {
     return {
-      type: "text",
       InputProps: {
-        inputComponent: props => <NumberField {...props} />
-      }
+        inputComponent: function NumberFieldWrapper(props) {
+          return <NumberField {...props} />;
+        },
+      },
+      type: "text",
     };
   }
 
   return {};
 };
 
-export default props => {
+const TextField = props => {
   const {
     schema,
     id,
     classNames,
-    label,
     help,
-    required,
-    description,
-    errors,
     children,
     rawDescription,
     rawErrors,
-    uiSchema
   } = props;
 
   const [inputValue, setInputValue] = useState("");
@@ -71,7 +67,7 @@ export default props => {
 
         return (
           <React.Fragment>
-            <TextField
+            <MUTextField
               error={hasError}
               type={inputType}
               autoComplete="no"
@@ -92,3 +88,5 @@ export default props => {
     </div>
   );
 };
+
+export default TextField;

@@ -1,8 +1,7 @@
 import React from "react";
 
-export default props => {
+const PlainTemplate = props => {
   const {
-    schema,
     id,
     classNames,
     label,
@@ -10,7 +9,7 @@ export default props => {
     required,
     description,
     errors,
-    children
+    children,
   } = props;
 
   return (
@@ -26,3 +25,5 @@ export default props => {
     </div>
   );
 };
+
+export default PlainTemplate;
