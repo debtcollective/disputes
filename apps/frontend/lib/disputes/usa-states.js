@@ -58,7 +58,7 @@ export default {
     "Washington",
     "West Virginia",
     "Wisconsin",
-    "Wyoming"
+    "Wyoming",
   ],
   values: [
     "AL",
@@ -119,6 +119,6 @@ export default {
     "WA",
     "WV",
     "WI",
-    "WY"
-  ]
+    "WY",
+  ],
 };
