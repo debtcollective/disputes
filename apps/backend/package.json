@@ -20,7 +20,7 @@
     "graphql": "14.3.0",
     "knex": "0.16.5",
     "objection": "1.6.8",
-    "pg": "7.10.0"
+    "pg": "7.11.0"
   },
   "devDependencies": {
     "flow-bin": "0.98.1",
