@@ -2,7 +2,7 @@
   "name": "disputes",
   "version": 2,
   "builds": [
-    { "src": "apps/backend/src/index.js", "use": "@now/node" },
+    { "src": "apps/backend/src/index.js", "use": "@now/node-server" },
     { "src": "apps/frontend/package.json", "use": "@now/next" }
   ],
   "routes": [
