@@ -1,46 +1,46 @@
 export default {
   address: {
-    type: "string",
     title: "Your Mailing Address",
+    type: "string",
   },
   birthday: {
-    type: "string",
-    title: "Date of Birth",
     format: "date",
+    title: "Date of Birth",
+    type: "string",
   },
   city: {
-    type: "string",
     title: "Your City",
+    type: "string",
   },
   email: {
-    type: "string",
     title: "Email",
+    type: "string",
   },
   name: {
-    type: "string",
     title: "Your Full Name",
+    type: "string",
   },
   ssn: {
-    type: "string",
     title: "SSN",
+    type: "string",
   },
   state: {
-    title: "Your State",
     $ref: "#/definitions/usa-states",
+    title: "Your State",
   },
   telephone: {
-    type: "number",
     format: "telephone",
     title: "Your telephone",
+    type: "number",
   },
   telephoneAlt: {
-    type: "number",
     format: "telephone",
     title: "Your telephone (alt.)",
+    type: "number",
   },
   "zip-code": {
+    pattern: "[0-9]{5}",
     title: "Your Zip Code",
     type: "string",
-    pattern: "[0-9]{5}",
   },
 };
