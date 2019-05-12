@@ -73,7 +73,7 @@ const schemas = {
           "Please provide the amount of debt collectors claim you owe. This will help us better understand the types of debt you and our members are fighting. ",
         properties: {
           debtAmount: {
-            format: "currency",
+            $format: "currency",
             title: "Amount",
             type: "number",
           },

@@ -77,7 +77,7 @@ const TextField = props => {
               helperText={hasError ? rawErrors : help}
               label={getLabelText(props)}
               margin="normal"
-              {...getInputProps({ format: schema.format, inputType })}
+              {...getInputProps({ format: schema.$format, inputType })}
               onChange={e => {
                 child.props.onChange(e.target.value);
                 setInputValue(e.target.value);

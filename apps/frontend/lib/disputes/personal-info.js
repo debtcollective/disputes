@@ -29,12 +29,12 @@ export default {
     title: "Your State",
   },
   telephone: {
-    format: "telephone",
+    $format: "telephone",
     title: "Your telephone",
     type: "number",
   },
   telephoneAlt: {
-    format: "telephone",
+    $format: "telephone",
     title: "Your telephone (alt.)",
     type: "number",
   },

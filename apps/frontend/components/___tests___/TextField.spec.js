@@ -39,7 +39,7 @@ describe("<TextField />", () => {
     describe("when format is currency", () => {
       const props = {
         ...baseProps,
-        schema: { format: "currency", type: schemaType },
+        schema: { $format: "currency", type: schemaType },
       };
 
       it("renders an input with currency capabilities", () => {
@@ -67,7 +67,7 @@ describe("<TextField />", () => {
     describe("when format is telephone", () => {
       const props = {
         ...baseProps,
-        schema: { format: "telephone", type: schemaType },
+        schema: { $format: "telephone", type: schemaType },
       };
 
       it("renders an input with telephone capabilities", () => {
