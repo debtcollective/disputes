@@ -22,9 +22,61 @@ const schemas = {
     },
     properties: {
       FFELLoan: {
-        description:
-          "If you have a FFEL loan, add the name and address of your guaranty agency in the box below. The name and address may appear on the tax offset notice you received in the mail. If you don't know the name and address of your guarantor, you can contact the Department of Education or call 1-800-304-3107 and ask for this information.",
-        properties: {},
+        dependencies: {
+          ffelHolder: {
+            oneOf: [
+              {
+                properties: {
+                  ffelHolder: {
+                    enum: [false],
+                  },
+                },
+              },
+              {
+                properties: {
+                  ffelHolder: {
+                    enum: [true],
+                  },
+                  guarantyAgency: {
+                    properties: {
+                      address: {
+                        title: "Address",
+                        type: "string",
+                      },
+                      city: {
+                        title: "City",
+                        type: "string",
+                      },
+                      name: {
+                        title: "Name",
+                        type: "string",
+                      },
+                      state: {
+                        $ref: "#/definitions/usa-states",
+                        title: "Your State",
+                      },
+                      "zip-code": {
+                        pattern: "[0-9]{5}",
+                        title: "Zip Code",
+                        type: "string",
+                      },
+                    },
+                    title: "Guaranty Agency details",
+                    type: "object",
+                  },
+                },
+              },
+            ],
+          },
+        },
+        properties: {
+          ffelHolder: {
+            description:
+              "If you have a FFEL loan, add the name and address of your guaranty agency in the box below. The name and address may appear on the tax offset notice you received in the mail. If you don't know the name and address of your guarantor, you can contact the Department of Education or call 1-800-304-3107 and ask for this information.",
+            title: "Are you a FFEL holder?",
+            type: "boolean",
+          },
+        },
         title: "FFEL Loan",
         type: "object",
       },
@@ -49,7 +101,7 @@ const schemas = {
   ui: {
     FFELLoan: { "ui:order": ["*"] },
     personalInformation: { "ui:order": ["*"] },
-    "ui:order": ["*"],
+    "ui:order": ["personalInformation", "yourSchool", "FFELLoan", "*"],
     yourSchool: { "ui:order": ["*"] },
   },
 };
