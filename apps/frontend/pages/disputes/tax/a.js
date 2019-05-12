@@ -53,7 +53,7 @@ const schemas = {
                       },
                       state: {
                         $ref: "#/definitions/usa-states",
-                        title: "Your State",
+                        title: "State",
                       },
                       "zip-code": {
                         pattern: "[0-9]{5}",
@@ -89,8 +89,47 @@ const schemas = {
         type: "object",
       },
       yourSchool: {
-        description: "Name of the school where you incurred the debt",
-        properties: {},
+        description:
+          "Information related to the school where you incurred the debt",
+        properties: {
+          address: {
+            title: "Address",
+            type: "string",
+          },
+          attend: {
+            properties: {
+              from: {
+                format: "date",
+                title: "from",
+                type: "string",
+              },
+              to: {
+                format: "date",
+                title: "to",
+                type: "string",
+              },
+            },
+            title: "When did you attend the school?",
+            type: "object",
+          },
+          city: {
+            title: "City",
+            type: "string",
+          },
+          name: {
+            title: "Name",
+            type: "string",
+          },
+          state: {
+            $ref: "#/definitions/usa-states",
+            title: "State",
+          },
+          "zip-code": {
+            pattern: "[0-9]{5}",
+            title: "Your Zip Code",
+            type: "string",
+          },
+        },
         title: "Your School",
         type: "object",
       },
