@@ -115,6 +115,25 @@ describe("<FieldTemplate />", () => {
     });
   });
 
+  describe("when schema has type boolean", () => {
+    const props = { ...baseProps, schema: { type: "boolean" } };
+
+    it("renders a custom input component for checkbox", () => {
+      const wrapper = render(
+        <FieldTemplate {...props}>
+          <input
+            className="form-control"
+            id={baseProps.id}
+            label={baseProps.label}
+            placeholder="Introduce Foo"
+          />
+        </FieldTemplate>
+      );
+
+      expect(wrapper.getByTestId("checkbox")).toBeTruthy();
+    });
+  });
+
   describe("when schema has format date", () => {
     const props = { ...baseProps, schema: { format: "date", type: "string" } };
 
