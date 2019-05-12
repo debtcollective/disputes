@@ -1,17 +1,16 @@
-import React from "react";
-import sample from "lodash/sample";
 import FieldTemplate from "../FieldTemplate";
+import React from "react";
 import {
   cleanup,
   fireEvent,
   render,
-  waitForElement
+  waitForElement,
 } from "react-testing-library";
 
 describe("<FieldTemplate />", () => {
   const baseProps = {
     id: "root_foo",
-    label: "Foo Label"
+    label: "Foo Label",
   };
 
   afterEach(cleanup);
@@ -60,10 +59,9 @@ describe("<FieldTemplate />", () => {
         .getByTestId(baseProps.id)
         .getElementsByTagName("input");
       const customInput = inputContainers.item(0);
-      const childInput = inputContainers.item(1);
 
       fireEvent.change(customInput, {
-        target: { value: fakeText }
+        target: { value: fakeText },
       });
       await waitForElement(() => customInput);
 
@@ -98,7 +96,6 @@ describe("<FieldTemplate />", () => {
   });
 
   describe("when schema has type number", () => {
-    const inputType = { number: "number" };
     const schemaType = "number";
     const props = { ...baseProps, schema: { type: schemaType } };
 
@@ -114,16 +111,12 @@ describe("<FieldTemplate />", () => {
         </FieldTemplate>
       );
 
-      const customInput = wrapper.container.querySelector(
-        `#MU_${baseProps.id}`
-      );
-
       expect(wrapper.getByTestId("number-field")).toBeTruthy();
     });
   });
 
   describe("when schema has format date", () => {
-    const props = { ...baseProps, schema: { type: "string", format: "date" } };
+    const props = { ...baseProps, schema: { format: "date", type: "string" } };
 
     it("renders a custom input component <DatePicker />", () => {
       const wrapper = render(
@@ -135,10 +128,6 @@ describe("<FieldTemplate />", () => {
             placeholder="Introduce Foo"
           />
         </FieldTemplate>
-      );
-
-      const customInput = wrapper.container.querySelector(
-        `#MU_${baseProps.id}`
       );
 
       expect(wrapper.getByTestId("date-picker")).toBeTruthy();
