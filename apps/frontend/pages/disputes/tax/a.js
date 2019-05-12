@@ -139,9 +139,23 @@ const schemas = {
   },
   ui: {
     FFELLoan: { "ui:order": ["*"] },
-    personalInformation: { "ui:order": ["*"] },
+    personalInformation: {
+      "ui:order": [
+        "name",
+        "ssn",
+        "address",
+        "city",
+        "state",
+        "zip-code",
+        "birthday",
+        "email",
+        "*",
+      ],
+    },
     "ui:order": ["personalInformation", "yourSchool", "FFELLoan", "*"],
-    yourSchool: { "ui:order": ["*"] },
+    yourSchool: {
+      "ui:order": ["name", "address", "city", "state", "zip-code", "*"],
+    },
   },
 };
 
