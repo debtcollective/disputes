@@ -26,6 +26,7 @@ const DateField = props => {
           <React.Fragment>
             <div id={`#MU_${id}`}>
               <DatePicker
+                format="L"
                 disableFuture
                 placeholder={label}
                 value={selectedDate}
