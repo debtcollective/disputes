@@ -9,6 +9,7 @@ import React, { useState } from "react";
 
 const SelectField = props => {
   const {
+    label,
     schema,
     id,
     classNames,
@@ -44,8 +45,8 @@ const SelectField = props => {
                 }
                 displayEmpty
               >
-                <MenuItem value="">
-                  {get(uiSchema, "ui:placeholder", "select")}
+                <MenuItem value="" disabled>
+                  {get(uiSchema, "ui:placeholder", `Select ${label}`)}
                 </MenuItem>
                 {schema.enum.map((option, index) => (
                   <MenuItem key={option} value={option}>
