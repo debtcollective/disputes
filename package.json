@@ -7,6 +7,7 @@
   ],
   "scripts": {
     "test": "lerna run test",
+    "test:ci": "lerna run test:ci",
     "test:coverage": "lerna run test:coverage",
     "pretty-quick": "pretty-quick",
     "pre-commit": "lerna run pre-commit --concurrency 1 --since HEAD"
