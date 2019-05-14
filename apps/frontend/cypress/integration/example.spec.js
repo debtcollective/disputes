@@ -2,7 +2,7 @@
 
 context("Example", () => {
   beforeEach(() => {
-    const port = process.CYPRESS_PORT || "8080";
+    const port = process.env.CYPRESS_PORT || "8080";
 
     cy.visit(`http://localhost:${port}`);
   });
