@@ -1,29 +1,12 @@
 {
-  "forms": {
-    "personal-information-form": {
-      "city": "Beverly Hills",
-      "name": "Robert Haake",
-      "debts": [{ "type": "Verizon Wireless", "amount": "1160.24" }],
-      "state": "Florida",
-      "address": "68 S Lincoln Ave",
-      "zip-code": "34465",
-      "agency-city": "Cherry Hill",
-      "agency-name": "MRS Associates",
-      "agency-state": "New Jersey",
-      "agency-address": "1930 Onley Ave",
-      "agency-zip-code": "08003",
-      "collection-notice-date": "01-15-2019"
-    }
-  },
-  "option": "none",
-  "signature": "TDC",
-  "attachments": [
-    {
-      "id": "2ab73d80-60d5-447f-8875-5cad4199928c",
-      "name": "collection-notice-uploader",
-      "path": "https://dispute-tools-uploads-production.s3.amazonaws.com/production/DisputeAttachment/2ab73d80-60d5-447f-8875-5cad4199928c/file/original.png?AWSAccessKeyId=AKIAJTQFU6FNDXRNP73A&Expires=1557649469&Signature=w4BvnWY50Is5sOuyg2w%2BwiuNu8E%3D",
-      "fullPath": "https://dispute-tools-uploads-production.s3.amazonaws.com/https://dispute-tools-uploads-production.s3.amazonaws.com/production/DisputeAttachment/2ab73d80-60d5-447f-8875-5cad4199928c/file/original.png?AWSAccessKeyId=AKIAJTQFU6FNDXRNP73A&Expires=1557649469&Signature=w4BvnWY50Is5sOuyg2w%2BwiuNu8E%3D"
-    }
+  "name": "disputes",
+  "version": 2,
+  "builds": [
+    { "src": "apps/backend/src/index.js", "use": "@now/node-server" },
+    { "src": "apps/frontend/package.json", "use": "@now/next" }
   ],
-  "disputeConfirmFollowUp": true
+  "routes": [
+    { "src": "/graphql(.*)", "dest": "apps/backend/src/index.js" },
+    { "src": "/(.*)", "dest": "apps/frontend/$1" }
+  ]
 }
