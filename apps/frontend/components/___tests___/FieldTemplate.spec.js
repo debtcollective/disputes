@@ -190,4 +190,27 @@ describe("<FieldTemplate />", () => {
       expect(wrapper.getByTestId("plain-template")).toBeTruthy();
     });
   });
+
+  describe("when uiSchema has a ui:widget definition", () => {
+    const props = {
+      ...baseProps,
+      schema: { type: "string" },
+      uiSchema: { "ui:widget": "foo" },
+    };
+
+    it("renders a <PlainTemplate />", () => {
+      const wrapper = render(
+        <FieldTemplate {...props}>
+          <input
+            className="form-control"
+            id={baseProps.id}
+            label={baseProps.label}
+            placeholder="Introduce Foo"
+          />
+        </FieldTemplate>
+      );
+
+      expect(wrapper.getByTestId("plain-template")).toBeTruthy();
+    });
+  });
 });

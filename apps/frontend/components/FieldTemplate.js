@@ -7,7 +7,11 @@ import SelectField from "./SelectField";
 import TextField from "./TextField";
 
 const FieldTemplate = props => {
-  const { schema } = props;
+  const { schema, uiSchema } = props;
+
+  if (has(uiSchema, "ui:widget")) {
+    return <PlainTemplate {...props} />;
+  }
 
   if (has(schema, "enum")) {
     return <SelectField {...props} />;
