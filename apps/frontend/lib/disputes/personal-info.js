@@ -1,15 +1,15 @@
 export default {
-  address: {
+  address1: {
     title: "Your Mailing Address",
-    type: "string",
-  },
-  birthday: {
-    format: "date",
-    title: "Date of Birth",
     type: "string",
   },
   city: {
     title: "Your City",
+    type: "string",
+  },
+  dob: {
+    format: "date",
+    title: "Date of Birth",
     type: "string",
   },
   email: {
@@ -20,23 +20,23 @@ export default {
     title: "Your Full Name",
     type: "string",
   },
+  phone: {
+    $format: "telephone",
+    title: "Your telephone",
+    type: "number",
+  },
+  phone2: {
+    $format: "telephone",
+    title: "Your telephone (alt.)",
+    type: "number",
+  },
   ssn: {
-    title: "SSN",
+    title: "Social Security Number",
     type: "string",
   },
   state: {
     $ref: "#/definitions/usa-states",
     title: "Your State",
-  },
-  telephone: {
-    $format: "telephone",
-    title: "Your telephone",
-    type: "number",
-  },
-  telephoneAlt: {
-    $format: "telephone",
-    title: "Your telephone (alt.)",
-    type: "number",
   },
   "zip-code": {
     pattern: "[0-9]{5}",

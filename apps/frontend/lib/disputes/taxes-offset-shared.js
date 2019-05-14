@@ -20,39 +20,39 @@ const schemas = {
     properties: {
       FFELLoan: {
         dependencies: {
-          ffelHolder: {
+          "ffel-loan-radio-option": {
             oneOf: [
               {
                 properties: {
-                  ffelHolder: {
+                  "ffel-loan-radio-option": {
                     enum: [false],
                   },
                 },
               },
               {
                 properties: {
-                  ffelHolder: {
+                  "ffel-loan-radio-option": {
                     enum: [true],
                   },
                   guarantyAgency: {
                     properties: {
-                      address: {
-                        title: "Address",
-                        type: "string",
-                      },
-                      city: {
-                        title: "City",
-                        type: "string",
-                      },
-                      name: {
+                      guarantyAgency: {
                         title: "Name",
                         type: "string",
                       },
-                      state: {
+                      guarantyAgencyCity: {
+                        title: "City",
+                        type: "string",
+                      },
+                      guarantyAgencyMailingAddress: {
+                        title: "Address",
+                        type: "string",
+                      },
+                      guarantyAgencyState: {
                         $ref: "#/definitions/usa-states",
                         title: "State",
                       },
-                      "zip-code": {
+                      guarantyAgencyZipCode: {
                         pattern: "[0-9]{5}",
                         title: "Zip Code",
                         type: "string",
@@ -63,13 +63,13 @@ const schemas = {
                     type: "object",
                   },
                 },
-                required: ["ffelHolder", "guarantyAgency"],
+                required: ["ffel-loan-radio-option", "guarantyAgency"],
               },
             ],
           },
         },
         properties: {
-          ffelHolder: {
+          "ffel-loan-radio-option": {
             description:
               "If you have a FFEL loan, add the name and address of your guaranty agency in the box below. The name and address may appear on the tax offset notice you received in the mail. If you don't know the name and address of your guarantor, you can contact the Department of Education or call 1-800-304-3107 and ask for this information.",
             title: "Are you a FFEL holder?",
@@ -85,15 +85,15 @@ const schemas = {
           ...personalInfo,
         },
         required: [
-          "address",
-          "birthday",
+          "address1",
+          "dob",
           "city",
           "email",
           "name",
           "ssn",
           "state",
-          "telephone",
-          "telephoneAlt",
+          "phone",
+          "phone2",
           "zip-code",
         ],
         title: "Personal Information",
@@ -103,18 +103,14 @@ const schemas = {
         description:
           "Information related to the school where you incurred the debt",
         properties: {
-          address: {
-            title: "Address",
-            type: "string",
-          },
           attend: {
             properties: {
-              from: {
+              "school-attended-from": {
                 format: "date",
                 title: "from",
                 type: "string",
               },
-              to: {
+              "school-attended-to": {
                 format: "date",
                 title: "to",
                 type: "string",
@@ -124,25 +120,36 @@ const schemas = {
             title: "When did you attend the school?",
             type: "object",
           },
-          city: {
+          "school-address": {
+            title: "Address",
+            type: "string",
+          },
+          "school-city": {
             title: "City",
             type: "string",
           },
-          name: {
-            title: "Name",
-            type: "string",
-          },
-          state: {
+          "school-state": {
             $ref: "#/definitions/usa-states",
             title: "State",
           },
-          "zip-code": {
+          "school-zip-code": {
             pattern: "[0-9]{5}",
             title: "Your Zip Code",
             type: "string",
           },
+          schoolName: {
+            title: "Name",
+            type: "string",
+          },
         },
-        required: ["address", "attend", "city", "name", "state", "zip-code"],
+        required: [
+          "school-address",
+          "attend",
+          "school-city",
+          "schoolName",
+          "school-state",
+          "school-zip-code",
+        ],
         title: "Your School",
         type: "object",
       },
@@ -156,11 +163,11 @@ const schemas = {
       "ui:order": [
         "name",
         "ssn",
-        "address",
+        "address1",
         "city",
         "state",
         "zip-code",
-        "birthday",
+        "dob",
         "email",
         "*",
       ],
