@@ -11,14 +11,18 @@ const schemas = {
       atb: {
         properties: {
           "atb-applying-as": {
+            enum: [true, false],
+            enumNames: ["Yes", "No"],
             title: "Are you applying for this loan discharge as a parent",
             type: "boolean",
           },
+          // if no "Sorry, you are not eligible for this discharge."
           "atb-attended-at": {
             title:
               "Did you (or the student) attend college prior to July 1, 2012?",
             type: "boolean",
           },
+          // if no "Sorry, you are not eligible for this discharge."
           "atb-attended-where": {
             title:
               "Were you (or the student), prior to July 1, 2012, officially registered in college and scheduled to attend?",
@@ -90,6 +94,11 @@ const schemas = {
   },
   ui: {
     ...sharedSchema.ui,
+    atb: {
+      "atb-applying-as": {
+        "ui:widget": "radio",
+      },
+    },
   },
 };
 
