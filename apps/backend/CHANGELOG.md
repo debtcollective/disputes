@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/debtcollective/disputes/compare/v0.1.0...v0.2.0) (2019-05-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency apollo-server-express to v2.5.0 ([7fa9519](https://github.com/debtcollective/disputes/commit/7fa9519))
+* **deps:** update dependency graphql to v14.3.0 ([c3639c0](https://github.com/debtcollective/disputes/commit/c3639c0))
+* **deps:** update dependency pg to v7.11.0 ([e75ff16](https://github.com/debtcollective/disputes/commit/e75ff16))
+
+
+### Features
+
+* add Header component ([a10b048](https://github.com/debtcollective/disputes/commit/a10b048))
+
+
+
+
+
 # [0.1.0](https://github.com/debtcollective/disputes/compare/v0.0.3...v0.1.0) (2019-05-07)
 
 

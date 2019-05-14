@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/debtcollective/disputes/compare/v0.1.0...v0.2.0) (2019-05-14)
+
+
+### Bug Fixes
+
+* **DateField:** change format to match with JSON schema date format ([7233b21](https://github.com/debtcollective/disputes/commit/7233b21))
+* **deps:** pin dependencies ([24227a5](https://github.com/debtcollective/disputes/commit/24227a5))
+* **deps:** update dependency apollo-server-express to v2.5.0 ([7fa9519](https://github.com/debtcollective/disputes/commit/7fa9519))
+* **deps:** update dependency graphql to v14.3.0 ([c3639c0](https://github.com/debtcollective/disputes/commit/c3639c0))
+* **deps:** update dependency pg to v7.11.0 ([e75ff16](https://github.com/debtcollective/disputes/commit/e75ff16))
+* **deps:** update dependency react-number-format to v4.0.8 ([8d5768c](https://github.com/debtcollective/disputes/commit/8d5768c))
+* **general:** definition of debts selection ([fcc2cf7](https://github.com/debtcollective/disputes/commit/fcc2cf7))
+* **general-dispute:** remove error list from form ([0ff4312](https://github.com/debtcollective/disputes/commit/0ff4312))
+* **general-dispute:** update schema to mark properties as require properly ([e7db953](https://github.com/debtcollective/disputes/commit/e7db953)), closes [#7](https://github.com/debtcollective/disputes/issues/7)
+* **SelectField:** map select inputs to selects from material ui instead menu ([3332182](https://github.com/debtcollective/disputes/commit/3332182))
+
+
+### Features
+
+* **disputes:** Add base to render plain form for general debt ([46a4716](https://github.com/debtcollective/disputes/commit/46a4716))
+* **Fields:** Add support for helper text and errors ([fedea49](https://github.com/debtcollective/disputes/commit/fedea49)), closes [#7](https://github.com/debtcollective/disputes/issues/7)
+* **FieldTemplate:** add support for date inputs ([25aad16](https://github.com/debtcollective/disputes/commit/25aad16))
+* **FieldTemplate:** allow to map schema type number to input type number ([afa9208](https://github.com/debtcollective/disputes/commit/afa9208))
+* **FieldTemplate:** finish base to render custom input on schema string properties ([155deaa](https://github.com/debtcollective/disputes/commit/155deaa)), closes [#7](https://github.com/debtcollective/disputes/issues/7)
+* **NumberField:** add new component to handle currency values ([0d07da7](https://github.com/debtcollective/disputes/commit/0d07da7))
+* **PlainTemplate:** add new template to serve as a sort of fallback on FieldTemplate ([0a42f5f](https://github.com/debtcollective/disputes/commit/0a42f5f))
+* **SelectField:** add base to map select inputs to material menus ([e980679](https://github.com/debtcollective/disputes/commit/e980679))
+* **TextField:** add base to being able to inject improved date picker UI ([99b77bc](https://github.com/debtcollective/disputes/commit/99b77bc))
+* add Header component ([a10b048](https://github.com/debtcollective/disputes/commit/a10b048))
+
+
+
+
+
 # [0.1.0](https://github.com/debtcollective/disputes/compare/v0.0.3...v0.1.0) (2019-05-07)
 
 
