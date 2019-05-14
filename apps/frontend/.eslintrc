@@ -3,7 +3,8 @@
     "browser": true,
     "es6": true,
     "jest": true,
-    "node": true
+    "node": true,
+    "cypress/globals": true
   },
   "extends": [
     "eslint:recommended",
@@ -11,9 +12,10 @@
     "plugin:flowtype/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "plugin:jest/recommended"
+    "plugin:jest/recommended",
+    "plugin:cypress/recommended"
   ],
-  "plugins": ["flowtype", "react", "promise", "jest"],
+  "plugins": ["flowtype", "react", "promise", "jest", "cypress"],
   "rules": {
     "comma-dangle": [2, "always-multiline"],
     "jsx-quotes": ["error", "prefer-double"],
