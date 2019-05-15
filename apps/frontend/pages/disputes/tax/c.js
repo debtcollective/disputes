@@ -10,11 +10,46 @@ const schemas = {
       ...sharedSchema.json.properties,
       atb: {
         properties: {
-          "atb-applying-as": {
-            enum: [true, false],
-            enumNames: ["Yes", "No"],
-            title: "Are you applying for this loan discharge as a parent",
-            type: "boolean",
+          "atb-applying-as-group": {
+            dependencies: {
+              "atb-applying-as": {
+                oneOf: [
+                  {
+                    properties: {
+                      "atb-applying-as": {
+                        enum: [false],
+                      },
+                    },
+                  },
+                  {
+                    properties: {
+                      "atb-applying-as": {
+                        enum: [true],
+                      },
+                      "atb-student-name": {
+                        title: "Student name (Last, First, MI)",
+                        type: "string",
+                      },
+                      "atb-student-ssn": {
+                        title: "Student SSN",
+                        type: "string",
+                      },
+                    },
+                    required: ["atb-student-name", "atb-student-ssn"],
+                  },
+                ],
+              },
+            },
+            properties: {
+              "atb-applying-as": {
+                enum: [true, false],
+                enumNames: ["Yes", "No"],
+                title: " ",
+                type: "boolean",
+              },
+            },
+            title: "Are you applying for this loan discharge as a parent?",
+            type: "object",
           },
           // if no "Sorry, you are not eligible for this discharge."
           "atb-attended-at": {
@@ -95,8 +130,10 @@ const schemas = {
   ui: {
     ...sharedSchema.ui,
     atb: {
-      "atb-applying-as": {
-        "ui:widget": "radio",
+      "atb-applying-as-group": {
+        "atb-applying-as": {
+          "ui:widget": "radio",
+        },
       },
     },
   },
