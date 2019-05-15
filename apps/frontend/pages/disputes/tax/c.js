@@ -63,6 +63,7 @@ const schemas = {
               "Were you (or the student), prior to July 1, 2012, officially registered in college and scheduled to attend?",
             type: "boolean",
           },
+          // if no "Sorry, you are not eligible for this discharge."
           "atb-complete-credit": {
             title:
               "Did you (or the student) successfully complete 6 credit hours or 225 clock hours of coursework that applied toward a program offered by the school before you received a Direct or a FFEL loan?",
@@ -73,10 +74,56 @@ const schemas = {
             title: "When did you first enroll in college?",
             type: "string",
           },
-          "atb-entrance-exam": {
+          "atb-entrance-exam-group": {
+            dependencies: {
+              "atb-entrance-exam": {
+                oneOf: [
+                  {
+                    properties: {
+                      "atb-entrance-exam": {
+                        enum: [false],
+                      },
+                    },
+                  },
+                  {
+                    properties: {
+                      "atb-entrance-exam": {
+                        enum: [true],
+                      },
+                      "atb-entrance-exam-date": {
+                        format: "date",
+                        title: "Give the date you took the test if you know it",
+                        type: "string",
+                      },
+                      "atb-entrance-exam-name": {
+                        title: "Give the name of the test if you know it",
+                        type: "string",
+                      },
+                      "atb-entrance-exam-score": {
+                        title: "Give the score of the test if you know it",
+                        type: "string",
+                      },
+                    },
+                    required: [
+                      "atb-entrance-exam-date",
+                      "atb-entrance-exam-name",
+                      "atb-entrance-exam-score",
+                    ],
+                  },
+                ],
+              },
+            },
+            properties: {
+              "atb-entrance-exam": {
+                enum: [true, false],
+                enumNames: ["Yes", "No"],
+                title: " ",
+                type: "boolean",
+              },
+            },
             title:
               "Before you (or the student) enrolled in the college, were you given an entrance exam?",
-            type: "boolean",
+            type: "object",
           },
           "atb-entrance-exam-improper": {
             title:
@@ -132,6 +179,11 @@ const schemas = {
     atb: {
       "atb-applying-as-group": {
         "atb-applying-as": {
+          "ui:widget": "radio",
+        },
+      },
+      "atb-entrance-exam-group": {
+        "atb-entrance-exam": {
           "ui:widget": "radio",
         },
       },
