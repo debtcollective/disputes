@@ -3,7 +3,7 @@
   "packages": [
     "apps/*"
   ],
-  "version": "0.2.0",
+  "version": "0.3.0",
   "useWorkspaces": true,
   "ignoreChanges": [
     "**/__fixtures__/**",
