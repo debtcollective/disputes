@@ -5,7 +5,9 @@ cache: yarn
 after_success: npx codecov
 jobs:
   include:
-    - script: yarn test:coverage
+    - stage: test
+      script: yarn test:ci
+
     - stage: release
       if: branch = master
       node_js: lts/*

@@ -18,3 +18,17 @@ yarn dev
 ```bash
 yarn test
 ```
+
+## Run Cypress
+
+We are using [Cypress](https://www.cypress.io/) for our integration testing. You can run it with:
+
+```bash
+yarn test:cypress
+```
+
+That will run the tests in the terminal. If you prefer to run Cypress with GUI use:
+
+```bash
+yarn cypress open
+```
