@@ -10,46 +10,43 @@ import keys from "lodash/keys";
  */
 
 export default ({ keyName, title, yesProps, noProps }) => {
-  const groupName = `${keyName}-group`;
   const yesKeysPros = keys(yesProps);
   const noKeysPros = keys(noProps);
 
   return {
-    [groupName]: {
-      dependencies: {
-        [keyName]: {
-          oneOf: [
-            {
-              properties: {
-                ...noProps,
-                [keyName]: {
-                  enum: [false],
-                },
+    dependencies: {
+      [keyName]: {
+        oneOf: [
+          {
+            properties: {
+              ...noProps,
+              [keyName]: {
+                enum: [false],
               },
-              required: noKeysPros,
             },
-            {
-              properties: {
-                ...yesProps,
-                [keyName]: {
-                  enum: [true],
-                },
+            required: noKeysPros,
+          },
+          {
+            properties: {
+              ...yesProps,
+              [keyName]: {
+                enum: [true],
               },
-              required: yesKeysPros,
             },
-          ],
-        },
+            required: yesKeysPros,
+          },
+        ],
       },
-      properties: {
-        [keyName]: {
-          enum: [true, false],
-          enumNames: ["Yes", "No"],
-          title: " ",
-          type: "boolean",
-        },
-      },
-      title,
-      type: "object",
     },
+    properties: {
+      [keyName]: {
+        enum: [true, false],
+        enumNames: ["Yes", "No"],
+        title: " ",
+        type: "boolean",
+      },
+    },
+    title,
+    type: "object",
   };
 };
