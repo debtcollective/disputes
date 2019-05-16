@@ -2,6 +2,7 @@ import FieldTemplate from "../../../components/FieldTemplate";
 import Form from "react-jsonschema-form";
 import React from "react";
 import sharedSchema from "../../../lib/disputes/taxes-offset-shared";
+import yesnoSchema from "../../../lib/disputes/yesno-schema";
 
 const schemas = {
   json: {
@@ -10,47 +11,20 @@ const schemas = {
       ...sharedSchema.json.properties,
       atb: {
         properties: {
-          "atb-applying-as-group": {
-            dependencies: {
-              "atb-applying-as": {
-                oneOf: [
-                  {
-                    properties: {
-                      "atb-applying-as": {
-                        enum: [false],
-                      },
-                    },
-                  },
-                  {
-                    properties: {
-                      "atb-applying-as": {
-                        enum: [true],
-                      },
-                      "atb-student-name": {
-                        title: "Student name (Last, First, MI)",
-                        type: "string",
-                      },
-                      "atb-student-ssn": {
-                        title: "Student SSN",
-                        type: "string",
-                      },
-                    },
-                    required: ["atb-student-name", "atb-student-ssn"],
-                  },
-                ],
-              },
-            },
-            properties: {
-              "atb-applying-as": {
-                enum: [true, false],
-                enumNames: ["Yes", "No"],
-                title: " ",
-                type: "boolean",
-              },
-            },
+          "atb-applying-as-group": yesnoSchema({
+            keyName: "atb-applying-as",
             title: "Are you applying for this loan discharge as a parent?",
-            type: "object",
-          },
+            yesProps: {
+              "atb-student-name": {
+                title: "Student name (Last, First, MI)",
+                type: "string",
+              },
+              "atb-student-ssn": {
+                title: "Student SSN",
+                type: "string",
+              },
+            },
+          }),
           // if no "Sorry, you are not eligible for this discharge."
           "atb-attended-at": {
             title:
@@ -74,57 +48,26 @@ const schemas = {
             title: "When did you first enroll in college?",
             type: "string",
           },
-          "atb-entrance-exam-group": {
-            dependencies: {
-              "atb-entrance-exam": {
-                oneOf: [
-                  {
-                    properties: {
-                      "atb-entrance-exam": {
-                        enum: [false],
-                      },
-                    },
-                  },
-                  {
-                    properties: {
-                      "atb-entrance-exam": {
-                        enum: [true],
-                      },
-                      "atb-entrance-exam-date": {
-                        format: "date",
-                        title: "Give the date you took the test if you know it",
-                        type: "string",
-                      },
-                      "atb-entrance-exam-name": {
-                        title: "Give the name of the test if you know it",
-                        type: "string",
-                      },
-                      "atb-entrance-exam-score": {
-                        title: "Give the score of the test if you know it",
-                        type: "string",
-                      },
-                    },
-                    required: [
-                      "atb-entrance-exam-date",
-                      "atb-entrance-exam-name",
-                      "atb-entrance-exam-score",
-                    ],
-                  },
-                ],
-              },
-            },
-            properties: {
-              "atb-entrance-exam": {
-                enum: [true, false],
-                enumNames: ["Yes", "No"],
-                title: " ",
-                type: "boolean",
-              },
-            },
+          "atb-entrance-exam-group": yesnoSchema({
+            keyName: "atb-entrance-exam",
             title:
               "Before you (or the student) enrolled in the college, were you given an entrance exam?",
-            type: "object",
-          },
+            yesProps: {
+              "atb-entrance-exam-date": {
+                format: "date",
+                title: "Give the date you took the test if you know it",
+                type: "string",
+              },
+              "atb-entrance-exam-name": {
+                title: "Give the name of the test if you know it",
+                type: "string",
+              },
+              "atb-entrance-exam-score": {
+                title: "Give the score of the test if you know it",
+                type: "string",
+              },
+            },
+          }),
           "atb-entrance-exam-improper": {
             title:
               "Did anything appear improper about the way the test was given?",
