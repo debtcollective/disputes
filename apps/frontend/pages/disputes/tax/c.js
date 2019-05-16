@@ -1,3 +1,5 @@
+/*eslint sort-keys: 0*/
+
 import FieldTemplate from "../../../components/FieldTemplate";
 import Form from "react-jsonschema-form";
 import React from "react";
@@ -68,23 +70,53 @@ const schemas = {
               },
             },
           }),
-          "atb-entrance-exam-improper": {
+          "atb-entrance-exam-improper-group": yesnoSchema({
+            keyName: "atb-entrance-exam-improper",
             title:
               "Did anything appear improper about the way the test was given?",
-            type: "boolean",
-          },
-          "atb-entrance-exam-radio-option": {
-            properties: {
-              "provide-contact-person": {
-                title:
-                  "Please provide a name, address, and phone number for that person.",
-                type: "boolean",
+            yesProps: {
+              "atb-entrance-exam-improper-explain": {
+                title: "Explain in detail what appeared improper",
+                type: "string",
               },
             },
+          }),
+          "atb-entrance-exam-radio-option-group": yesnoSchema({
+            keyName: "atb-entrance-exam-radio-option",
             title:
               "Can anyone support the statement that the test was not given properly?",
-            type: "object",
-          },
+            yesProps: {
+              "atb-entrance-exam-supporter-name": {
+                description:
+                  "Please provide a name, address, and phone number for that person.",
+                title: "Full Name",
+                type: "string",
+              },
+              "atb-entrance-exam-supporter-address": {
+                title: "Mailing Address",
+                type: "string",
+              },
+              "atb-entrance-exam-supporter-city": {
+                title: "City",
+                type: "string",
+              },
+              "atb-entrance-exam-supporter-state": {
+                $ref: "#/definitions/usa-states",
+                title: "State",
+                type: "string",
+              },
+              "atb-entrance-exam-supporter-zip-code": {
+                pattern: "[0-9]{5}",
+                title: "Zip Code",
+                type: "string",
+              },
+              "atb-entrance-exam-supporter-phone": {
+                $format: "telephone",
+                title: "Phone",
+                type: "number",
+              },
+            },
+          }),
           "atb-have-ged": {
             title:
               "Did you (or the student) have a high school diploma or a GED while enrolled?",
@@ -127,6 +159,16 @@ const schemas = {
       },
       "atb-entrance-exam-group": {
         "atb-entrance-exam": {
+          "ui:widget": "radio",
+        },
+      },
+      "atb-entrance-exam-improper-group": {
+        "atb-entrance-exam-improper": {
+          "ui:widget": "radio",
+        },
+      },
+      "atb-entrance-exam-radio-option-group": {
+        "atb-entrance-exam-radio-option": {
           "ui:widget": "radio",
         },
       },
