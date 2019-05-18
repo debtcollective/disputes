@@ -51,14 +51,20 @@ const schemas = {
           "Which state law do you believe was violated by your school? Please include as much information as you can about the law, including the legal code number if you have it.",
         type: "string",
       },
-      // TODO: when choose yes show "atbd-inform"
-      "atbd-reason-not-to-benefit": {
-        default: false,
-        enum: [true, false],
-        enumNames: ["Yes", "No"],
+      "atbd-reason-not-to-benefit-group": yesnoSchema({
+        keyName: "atbd-reason-not-to-benefit",
         title:
           "Before issuing your loan, did the school ask you if there was an reason you could not benefit from your degree?",
-      },
+        yesProps: {
+          "atbd-inform": {
+            default: false,
+            enum: [true, false],
+            enumNames: ["Yes", "No"],
+            title:
+              "Did you inform the school of the disqualifying status before the loan was certified or originated?",
+          },
+        },
+      }),
     },
     title: "Ability To Benefit - Disqualifying Status",
     type: "object",
