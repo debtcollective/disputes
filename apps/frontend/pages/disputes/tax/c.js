@@ -122,6 +122,9 @@ const schemas = {
             title:
               "Did you (or the student) have a high school diploma or a GED while enrolled?",
             type: "boolean",
+            enum: [true, false],
+            enumNames: ["Yes", "No"],
+            default: false,
           },
           "atb-program-of-study": {
             title: "What was your (or the student's) program of study?",
@@ -199,6 +202,9 @@ const schemas = {
         "atb-remedial-program-completed": {
           "ui:widget": "radio",
         },
+      },
+      "atb-have-ged": {
+        "ui:widget": "radio",
       },
     },
   },
