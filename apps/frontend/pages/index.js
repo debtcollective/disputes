@@ -48,6 +48,13 @@ const Page = () => {
               </a>
             </Link>
           </li>
+          <li>
+            <Link href="/disputes/tax/d">
+              <a>
+                Tax Offset Disputes - <strong>Type D</strong>
+              </a>
+            </Link>
+          </li>
         </ul>
       </div>
     </React.Fragment>
