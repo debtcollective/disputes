@@ -138,6 +138,19 @@ const schemas = {
   },
   ui: {
     ...sharedSchema.ui,
+    "atbd-applying-as-group": {
+      "atbd-applying-as": {
+        "ui:widget": "radio",
+      },
+    },
+    "atbd-reason-not-to-benefit-group": {
+      "atbd-reason-not-to-benefit": {
+        "ui:widget": "radio",
+      },
+      "atbd-inform": {
+        "ui:widget": "radio",
+      },
+    },
     "atbd-option-group": {
       "atbd-option": {
         "ui:widget": "checkboxes",
