@@ -117,6 +117,7 @@ const schemas = {
               },
             },
           }),
+          // if yes "Sorry, you are not eligible for this discharge."
           "atb-have-ged": {
             title:
               "Did you (or the student) have a high school diploma or a GED while enrolled?",
@@ -124,7 +125,7 @@ const schemas = {
           },
           "atb-program-of-study": {
             title: "What was your (or the student's) program of study?",
-            type: "boolean",
+            type: "string",
           },
           "atb-remedial-program-completed-group": yesnoSchema({
             keyName: "atb-remedial-program-completed",
