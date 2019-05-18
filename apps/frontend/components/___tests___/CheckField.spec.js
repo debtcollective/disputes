@@ -15,7 +15,7 @@ describe("<CheckField />", () => {
     schema: { format: "telephone", type: "boolean" },
   };
 
-  it("click checkbox triggers input onChange callback", () => {
+  it("triggers input onChange callback on click", () => {
     const onChange = jest.fn();
     const wrapper = render(
       <CheckField {...props}>
