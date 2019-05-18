@@ -126,18 +126,40 @@ const schemas = {
             title: "What was your (or the student's) program of study?",
             type: "boolean",
           },
-          "atb-remedial-program-completed": {
+          "atb-remedial-program-completed-group": yesnoSchema({
+            keyName: "atb-remedial-program-completed",
             title:
               "Did you (or the student) complete a remedial program at the school?",
-            type: "boolean",
-          },
+            yesProps: {
+              "atb-remedial-program-from": {
+                description:
+                  "Provide the dates you were enrolled in the program",
+                format: "date",
+                title: "From",
+                type: "string",
+              },
+              "atb-remedial-program-to": {
+                format: "date",
+                title: "To",
+                type: "string",
+              },
+              "atb-remedial-program-courses": {
+                title: "Which courses did you take in the program?",
+                type: "string",
+              },
+              "atb-remedial-program-grades": {
+                title: "Which grades did you earn in the program?",
+                type: "string",
+              },
+            },
+          }),
           "atb-school-date": {
             format: "date",
             title:
               "On what date did you (or the student) begin attending the school?",
             type: "string",
           },
-          "attend-ged-before-end": {
+          "atb-received-ged": {
             title:
               "Did you (or the student) receive a GED before completing the program?",
             type: "boolean",
@@ -169,6 +191,11 @@ const schemas = {
       },
       "atb-entrance-exam-radio-option-group": {
         "atb-entrance-exam-radio-option": {
+          "ui:widget": "radio",
+        },
+      },
+      "atb-remedial-program-completed-group": {
+        "atb-remedial-program-completed": {
           "ui:widget": "radio",
         },
       },
