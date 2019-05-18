@@ -40,6 +40,7 @@ export default ({ keyName, title, yesProps, noProps }) => {
     },
     properties: {
       [keyName]: {
+        default: false,
         enum: [true, false],
         enumNames: ["Yes", "No"],
         title: " ",
