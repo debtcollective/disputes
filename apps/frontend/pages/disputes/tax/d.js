@@ -10,6 +10,7 @@ const schemas = {
   json: {
     ...sharedSchema.json,
     properties: {
+      ...sharedSchema.json.properties,
       "atbd-applying-as-group": yesnoSchema({
         keyName: "atbd-applying-as",
         title: "Are you applying for this loan discharge as a parent",
@@ -35,35 +36,45 @@ const schemas = {
               {
                 properties: {
                   "atbd-option": {
-                    enum: ["atbd-option1"],
+                    items: {
+                      enum: ["atbd-option1"],
+                    },
                   },
                 },
               },
               {
                 properties: {
                   "atbd-option": {
-                    enum: ["atbd-option2"],
+                    items: {
+                      enum: ["atbd-option2"],
+                    },
                   },
                 },
               },
               {
                 properties: {
                   "atbd-option": {
-                    enum: ["atbd-option3"],
+                    items: {
+                      enum: ["atbd-option3"],
+                    },
                   },
                 },
               },
               {
                 properties: {
                   "atbd-option": {
-                    enum: ["atbd-option4"],
+                    items: {
+                      enum: ["atbd-option4"],
+                    },
                   },
                 },
               },
               {
                 properties: {
                   "atbd-option": {
-                    enum: ["atbd-option5"],
+                    items: {
+                      enum: ["atbd-option5"],
+                    },
                   },
                   "atbd-option5-text": {
                     title: "Specify",
@@ -76,24 +87,27 @@ const schemas = {
         },
         properties: {
           "atbd-option": {
-            default: false,
-            enum: [
-              "atbd-option1",
-              "atbd-option2",
-              "atbd-option3",
-              "atbd-option4",
-              "atbd-option5",
-            ],
-            enumNames: [
-              "Age",
-              "Physical Condition",
-              "Mental Condition",
-              "Criminal Record",
-              "Other:",
-            ],
+            items: {
+              enum: [
+                "atbd-option1",
+                "atbd-option2",
+                "atbd-option3",
+                "atbd-option4",
+                "atbd-option5",
+              ],
+              enumNames: [
+                "Age",
+                "Physical Condition",
+                "Mental Condition",
+                "Criminal Record",
+                "Other",
+              ],
+              type: "string",
+            },
+            uniqueItems: true,
             title:
               "You believe your loan should not be paid because of a violation of state regulations related to your:",
-            type: "string",
+            type: "array",
           },
         },
         title: " ",
@@ -124,6 +138,11 @@ const schemas = {
   },
   ui: {
     ...sharedSchema.ui,
+    "atbd-option-group": {
+      "atbd-option": {
+        "ui:widget": "checkboxes",
+      },
+    },
   },
 };
 
