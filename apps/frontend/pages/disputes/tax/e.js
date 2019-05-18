@@ -77,6 +77,11 @@ const schemas = {
       "fc-documents": {
         "ui:widget": "checkboxes",
       },
+      "fc-applying-as-group": {
+        "fc-applying-as": {
+          "ui:widget": "radio",
+        },
+      },
     },
   },
 };
