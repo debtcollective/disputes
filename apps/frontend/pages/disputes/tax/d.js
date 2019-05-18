@@ -28,23 +28,76 @@ const schemas = {
         title: "What was your (or the student's) program of study?",
         type: "string",
       },
-      // TODO: when choose other we need to display "atbd-option5-text" to "Specify"
-      "atbd-option": {
-        enum: [
-          "atbd-option1",
-          "atbd-option2",
-          "atbd-option3",
-          "atbd-option4",
-          "atbd-option5",
-        ],
-        enumNames: [
-          "Age",
-          "Physical Condition",
-          "Mental Condition",
-          "Criminal Record",
-          "Other:",
-        ],
-        type: "string",
+      "atbd-option-group": {
+        dependencies: {
+          "atbd-option": {
+            oneOf: [
+              {
+                properties: {
+                  "atbd-option": {
+                    enum: ["atbd-option1"],
+                  },
+                },
+              },
+              {
+                properties: {
+                  "atbd-option": {
+                    enum: ["atbd-option2"],
+                  },
+                },
+              },
+              {
+                properties: {
+                  "atbd-option": {
+                    enum: ["atbd-option3"],
+                  },
+                },
+              },
+              {
+                properties: {
+                  "atbd-option": {
+                    enum: ["atbd-option4"],
+                  },
+                },
+              },
+              {
+                properties: {
+                  "atbd-option": {
+                    enum: ["atbd-option5"],
+                  },
+                  "atbd-option5-text": {
+                    title: "Specify",
+                    type: "string",
+                  },
+                },
+              },
+            ],
+          },
+        },
+        properties: {
+          "atbd-option": {
+            default: false,
+            enum: [
+              "atbd-option1",
+              "atbd-option2",
+              "atbd-option3",
+              "atbd-option4",
+              "atbd-option5",
+            ],
+            enumNames: [
+              "Age",
+              "Physical Condition",
+              "Mental Condition",
+              "Criminal Record",
+              "Other:",
+            ],
+            title:
+              "You believe your loan should not be paid because of a violation of state regulations related to your:",
+            type: "string",
+          },
+        },
+        title: " ",
+        type: "object",
       },
       "atbd-law": {
         title:
