@@ -73,6 +73,11 @@ const schemas = {
   },
   ui: {
     ...sharedSchema.ui,
+    fc: {
+      "fc-documents": {
+        "ui:widget": "checkboxes",
+      },
+    },
   },
 };
 
