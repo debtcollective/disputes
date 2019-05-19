@@ -2,6 +2,7 @@ import CheckField from "./CheckField";
 import has from "lodash/has";
 import includes from "lodash/includes";
 import PlainTemplate from "./PlainTemplate";
+import RadioField from "./RadioField";
 import React from "react";
 import SelectField from "./SelectField";
 import TextField from "./TextField";
@@ -10,7 +11,12 @@ const FieldTemplate = props => {
   const { schema, uiSchema } = props;
 
   if (has(uiSchema, "ui:widget")) {
-    return <PlainTemplate {...props} />;
+    switch (uiSchema["ui:widget"]) {
+      case "radio":
+        return <RadioField {...props} />;
+      default:
+        return <PlainTemplate {...props} />;
+    }
   }
 
   if (has(schema, "enum")) {

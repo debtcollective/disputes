@@ -192,13 +192,34 @@ describe("<FieldTemplate />", () => {
   });
 
   describe("when uiSchema has a ui:widget definition", () => {
-    const props = {
-      ...baseProps,
-      schema: { type: "string" },
-      uiSchema: { "ui:widget": "foo" },
-    };
+    it("renders a custom radio button when ui:widget is \"radio\"", () => {
+      const props = {
+        ...baseProps,
+        schema: { type: "string" },
+        uiSchema: { "ui:widget": "radio" },
+      };
+
+      const wrapper = render(
+        <FieldTemplate {...props}>
+          <input
+            className="form-control"
+            id={baseProps.id}
+            label={baseProps.label}
+            placeholder="Introduce Foo"
+          />
+        </FieldTemplate>
+      );
+
+      expect(wrapper.getByTestId("radio")).toBeTruthy();
+    });
 
     it("renders a <PlainTemplate />", () => {
+      const props = {
+        ...baseProps,
+        schema: { type: "string" },
+        uiSchema: { "ui:widget": "foo" },
+      };
+
       const wrapper = render(
         <FieldTemplate {...props}>
           <input
