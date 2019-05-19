@@ -195,7 +195,7 @@ describe("<FieldTemplate />", () => {
     it("renders a custom radio button when ui:widget is \"radio\"", () => {
       const props = {
         ...baseProps,
-        schema: { type: "string" },
+        schema: { enum: ["Foo", "Bar"], type: "string" },
         uiSchema: { "ui:widget": "radio" },
       };
 
