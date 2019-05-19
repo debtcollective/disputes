@@ -14,6 +14,8 @@ const FieldTemplate = props => {
     switch (uiSchema["ui:widget"]) {
       case "radio":
         return <RadioField {...props} />;
+      case "checkboxes":
+        return <CheckField {...props} />;
       default:
         return <PlainTemplate {...props} />;
     }
@@ -21,10 +23,6 @@ const FieldTemplate = props => {
 
   if (has(schema, "enum")) {
     return <SelectField {...props} />;
-  }
-
-  if (includes(["boolean"], schema.type)) {
-    return <CheckField {...props} />;
   }
 
   if (includes(["string", "number"], schema.type)) {

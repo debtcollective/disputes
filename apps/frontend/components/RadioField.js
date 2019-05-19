@@ -32,7 +32,11 @@ const RadioField = props => {
         if (!React.isValidElement(child)) return null;
 
         return (
-          <FormControl component="fieldset" data-testid="radio">
+          <FormControl
+            error={hasError}
+            component="fieldset"
+            data-testid="radio"
+          >
             <FormLabel component="legend">{label}</FormLabel>
             <RadioGroup
               aria-label={_.isEmpty(label) ? label : id}
