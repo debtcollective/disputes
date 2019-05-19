@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/debtcollective/disputes/compare/v0.3.0...v0.4.0) (2019-05-19)
+
+
+### Bug Fixes
+
+* **PlainTemplate:** avoid to duplicate information for Object properties ([32c69b7](https://github.com/debtcollective/disputes/commit/32c69b7))
+
+
+### Features
+
+* **CheckField:** add new component to map checkboxes ([cb08578](https://github.com/debtcollective/disputes/commit/cb08578)), closes [#9](https://github.com/debtcollective/disputes/issues/9)
+* **DateField:** allow DateField to show year on the visible value ([cf5bcc4](https://github.com/debtcollective/disputes/commit/cf5bcc4))
+* **DateField:** use label values to add placeholder within UI ([7f25f02](https://github.com/debtcollective/disputes/commit/7f25f02))
+* **disputes:** add personal info lib file to be shared across form templates ([f707662](https://github.com/debtcollective/disputes/commit/f707662))
+* **NumberField:** allow to use format prop to render currency or phone based input ([6e176f6](https://github.com/debtcollective/disputes/commit/6e176f6))
+* **pages:** add new page for taxe type 'A' disputes ([1ebeb86](https://github.com/debtcollective/disputes/commit/1ebeb86)), closes [#9](https://github.com/debtcollective/disputes/issues/9)
+* **tax:** add missing definition for school information ([43aa8df](https://github.com/debtcollective/disputes/commit/43aa8df))
+* **tax:** add required properties to type a form ([848b8c6](https://github.com/debtcollective/disputes/commit/848b8c6))
+* **tax:** add ui order for type a root properties ([e483ea8](https://github.com/debtcollective/disputes/commit/e483ea8))
+* **tax:** Allow to ask for more info for FFEL Holders ([446a044](https://github.com/debtcollective/disputes/commit/446a044))
+
+
+
+
+
 # [0.3.0](https://github.com/debtcollective/disputes/compare/v0.2.0...v0.3.0) (2019-05-15)
 
 
