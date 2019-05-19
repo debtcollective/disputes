@@ -35,9 +35,18 @@ const RadioField = props => {
           <FormControl component="fieldset" data-testid="radio">
             <FormLabel component="legend">{label}</FormLabel>
             <RadioGroup
-              aria-label={label}
+              aria-label={_.isEmpty(label) ? label : id}
+              name={child.props.name}
               value={value}
-              onChange={e => setValue(e.target.value)}
+              onChange={e => {
+                setValue(e.target.value);
+                // Allow to keep the same type asked by the Schema
+                let value =
+                  schema.type === "boolean"
+                    ? JSON.parse(e.target.value)
+                    : e.target.value;
+                child.props.onChange(value);
+              }}
             >
               {schema.enum.map((optionValue, index) => (
                 <FormControlLabel
