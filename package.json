@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "husky": "2.3.0",
-    "lerna": "3.13.4",
+    "lerna": "3.14.1",
     "prettier-eslint-cli": "4.7.1"
   },
   "husky": {
