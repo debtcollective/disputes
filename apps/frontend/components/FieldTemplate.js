@@ -1,4 +1,4 @@
-import get from "lodash/get";
+import CheckField from "./CheckField";
 import has from "lodash/has";
 import includes from "lodash/includes";
 import PlainTemplate from "./PlainTemplate";
@@ -13,7 +13,11 @@ const FieldTemplate = props => {
     return <SelectField {...props} />;
   }
 
-  if (includes(["string", "number"], get(schema, "type"))) {
+  if (includes(["boolean"], schema.type)) {
+    return <CheckField {...props} />;
+  }
+
+  if (includes(["string", "number"], schema.type)) {
     return <TextField {...props} />;
   }
 

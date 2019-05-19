@@ -77,11 +77,22 @@ exports[`With React Testing Library Snapshot Should match Snapshot 1`] = `
     >
       Working
     </h1>
-    <a
-      href="/disputes/general"
-    >
-      General Dispute
-    </a>
+    <ul>
+      <li>
+        <a
+          href="/disputes/general"
+        >
+          General Dispute
+        </a>
+      </li>
+      <li>
+        <a
+          href="/disputes/tax/a"
+        >
+          Tax Offset Disputes - a
+        </a>
+      </li>
+    </ul>
   </div>
 </DocumentFragment>
 `;

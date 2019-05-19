@@ -1,24 +1,16 @@
-import React, { useState } from "react";
-import get from "lodash/get";
-import includes from "lodash/includes";
 import { DatePicker } from "material-ui-pickers";
-import { FormHelperText } from "@material-ui/core";
+import { FormHelperText, Typography } from "@material-ui/core";
+import React, { useState } from "react";
 
-export default props => {
+const DateField = props => {
   const {
-    schema,
-    id,
-    classNames,
-    label,
-    rawHelp,
-    help,
-    required,
-    description,
-    errors,
     children,
+    classNames,
+    id,
+    label,
     rawDescription,
     rawErrors,
-    uiSchema
+    rawHelp,
   } = props;
 
   const [selectedDate, handleDateChange] = useState(null);
@@ -34,7 +26,9 @@ export default props => {
           <React.Fragment>
             <div id={`#MU_${id}`}>
               <DatePicker
+                format="L"
                 disableFuture
+                placeholder={label}
                 value={selectedDate}
                 onChange={momentDate => {
                   const value = momentDate.format("YYYY-MM-DD");
@@ -52,3 +46,5 @@ export default props => {
     </div>
   );
 };
+
+export default DateField;

@@ -1,28 +1,23 @@
 import React from "react";
 
-export default props => {
-  const {
-    schema,
-    id,
-    classNames,
-    label,
-    help,
-    required,
-    description,
-    errors,
-    children
-  } = props;
+const PlainTemplate = props => {
+  const { id, classNames, label, help, required, errors, children } = props;
+
+  const isObjectType = props.schema.type === "object";
 
   return (
     <div data-testid="plain-template" className={classNames}>
-      <label htmlFor={id}>
-        {label}
-        {required ? "*" : null}
-      </label>
-      {description}
+      {!isObjectType && (
+        <label htmlFor={id}>
+          {label}
+          {required ? "*" : null}
+        </label>
+      )}
       {children}
       {errors}
       {help}
     </div>
   );
 };
+
+export default PlainTemplate;

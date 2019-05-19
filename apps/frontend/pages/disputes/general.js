@@ -1,84 +1,137 @@
-import React from "react";
-import Form from "react-jsonschema-form";
 import debtTypes from "../../lib/disputes/dispute-types";
-import usaStates from "../../lib/disputes/usa-states";
 import FieldTemplate from "../../components/FieldTemplate";
+import Form from "react-jsonschema-form";
+import React from "react";
+import usaStates from "../../lib/disputes/usa-states";
 
 const schemas = {
   json: {
+    $schema: "http://json-schema.org/schema#",
     definitions: {
       "debt-types": {
-        type: "string",
         enum: debtTypes.values,
-        enumNames: debtTypes.labels
+        enumNames: debtTypes.labels,
+        type: "string",
       },
       "usa-states": {
-        type: "string",
+        enum: usaStates.values,
         enumNames: usaStates.labels,
-        enum: usaStates.values
-      }
+        type: "string",
+      },
     },
-    $schema: "http://json-schema.org/schema#",
-    title: "Dispute Any Debt in Collections",
     description:
       "This dispute is for all types of debt in collections except student loans.",
-    type: "object",
     properties: {
-      debts: {
-        title: "Amount of Debt Disputed",
-        description:
-          "Please provide the amount of debt collectors claim you owe. This will help us better understand the types of debt you and our members are fighting. ",
-        type: "object",
+      collectionNotice: {
         properties: {
-          debtType: {
+          "collection-notice-date": {
+            format: "date",
+            title: "Collection notice date",
             type: "string",
-            title: "Debt Type",
-            $ref: "#/definitions/debt-types"
           },
-          debtAmount: {
-            title: "Amount",
-            type: "number"
-          }
         },
-        required: ["debtType", "debtAmount"],
+        required: ["collection-notice-date"],
+        title: "Collection notice",
+        type: "object",
+      },
+      debts: {
         dependencies: {
           debtType: {
             oneOf: [
               {
                 properties: {
                   debtType: {
+                    enum: [debtTypes.values[0]],
                     title: debtTypes.labels[0],
-                    enum: [debtTypes.values[0]]
-                  }
-                }
-              },
-              {
-                properties: {
-                  debtType: {
-                    title: debtTypes.labels[1],
-                    enum: [debtTypes.values[1]]
-                  }
-                }
-              },
-              {
-                properties: {
-                  debtType: {
-                    title: debtTypes.labels[2],
-                    enum: [debtTypes.values[2]]
                   },
+                },
+              },
+              {
+                properties: {
+                  debtType: {
+                    enum: [debtTypes.values[1]],
+                    title: debtTypes.labels[1],
+                  },
+                },
+              },
+              {
+                properties: {
                   debtDescription: {
                     title: "Description",
-                    type: "string"
-                  }
-                }
-              }
-            ]
-          }
-        }
+                    type: "string",
+                  },
+                  debtType: {
+                    enum: [debtTypes.values[2]],
+                    title: debtTypes.labels[2],
+                  },
+                },
+              },
+            ],
+          },
+        },
+        description:
+          "Please provide the amount of debt collectors claim you owe. This will help us better understand the types of debt you and our members are fighting. ",
+        properties: {
+          debtAmount: {
+            $format: "currency",
+            title: "Amount",
+            type: "number",
+          },
+          debtType: {
+            $ref: "#/definitions/debt-types",
+            title: "Debt Type",
+            type: "string",
+          },
+        },
+        required: ["debtType", "debtAmount"],
+        title: "Amount of Debt Disputed",
+        type: "object",
       },
       personalInformation: {
-        title: "Personal Information",
-        type: "object",
+        properties: {
+          address: {
+            title: "Your Mailing Address",
+            type: "string",
+          },
+          "agency-address": {
+            title: "Collection agency’s or law firm’s mailing address",
+            type: "string",
+          },
+          "agency-city": {
+            title: "Collection agency’s or law firm’s City",
+            type: "string",
+          },
+          "agency-name": {
+            title: "Name of collection agency or law firm",
+            type: "string",
+          },
+          "agency-state": {
+            $ref: "#/definitions/usa-states",
+            title: "Collection agency’s or law firm’s State",
+          },
+          "agency-zip-code": {
+            pattern: "[0-9]{5}",
+            title: "Collection agency’s or law firm’s Zip Code",
+            type: "string",
+          },
+          city: {
+            title: "Your City",
+            type: "string",
+          },
+          name: {
+            title: "Your Full Name",
+            type: "string",
+          },
+          state: {
+            $ref: "#/definitions/usa-states",
+            title: "Your State",
+          },
+          "zip-code": {
+            pattern: "[0-9]{5}",
+            title: "Your Zip Code",
+            type: "string",
+          },
+        },
         required: [
           "address",
           "agency-address",
@@ -89,79 +142,52 @@ const schemas = {
           "city",
           "name",
           "state",
-          "zip-code"
+          "zip-code",
         ],
-        properties: {
-          address: {
-            type: "string",
-            title: "Your Mailing Address"
-          },
-          "agency-address": {
-            type: "string",
-            title: "Collection agency’s or law firm’s mailing address"
-          },
-          "agency-city": {
-            type: "string",
-            title: "Collection agency’s or law firm’s City"
-          },
-          "agency-name": {
-            type: "string",
-            title: "Name of collection agency or law firm"
-          },
-          "agency-state": {
-            $ref: "#/definitions/usa-states",
-            title: "Collection agency’s or law firm’s State"
-          },
-          "agency-zip-code": {
-            type: "string",
-            title: "Collection agency’s or law firm’s Zip Code",
-            pattern: "[0-9]{5}"
-          },
-          city: {
-            type: "string",
-            title: "Your City"
-          },
-          name: {
-            type: "string",
-            title: "Your Full Name"
-          },
-          state: {
-            title: "Your State",
-            $ref: "#/definitions/usa-states"
-          },
-          "zip-code": {
-            title: "Your Zip Code",
-            type: "string",
-            pattern: "[0-9]{5}"
-          }
-        }
-      },
-      collectionNotice: {
-        title: "Collection notice",
+        title: "Personal Information",
         type: "object",
-        required: ["collection-notice-date"],
-        properties: {
-          "collection-notice-date": {
-            type: "string",
-            title: "Collection notice date",
-            format: "date"
-          }
-        }
-      }
-    }
+      },
+    },
+    title: "Dispute Any Debt in Collections",
+    type: "object",
   },
   ui: {
-    "ui:order": ["*", "debts", "personalInformation", "collectionNotice"],
     debts: {
-      debtType: {
-        "ui:placeholder": "Select one",
-        "ui:help": 'If you don\'t see your type of debt, choose "Other"'
-      },
       debtAmount: {
-        classNames: "prefix-currency"
-      }
+        classNames: "prefix-currency",
+      },
+      debtType: {
+        "ui:help": "If you don't see your type of debt, choose 'Other'",
+        "ui:placeholder": "Select one",
+      },
     },
     personalInformation: {
+      address: {
+        "ui:placeholder": "Street, unit number, floor, door number",
+      },
+      "agency-address": {
+        "ui:placeholder": "Street, unit number, floor, door number",
+      },
+      "agency-city": {
+        classNames: "field-address",
+      },
+      "agency-state": {
+        classNames: "field-address",
+        "ui:placeholder": "Select one",
+      },
+      "agency-zip-code": {
+        classNames: "field-address",
+      },
+      city: {
+        classNames: "field-address",
+      },
+      name: {
+        "ui:placeholder": "Jane Doe",
+      },
+      state: {
+        classNames: "field-address",
+        "ui:placeholder": "Select one",
+      },
       "ui:order": [
         "name",
         "address",
@@ -172,44 +198,19 @@ const schemas = {
         "agency-address",
         "agency-city",
         "agency-state",
-        "agency-zip-code"
+        "agency-zip-code",
       ],
-      address: {
-        "ui:placeholder": "Street, unit number, floor, door number"
-      },
-      name: {
-        "ui:placeholder": "Jane Doe"
-      },
-      city: {
-        classNames: "field-address"
-      },
-      state: {
-        classNames: "field-address",
-        "ui:placeholder": "Select one"
-      },
       "zip-code": {
-        classNames: "field-address"
-      },
-      "agency-address": {
-        "ui:placeholder": "Street, unit number, floor, door number"
-      },
-      "agency-city": {
-        classNames: "field-address"
-      },
-      "agency-state": {
         classNames: "field-address",
-        "ui:placeholder": "Select one"
       },
-      "agency-zip-code": {
-        classNames: "field-address"
-      }
-    }
-  }
+    },
+    "ui:order": ["*", "debts", "personalInformation", "collectionNotice"],
+  },
 };
 
 const log = type => console.log.bind(console, type);
 
-export default () => (
+const DisputeGeneral = () => (
   <Form
     showErrorList={false}
     FieldTemplate={FieldTemplate}
@@ -220,3 +221,5 @@ export default () => (
     onError={log("errors")}
   />
 );
+
+export default DisputeGeneral;
