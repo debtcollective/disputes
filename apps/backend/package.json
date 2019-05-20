@@ -19,7 +19,7 @@
     "express": "4.17.0",
     "graphql": "14.3.0",
     "knex": "0.16.5",
-    "objection": "1.6.8",
+    "objection": "1.6.9",
     "pg": "7.11.0"
   },
   "devDependencies": {
