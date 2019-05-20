@@ -70,6 +70,7 @@ const TextField = props => {
         return (
           <React.Fragment>
             <MUTextField
+              fullWidth
               error={hasError}
               type={inputType}
               autoComplete="no"

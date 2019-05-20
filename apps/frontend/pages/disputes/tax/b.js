@@ -9,7 +9,7 @@ const schemas = {
 
 const log = type => console.log.bind(console, type);
 
-const DisputeTaxesA = () => (
+const DisputeTaxesB = () => (
   <Form
     showErrorList={false}
     FieldTemplate={FieldTemplate}
@@ -21,4 +21,4 @@ const DisputeTaxesA = () => (
   />
 );
 
-export default DisputeTaxesA;
+export default DisputeTaxesB;

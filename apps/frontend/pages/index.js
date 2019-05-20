@@ -29,7 +29,23 @@ const Page = () => {
           </li>
           <li>
             <Link href="/disputes/tax/a">
-              <a>Tax Offset Disputes - a</a>
+              <a>
+                Tax Offset Disputes - <strong>Type A</strong>
+              </a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/disputes/tax/b">
+              <a>
+                Tax Offset Disputes - <strong>Type B</strong>
+              </a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/disputes/tax/c">
+              <a>
+                Tax Offset Disputes - <strong>Type C</strong>
+              </a>
             </Link>
           </li>
         </ul>

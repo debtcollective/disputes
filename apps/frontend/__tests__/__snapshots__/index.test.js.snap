@@ -89,7 +89,30 @@ exports[`With React Testing Library Snapshot Should match Snapshot 1`] = `
         <a
           href="/disputes/tax/a"
         >
-          Tax Offset Disputes - a
+          Tax Offset Disputes - 
+          <strong>
+            Type A
+          </strong>
+        </a>
+      </li>
+      <li>
+        <a
+          href="/disputes/tax/b"
+        >
+          Tax Offset Disputes - 
+          <strong>
+            Type B
+          </strong>
+        </a>
+      </li>
+      <li>
+        <a
+          href="/disputes/tax/c"
+        >
+          Tax Offset Disputes - 
+          <strong>
+            Type C
+          </strong>
         </a>
       </li>
     </ul>

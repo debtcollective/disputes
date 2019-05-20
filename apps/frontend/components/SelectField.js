@@ -38,6 +38,7 @@ const SelectField = props => {
           return (
             <div id={customId}>
               <Select
+                fullWidth
                 error={hasError}
                 value={option}
                 onChange={e =>
