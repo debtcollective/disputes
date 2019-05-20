@@ -1,3 +1,4 @@
+import "jest-dom/extend-expect";
 import RadioField from "../RadioField";
 import React from "react";
 import { cleanup, fireEvent, render } from "react-testing-library";
@@ -7,7 +8,6 @@ describe("<RadioField />", () => {
     id: "root_foo",
     label: "Foo Label",
     schema: {
-      default: false,
       enum: [true, false],
       enumNames: ["Yes", "No"],
       title: " ",
@@ -54,5 +54,26 @@ describe("<RadioField />", () => {
 
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange).toHaveBeenCalledWith(false);
+  });
+
+  it("supports default value declaration", () => {
+    const props = {
+      ...baseProps,
+      schema: { ...baseProps.schema, default: false },
+    };
+    const onChange = jest.fn();
+    const wrapper = render(
+      <RadioField {...props}>
+        <input
+          onChange={onChange}
+          className="form-control"
+          id={baseProps.id}
+          label={baseProps.label}
+        />
+      </RadioField>
+    );
+
+    expect(wrapper.getByTestId(/option-false/i)).toHaveAttribute("checked");
+    expect(wrapper.getByTestId(/option-true/i)).not.toHaveAttribute("checked");
   });
 });

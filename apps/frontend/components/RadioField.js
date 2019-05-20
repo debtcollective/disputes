@@ -22,7 +22,9 @@ const RadioField = props => {
     rawHelp,
   } = props;
 
-  const [value, setValue] = useState();
+  // Values by default need to be handle has strings
+  const defaultValue = `${_.get(schema, "default")}`;
+  const [value, setValue] = useState(defaultValue);
   const hasError = rawErrors !== undefined;
 
   return (
@@ -56,7 +58,11 @@ const RadioField = props => {
                 <FormControlLabel
                   key={`${id}-${optionValue}-${index}`}
                   value={`${optionValue}`}
-                  control={<Radio />}
+                  control={
+                    <Radio
+                      inputProps={{ "data-testid": `option-${optionValue}` }}
+                    />
+                  }
                   label={_.get(schema, `enumNames[${index}]`, optionValue)}
                 />
               ))}
