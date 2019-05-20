@@ -1,9 +1,11 @@
+import _ from "lodash";
 import {
   Checkbox,
   FormControl,
   FormControlLabel,
   FormGroup,
   FormHelperText,
+  FormLabel,
   Typography,
 } from "@material-ui/core";
 import React, { useState } from "react";
@@ -12,14 +14,16 @@ const CheckField = props => {
   const {
     children,
     classNames,
+    schema,
     id,
     label,
     rawDescription,
     rawErrors,
     rawHelp,
+    required,
   } = props;
 
-  const [checked, setChecked] = useState(false);
+  const [checkedValues, setCheckedValues] = useState([]);
   const hasError = rawErrors !== undefined;
 
   return (
@@ -29,21 +33,45 @@ const CheckField = props => {
         if (!React.isValidElement(child)) return null;
 
         return (
-          <FormControl component="fieldset">
+          <FormControl
+            error={hasError}
+            required={required}
+            component="fieldset"
+            data-testid="checkbox"
+          >
+            <FormLabel component="legend">{label}</FormLabel>
             <FormGroup>
-              <FormControlLabel
-                data-testid="checkbox"
-                control={
-                  <Checkbox
-                    checked={checked}
-                    onChange={() => {
-                      child.props.onChange(!checked);
-                      setChecked(!checked);
-                    }}
-                  />
-                }
-                label={label}
-              />
+              {schema.items.enum.map((optionValue, index) => (
+                <FormControlLabel
+                  key={`${id}-${optionValue}-${index}`}
+                  value={`${optionValue}`}
+                  control={
+                    <Checkbox
+                      checked={_.includes(checkedValues, optionValue)}
+                      onChange={e => {
+                        let newValueSet = [];
+
+                        if (_.includes(checkedValues, optionValue)) {
+                          newValueSet = _.difference(checkedValues, [
+                            optionValue,
+                          ]);
+                        } else {
+                          newValueSet = checkedValues.concat(e.target.value);
+                        }
+
+                        setCheckedValues(newValueSet);
+                        child.props.onChange(newValueSet);
+                      }}
+                      value={optionValue}
+                    />
+                  }
+                  label={_.get(
+                    schema,
+                    `items.enumNames[${index}]`,
+                    optionValue
+                  )}
+                />
+              ))}
             </FormGroup>
             <FormHelperText error={hasError} component="div">
               {hasError ? rawErrors : rawHelp}

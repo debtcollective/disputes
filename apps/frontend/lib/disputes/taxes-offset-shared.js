@@ -1,6 +1,7 @@
 import debtTypes from "./dispute-types";
 import personalInfo from "./personal-info";
 import usaStates from "./usa-states";
+import yesnoSchema from "./yesno-schema";
 
 const schemas = {
   json: {
@@ -19,62 +20,43 @@ const schemas = {
     },
     properties: {
       FFELLoan: {
-        dependencies: {
-          "ffel-loan-radio-option": {
-            oneOf: [
-              {
-                properties: {
-                  "ffel-loan-radio-option": {
-                    enum: [false],
-                  },
-                },
-              },
-              {
-                properties: {
-                  "ffel-loan-radio-option": {
-                    enum: [true],
-                  },
-                  guarantyAgency: {
-                    properties: {
-                      guarantyAgency: {
-                        title: "Name",
-                        type: "string",
-                      },
-                      guarantyAgencyCity: {
-                        title: "City",
-                        type: "string",
-                      },
-                      guarantyAgencyMailingAddress: {
-                        title: "Address",
-                        type: "string",
-                      },
-                      guarantyAgencyState: {
-                        $ref: "#/definitions/usa-states",
-                        title: "State",
-                      },
-                      guarantyAgencyZipCode: {
-                        pattern: "[0-9]{5}",
-                        title: "Zip Code",
-                        type: "string",
-                      },
-                    },
-                    required: ["address", "city", "name", "state", "zip-code"],
-                    title: "Guaranty Agency details",
-                    type: "object",
-                  },
-                },
-                required: ["ffel-loan-radio-option", "guarantyAgency"],
-              },
-            ],
-          },
-        },
         properties: {
-          "ffel-loan-radio-option": {
+          "ffel-loan-radio-option-group": yesnoSchema({
             description:
               "If you have a FFEL loan, add the name and address of your guaranty agency in the box below. The name and address may appear on the tax offset notice you received in the mail. If you don't know the name and address of your guarantor, you can contact the Department of Education or call 1-800-304-3107 and ask for this information.",
+            keyName: "ffel-loan-radio-option",
             title: "Are you a FFEL holder?",
-            type: "boolean",
-          },
+            yesProps: {
+              guarantyAgencyDetails: {
+                properties: {
+                  guarantyAgency: {
+                    title: "Name",
+                    type: "string",
+                  },
+                  guarantyAgencyCity: {
+                    title: "City",
+                    type: "string",
+                  },
+                  guarantyAgencyMailingAddress: {
+                    title: "Address",
+                    type: "string",
+                  },
+                  guarantyAgencyState: {
+                    $ref: "#/definitions/usa-states",
+                    title: "State",
+                  },
+                  guarantyAgencyZipCode: {
+                    pattern: "[0-9]{5}",
+                    title: "Zip Code",
+                    type: "string",
+                  },
+                },
+                required: ["address", "city", "name", "state", "zip-code"],
+                title: "Guaranty Agency details",
+                type: "object",
+              },
+            },
+          }),
         },
         title: "FFEL Loan",
         type: "object",
@@ -158,7 +140,14 @@ const schemas = {
     type: "object",
   },
   ui: {
-    FFELLoan: { "ui:order": ["*"] },
+    FFELLoan: {
+      "ffel-loan-radio-option-group": {
+        "ffel-loan-radio-option": {
+          "ui:widget": "radio",
+        },
+      },
+      "ui:order": ["*"],
+    },
     personalInformation: {
       "ui:order": [
         "name",
