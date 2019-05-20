@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/debtcollective/disputes/compare/v0.4.0...v0.5.0) (2019-05-20)
+
+
+### Bug Fixes
+
+* **tax:** render radio widgets on type C definition of yesno ([c5cdddc](https://github.com/debtcollective/disputes/commit/c5cdddc))
+
+
+### Features
+
+* **FieldTemplate:** allow to render built-in components when ui:widget has value ([db1d6e2](https://github.com/debtcollective/disputes/commit/db1d6e2))
+* **index:** add link to dispute taxes type E ([31b9137](https://github.com/debtcollective/disputes/commit/31b9137))
+* **pages:** add taxes dispute pages for type B and C ([5de63f6](https://github.com/debtcollective/disputes/commit/5de63f6))
+* **tax:** add "atb-entrance-exam-radio-option" and "atb-entrance-exam-improper-group" yesno ([2aaf71c](https://github.com/debtcollective/disputes/commit/2aaf71c)), closes [#9](https://github.com/debtcollective/disputes/issues/9)
+* **tax:** add "atbd-option" support for "other" selection (Type C) ([a263d0e](https://github.com/debtcollective/disputes/commit/a263d0e))
+* **tax:** add atb-remedial-program-completed and atb-received-ged to type C ([ea0ce9d](https://github.com/debtcollective/disputes/commit/ea0ce9d))
+* **tax:** add base structure for schema type D ([d4e09b2](https://github.com/debtcollective/disputes/commit/d4e09b2))
+* **tax:** add branch for type C prop "atb-entrance-exam-group" ([756a7c7](https://github.com/debtcollective/disputes/commit/756a7c7))
+* **tax:** add explicit schema for radio button on atb-have-ged ([21fa9e6](https://github.com/debtcollective/disputes/commit/21fa9e6))
+* **tax:** add first branch for yesno within type C ([5ad35d6](https://github.com/debtcollective/disputes/commit/5ad35d6))
+* **tax:** add page to hold type D schema ([e6ced2d](https://github.com/debtcollective/disputes/commit/e6ced2d))
+* **tax:** add Type E schema ([a433de2](https://github.com/debtcollective/disputes/commit/a433de2))
+* **tax:** fix schema definition for multiple choice on "atbd-option" ([02448a8](https://github.com/debtcollective/disputes/commit/02448a8))
+* **tax:** minor fix on type C definition ([c305a7b](https://github.com/debtcollective/disputes/commit/c305a7b))
+* **tax:** solve branch for 'atbd-reason-not-to-benefit' using yesno factory ([8ab2276](https://github.com/debtcollective/disputes/commit/8ab2276))
+* **tax:** Type E add checkboxes UI definition for fc-documents ([25e822f](https://github.com/debtcollective/disputes/commit/25e822f))
+* **yesno:** add default value to yesno factory ([d1dfa04](https://github.com/debtcollective/disputes/commit/d1dfa04))
+* **yesno:** add factory to create schema for branched yesno questions across the app ([0453169](https://github.com/debtcollective/disputes/commit/0453169))
+
+
+
+
+
 # [0.4.0](https://github.com/debtcollective/disputes/compare/v0.3.0...v0.4.0) (2019-05-19)
 
 
