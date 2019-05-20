@@ -39,7 +39,7 @@
     "eslint-plugin-promise": "4.1.1",
     "flow-bin": "0.98.1",
     "jest": "24.8.0",
-    "lint-staged": "8.1.6",
+    "lint-staged": "8.1.7",
     "nodemon": "1.19.0",
     "prettier-eslint-cli": "4.7.1"
   },
