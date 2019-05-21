@@ -32,3 +32,7 @@ That will run the tests in the terminal. If you prefer to run Cypress with GUI u
 ```bash
 yarn cypress open
 ```
+
+## Things you need to know
+
+In order to satisfy all the needs of the project, there is some custom code on top of the tecnologies we use that will be further described in [our guide](./docs/GUIDE.md)
