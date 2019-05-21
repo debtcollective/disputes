@@ -5,7 +5,7 @@
   "private": true,
   "dependencies": {
     "@date-io/moment": "1.3.5",
-    "@debtcollective/header": "1.6.0",
+    "@debtcollective/header": "1.6.1",
     "@material-ui/core": "3.9.3",
     "@material-ui/icons": "3.0.2",
     "apollo-boost": "0.3.1",
