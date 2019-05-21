@@ -9,7 +9,7 @@ import keys from "lodash/keys";
  * into the uiSchema to render `"ui:widget": "radio"`
  */
 
-export default ({ keyName, yesProps, noProps, ...rest }) => {
+export default ({ keyName, defaultValue, yesProps, noProps, ...rest }) => {
   const yesKeysPros = keys(yesProps);
   const noKeysPros = keys(noProps);
 
@@ -40,7 +40,7 @@ export default ({ keyName, yesProps, noProps, ...rest }) => {
     },
     properties: {
       [keyName]: {
-        default: false,
+        default: defaultValue || false,
         enum: [true, false],
         enumNames: ["Yes", "No"],
         title: " ",
