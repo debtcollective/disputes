@@ -13,6 +13,7 @@ export default {
     type: "string",
   },
   email: {
+    format: "email",
     title: "Email",
     type: "string",
   },
