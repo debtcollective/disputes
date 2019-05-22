@@ -41,7 +41,7 @@ As we are using the [react-jsonschema-form](https://react-jsonschema-form.readth
 
 While [JSON Schema](https://json-schema.org/understanding-json-schema/reference/string.html#format) supports just certain formats we also need to handle things like _telephone_ and _currency_ in order to do so we have custom formating.
 
-Our `<TextField />` component supports an special keyword in their schema called `$format` where you can specify a mask for the `number` type field. The values this field can have are `telephone` or `currency`.
+Our `<TextField />` component supports an special keyword in their schema called `$format` where you can specify a mask for the `number` type field. The values this field can have are `telephone`, `currency` or `ssn`.
 
 ```js
 {
