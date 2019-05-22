@@ -91,5 +91,33 @@ describe("<TextField />", () => {
         expect(customInput.value).toEqual("+1 (202) 555-0179");
       });
     });
+
+    describe("when format is ssn", () => {
+      const props = {
+        ...baseProps,
+        schema: { $format: "ssn", type: schemaType },
+      };
+
+      it("renders an input that masks ssn", () => {
+        const introducedNumber = 123456789;
+        const wrapper = render(
+          <TextField {...props}>
+            <input
+              onChange={jest.fn()}
+              className="form-control"
+              id={baseProps.id}
+              label={baseProps.label}
+              placeholder="Introduce Foo"
+            />
+          </TextField>
+        );
+
+        const customInput = wrapper.getByTestId("number-field");
+
+        fireEvent.change(customInput, { target: { value: introducedNumber } });
+
+        expect(customInput.value).toEqual("123-45-6789");
+      });
+    });
   });
 });
