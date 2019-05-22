@@ -1,7 +1,7 @@
 import "jest-dom/extend-expect";
 import RadioField from "../RadioField";
 import React from "react";
-import { cleanup, fireEvent, render } from "react-testing-library";
+import { cleanup, fireEvent, render as renderRtl } from "react-testing-library";
 
 describe("<RadioField />", () => {
   const baseProps = {
@@ -18,10 +18,8 @@ describe("<RadioField />", () => {
 
   afterEach(cleanup);
 
-  it("supports to render a group of options", () => {
-    const props = { ...baseProps };
-    const onChange = jest.fn();
-    const wrapper = render(
+  const render = (props, onChange = jest.fn()) =>
+    renderRtl(
       <RadioField {...props}>
         <input
           onChange={onChange}
@@ -31,6 +29,11 @@ describe("<RadioField />", () => {
         />
       </RadioField>
     );
+
+  it("supports to render a group of options", () => {
+    const props = { ...baseProps };
+    const onChange = jest.fn();
+    const wrapper = render(props, onChange);
 
     expect(wrapper.getByText(/yes/i)).toBeTruthy();
     expect(wrapper.getByText(/no/i)).toBeTruthy();
@@ -39,16 +42,7 @@ describe("<RadioField />", () => {
   it("click a radio button triggers input onChange callback", () => {
     const props = { ...baseProps };
     const onChange = jest.fn();
-    const wrapper = render(
-      <RadioField {...props}>
-        <input
-          onChange={onChange}
-          className="form-control"
-          id={baseProps.id}
-          label={baseProps.label}
-        />
-      </RadioField>
-    );
+    const wrapper = render(props, onChange);
 
     fireEvent.click(wrapper.getByLabelText(/no/i));
 
@@ -62,18 +56,29 @@ describe("<RadioField />", () => {
       schema: { ...baseProps.schema, default: false },
     };
     const onChange = jest.fn();
-    const wrapper = render(
-      <RadioField {...props}>
-        <input
-          onChange={onChange}
-          className="form-control"
-          id={baseProps.id}
-          label={baseProps.label}
-        />
-      </RadioField>
-    );
+    const wrapper = render(props, onChange);
 
     expect(wrapper.getByTestId(/option-false/i)).toHaveAttribute("checked");
     expect(wrapper.getByTestId(/option-true/i)).not.toHaveAttribute("checked");
+  });
+
+  it("supports to render a error message", () => {
+    const props = {
+      ...baseProps,
+      rawErrors: ["is a required property"],
+    };
+    const wrapper = render(props);
+
+    expect(wrapper.getByText(/required property/i)).toBeTruthy();
+  });
+
+  it("supports to render a helper text", () => {
+    const props = {
+      ...baseProps,
+      rawHelp: "you can set foo to whatever",
+    };
+    const wrapper = render(props);
+
+    expect(wrapper.getByText(/set foo to whatever/i)).toBeTruthy();
   });
 });

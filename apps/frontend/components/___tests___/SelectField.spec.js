@@ -7,30 +7,33 @@ describe("<SelectField />", () => {
     id: "root_personalInformation_state",
     schema: {
       enum: ["foo", "bar"],
-      enumNames: ["Foo name", "Bar ziz"]
+      enumNames: ["Foo name", "Bar ziz"],
     },
     uiSchema: {
-      "ui:placeholder": "Select one"
-    }
+      "ui:placeholder": "Select one",
+    },
   };
+
+  const renderSelectField = (selectProps, inputProps) =>
+    render(
+      <SelectField {...selectProps}>
+        <select id={inputProps.id} className="form-control" {...inputProps}>
+          <option value="">{inputProps.uiSchema["ui:placeholder"]}</option>
+          <option value={inputProps.schema.enum[0]}>
+            {inputProps.schema.enumNames[0]}
+          </option>
+          <option value={inputProps.schema.enum[1]}>
+            {inputProps.schema.enumNames[1]}
+          </option>
+        </select>
+      </SelectField>
+    );
 
   afterEach(cleanup);
 
   it("renders a custom component in place of child select input", () => {
     const props = { ...baseProps };
-    const wrapper = render(
-      <SelectField {...props}>
-        <select id={baseProps.id} className="form-control" {...baseProps}>
-          <option value="">{baseProps.uiSchema["ui:placeholder"]}</option>
-          <option value={baseProps.schema.enum[0]}>
-            {baseProps.schema.enumNames[0]}
-          </option>
-          <option value={baseProps.schema.enum[1]}>
-            {baseProps.schema.enumNames[1]}
-          </option>
-        </select>
-      </SelectField>
-    );
+    const wrapper = renderSelectField(props, baseProps);
 
     const childInput = wrapper.container.querySelector(`#${baseProps.id}`);
     const customInput = wrapper.container.querySelector(`#MU_${baseProps.id}`);
@@ -42,25 +45,7 @@ describe("<SelectField />", () => {
   it("uses child select input 'onChange' when an item is selected", () => {
     const onChange = jest.fn();
     const props = { ...baseProps };
-    const wrapper = render(
-      <SelectField {...props}>
-        <select
-          id={baseProps.id}
-          className="form-control"
-          {...baseProps}
-          onChange={onChange}
-        >
-          <option value="">{baseProps.uiSchema["ui:placeholder"]}</option>
-          <option value={baseProps.schema.enum[0]}>
-            {baseProps.schema.enumNames[0]}
-          </option>
-          <option value={baseProps.schema.enum[1]}>
-            {baseProps.schema.enumNames[1]}
-          </option>
-        </select>
-      </SelectField>
-    );
-    const customId = `#MU_${baseProps.id}`;
+    const wrapper = renderSelectField(props, { ...baseProps, onChange });
     const button = wrapper.getByText(baseProps.uiSchema["ui:placeholder"]);
 
     fireEvent.click(button);
@@ -71,5 +56,25 @@ describe("<SelectField />", () => {
 
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange).toHaveBeenCalledWith(baseProps.schema.enum[0]);
+  });
+
+  it("supports to render a error message", () => {
+    const props = {
+      ...baseProps,
+      rawErrors: ["is a required property"],
+    };
+    const wrapper = renderSelectField(props, { ...baseProps });
+
+    expect(wrapper.getByText(/required property/i)).toBeTruthy();
+  });
+
+  it("supports to render a helper text", () => {
+    const props = {
+      ...baseProps,
+      rawHelp: "you can set foo to whatever",
+    };
+    const wrapper = renderSelectField(props, { ...baseProps });
+
+    expect(wrapper.getByText(/set foo to whatever/i)).toBeTruthy();
   });
 });

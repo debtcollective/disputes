@@ -8,6 +8,20 @@ describe("<TextField />", () => {
     label: "Foo Label",
   };
 
+  const renderTextField = (props, onChange = jest.fn()) => {
+    return render(
+      <TextField {...props}>
+        <input
+          onChange={onChange}
+          className="form-control"
+          id={baseProps.id}
+          placeholder="Introduce date foo"
+          type="text"
+        />
+      </TextField>
+    );
+  };
+
   afterEach(cleanup);
 
   describe("when schema has format date", () => {
@@ -17,19 +31,31 @@ describe("<TextField />", () => {
         schema: { format: "date", type: "string" },
       };
       const onChange = jest.fn();
-      const wrapper = render(
-        <TextField {...props}>
-          <input
-            onChange={onChange}
-            className="form-control"
-            id={baseProps.id}
-            placeholder="Introduce date foo"
-            type="text"
-          />
-        </TextField>
-      );
+      const wrapper = renderTextField(props, onChange);
 
       expect(wrapper.getByTestId("date-picker")).toBeTruthy();
+    });
+
+    it("supports to render a error message", () => {
+      const props = {
+        ...baseProps,
+        rawErrors: ["is a required property"],
+        schema: { format: "date", type: "string" },
+      };
+      const wrapper = renderTextField(props);
+
+      expect(wrapper.getByText(/required property/i)).toBeTruthy();
+    });
+
+    it("supports to render a helper text", () => {
+      const props = {
+        ...baseProps,
+        rawHelp: "you can set foo to whatever",
+        schema: { format: "date", type: "string" },
+      };
+      const wrapper = renderTextField(props);
+
+      expect(wrapper.getByText(/set foo to whatever/i)).toBeTruthy();
     });
   });
 
@@ -44,17 +70,7 @@ describe("<TextField />", () => {
 
       it("renders an input with currency capabilities", () => {
         const introducedNumber = 5419;
-        const wrapper = render(
-          <TextField {...props}>
-            <input
-              onChange={jest.fn()}
-              className="form-control"
-              id={baseProps.id}
-              label={baseProps.label}
-              placeholder="Introduce Foo"
-            />
-          </TextField>
-        );
+        const wrapper = renderTextField(props);
 
         const customInput = wrapper.getByTestId("number-field");
 
@@ -72,17 +88,7 @@ describe("<TextField />", () => {
 
       it("renders an input with telephone capabilities", () => {
         const introducedNumber = 2025550179;
-        const wrapper = render(
-          <TextField {...props}>
-            <input
-              onChange={jest.fn()}
-              className="form-control"
-              id={baseProps.id}
-              label={baseProps.label}
-              placeholder="Introduce Foo"
-            />
-          </TextField>
-        );
+        const wrapper = renderTextField(props);
 
         const customInput = wrapper.getByTestId("number-field");
 
@@ -91,5 +97,27 @@ describe("<TextField />", () => {
         expect(customInput.value).toEqual("+1 (202) 555-0179");
       });
     });
+  });
+
+  it("supports to render a error message", () => {
+    const props = {
+      ...baseProps,
+      rawErrors: ["is a required property"],
+      schema: { type: "string" },
+    };
+    const wrapper = renderTextField(props);
+
+    expect(wrapper.getByText(/required property/i)).toBeTruthy();
+  });
+
+  it("supports to render a helper text", () => {
+    const props = {
+      ...baseProps,
+      rawHelp: "you can set foo to whatever",
+      schema: { type: "string" },
+    };
+    const wrapper = renderTextField(props);
+
+    expect(wrapper.getByText(/set foo to whatever/i)).toBeTruthy();
   });
 });

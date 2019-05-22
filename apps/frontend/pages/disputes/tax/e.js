@@ -66,6 +66,7 @@ const schemas = {
             type: "string",
           },
         },
+        required: ["fc-documents", "fc-tuition-payment", "fc-explain"],
         title: "False Certification - Unauthorized signature/payment",
         type: "object",
       },
