@@ -47,7 +47,7 @@ const TextField = props => {
     schema,
     id,
     classNames,
-    help,
+    rawHelp,
     children,
     rawDescription,
     rawErrors,
@@ -75,7 +75,7 @@ const TextField = props => {
               type={inputType}
               autoComplete="no"
               id={`MU_${id}`}
-              helperText={hasError ? rawErrors : help}
+              helperText={hasError ? rawErrors : rawHelp}
               label={getLabelText(props)}
               margin="normal"
               {...getInputProps({ format: schema.$format, inputType })}
