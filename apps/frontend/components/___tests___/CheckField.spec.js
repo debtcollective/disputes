@@ -56,7 +56,23 @@ describe("<CheckField />", () => {
     expect(onChange).toHaveBeenNthCalledWith(3, ["zoo"]);
   });
 
-  it.skip("renders a helper text when schema has it", () => {});
+  it("supports to render a error message", () => {
+    const props = {
+      ...baseProps,
+      rawErrors: ["is a required property"],
+    };
+    const wrapper = render({ ...props });
 
-  it.skip("renders errors when schema has it", () => {});
+    expect(wrapper.getByText(/required property/i)).toBeTruthy();
+  });
+
+  it("supports to render a helper text", () => {
+    const props = {
+      ...baseProps,
+      rawHelp: "you can set foo to whatever",
+    };
+    const wrapper = render({ ...props });
+
+    expect(wrapper.getByText(/set foo to whatever/i)).toBeTruthy();
+  });
 });
