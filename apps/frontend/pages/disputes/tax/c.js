@@ -29,18 +29,27 @@ const schemas = {
           }),
           // if no "Sorry, you are not eligible for this discharge."
           "atb-attended-at": {
+            default: true,
+            enum: [true],
+            enumNames: ["Yes"],
             title:
               "Did you (or the student) attend college prior to July 1, 2012?",
             type: "boolean",
           },
           // if no "Sorry, you are not eligible for this discharge."
           "atb-attended-where": {
+            default: true,
+            enum: [true],
+            enumNames: ["Yes"],
             title:
               "Were you (or the student), prior to July 1, 2012, officially registered in college and scheduled to attend?",
             type: "boolean",
           },
           // if no "Sorry, you are not eligible for this discharge."
           "atb-complete-credit": {
+            default: true,
+            enum: [true],
+            enumNames: ["Yes"],
             title:
               "Did you (or the student) successfully complete 6 credit hours or 225 clock hours of coursework that applied toward a program offered by the school before you received a Direct or a FFEL loan?",
             type: "boolean",
@@ -164,6 +173,9 @@ const schemas = {
             type: "string",
           },
           "atb-received-ged": {
+            default: false,
+            enum: [true, false],
+            enumNames: ["Yes", "No"],
             title:
               "Did you (or the student) receive a GED before completing the program?",
             type: "boolean",
@@ -178,6 +190,18 @@ const schemas = {
   ui: {
     ...sharedSchema.ui,
     atb: {
+      "atb-attended-at": {
+        "ui:widget": "radio",
+      },
+      "atb-attended-where": {
+        "ui:widget": "radio",
+      },
+      "atb-complete-credit": {
+        "ui:widget": "radio",
+      },
+      "atb-received-ged": {
+        "ui:widget": "radio",
+      },
       "atb-applying-as-group": {
         "atb-applying-as": {
           "ui:widget": "radio",
