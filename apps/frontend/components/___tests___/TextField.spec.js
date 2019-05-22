@@ -35,6 +35,28 @@ describe("<TextField />", () => {
 
       expect(wrapper.getByTestId("date-picker")).toBeTruthy();
     });
+
+    it("supports to render a error message", () => {
+      const props = {
+        ...baseProps,
+        rawErrors: ["is a required property"],
+        schema: { format: "date", type: "string" },
+      };
+      const wrapper = renderTextField(props);
+
+      expect(wrapper.getByText(/required property/i)).toBeTruthy();
+    });
+
+    it("supports to render a helper text", () => {
+      const props = {
+        ...baseProps,
+        rawHelp: "you can set foo to whatever",
+        schema: { format: "date", type: "string" },
+      };
+      const wrapper = renderTextField(props);
+
+      expect(wrapper.getByText(/set foo to whatever/i)).toBeTruthy();
+    });
   });
 
   describe("when schema has type number", () => {
