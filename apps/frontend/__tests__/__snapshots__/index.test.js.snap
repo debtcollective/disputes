@@ -135,6 +135,26 @@ exports[`With React Testing Library Snapshot Should match Snapshot 1`] = `
           </strong>
         </a>
       </li>
+      <li>
+        <a
+          href="/disputes/wage/a"
+        >
+          Wage Garnishment Dispute - 
+          <strong>
+            Type A
+          </strong>
+        </a>
+      </li>
+      <li>
+        <a
+          href="/disputes/wage/b"
+        >
+          Wage Garnishment Dispute - 
+          <strong>
+            Type B
+          </strong>
+        </a>
+      </li>
     </ul>
   </div>
 </DocumentFragment>
