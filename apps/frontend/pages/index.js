@@ -76,6 +76,13 @@ const Page = () => {
               </a>
             </Link>
           </li>
+          <li>
+            <Link href="/disputes/wage/c">
+              <a>
+                Wage Garnishment Dispute - <strong>Type C</strong>
+              </a>
+            </Link>
+          </li>
         </ul>
       </div>
     </React.Fragment>
