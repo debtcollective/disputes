@@ -1,7 +1,7 @@
 import FieldTemplate from "../../../components/FieldTemplate";
 import Form from "react-jsonschema-form";
 import React from "react";
-import sharedSchema from "../../../lib/disputes/wage-gernishment-shared";
+import sharedSchema from "../../../lib/disputes/wage-garnishment-shared";
 
 const schemas = {
   ...sharedSchema,
