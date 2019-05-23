@@ -176,6 +176,9 @@ const schema = {
       address: {
         "ui:placeholder": "Street, unit number, floor, door number",
       },
+      agencies: {
+        "ui:widget": "checkboxes",
+      },
       city: {
         classNames: "field-address",
       },

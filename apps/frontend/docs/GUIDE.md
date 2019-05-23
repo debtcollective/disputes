@@ -35,7 +35,7 @@ This file exports the Form react component configured with the schema.
 
 ## Advance Customization
 
-As we are using the [react-jsonschema-form](https://react-jsonschema-form.readthedocs.io/en/latest/) to handle forms all the rules intended to ddeclare schemas will apply, further help related to it can be found within their [advanced customization guide](https://react-jsonschema-form.readthedocs.io/en/latest/advanced-customization/)
+As we are using the [react-jsonschema-form](https://react-jsonschema-form.readthedocs.io/en/latest/) to handle forms all the rules intended to declare schemas will apply, further help related to it can be found within their [advanced customization guide](https://react-jsonschema-form.readthedocs.io/en/latest/advanced-customization/)
 
 ## Custom Formats
 
