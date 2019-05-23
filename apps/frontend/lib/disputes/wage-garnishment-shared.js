@@ -21,6 +21,15 @@ const schemas = {
       },
     },
     properties: {
+      // TODO: Add a confirmation like: "Are you sure you don't want to authorize the Debt Collective to advocate directly on your behalf?" in case of No
+      "doe-privacy-release": {
+        default: false,
+        description:
+          "Would you like to authorize the Debt Collective to speak to the Department of Education and its agents about your case?",
+        enum: [true, false],
+        enumNames: ["Yes", "No"],
+        title: "Department of Education Privacy Release",
+      },
       FFELLoan: {
         properties: {
           "ffel-loan-radio-option-group": yesnoSchema({
@@ -180,6 +189,9 @@ const schemas = {
     type: "object",
   },
   ui: {
+    "doe-privacy-release": {
+      "ui:widget": "radio",
+    },
     FFELLoan: {
       "ffel-loan-radio-option-group": {
         "ffel-loan-radio-option": {
@@ -212,6 +224,7 @@ const schemas = {
       "FFELLoan",
       "employment-radio-option",
       "*",
+      "doe-privacy-release",
     ],
     yourSchool: {
       "ui:order": ["name", "address", "city", "state", "zip-code", "*"],
