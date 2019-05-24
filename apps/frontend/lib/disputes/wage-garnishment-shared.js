@@ -1,6 +1,5 @@
 /*eslint sort-keys: 0*/
 
-import debtTypes from "./dispute-types";
 import personalInfo from "./personal-info";
 import usaStates from "./usa-states";
 import yesnoSchema from "./yesno-schema";
@@ -9,11 +8,6 @@ const schemas = {
   json: {
     $schema: "http://json-schema.org/schema#",
     definitions: {
-      "debt-types": {
-        enum: debtTypes.values,
-        enumNames: debtTypes.labels,
-        type: "string",
-      },
       "usa-states": {
         enum: usaStates.values,
         enumNames: usaStates.labels,
