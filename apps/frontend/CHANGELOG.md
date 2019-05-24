@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/debtcollective/disputes/compare/v0.5.0...v0.6.0) (2019-05-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @debtcollective/header to v1.6.1 ([3f07a00](https://github.com/debtcollective/disputes/commit/3f07a00))
+
+
+### Features
+
+* **CheckField:** add support for group of items mapping ui:widget ([9f596c7](https://github.com/debtcollective/disputes/commit/9f596c7))
+* **FieldTemplate:** add base to rendeer RadieField component on specific case ([4134aaf](https://github.com/debtcollective/disputes/commit/4134aaf))
+* **RadioField:** add component to handle radio widget as Material UI ([1cbfa1a](https://github.com/debtcollective/disputes/commit/1cbfa1a))
+* **RadioField:** add support for default value declaration ([d368662](https://github.com/debtcollective/disputes/commit/d368662))
+* **RadioField:** allow to trigger changes on form data ([98acf20](https://github.com/debtcollective/disputes/commit/98acf20))
+* **schemas:** add Credit Report schema ([85cad6d](https://github.com/debtcollective/disputes/commit/85cad6d))
+* **yesno:** allow to pass extra details to the root definition instead just title ([62355c2](https://github.com/debtcollective/disputes/commit/62355c2))
+* **yesno:** allow to receive a defaultValue to render ([7eed682](https://github.com/debtcollective/disputes/commit/7eed682))
+
+
+
+
+
 # [0.5.0](https://github.com/debtcollective/disputes/compare/v0.4.0...v0.5.0) (2019-05-20)
 
 

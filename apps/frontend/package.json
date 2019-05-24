@@ -1,6 +1,6 @@
 {
   "name": "@debtcollective/disputes-frontend",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "license": "3-clause BSD",
   "private": true,
   "dependencies": {
