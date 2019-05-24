@@ -75,9 +75,16 @@ exports[`With React Testing Library Snapshot Should match Snapshot 1`] = `
     <h1
       class="pages__Title-sc-6ucdmv-0 ixxnbT"
     >
-      Working
+      Styled component
     </h1>
     <ul>
+      <li>
+        <a
+          href="/disputes/credit-report"
+        >
+          Credit Report
+        </a>
+      </li>
       <li>
         <a
           href="/disputes/general"

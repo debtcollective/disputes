@@ -13,6 +13,11 @@ const getPropsByFormat = format => {
         prefix: "$",
         thousandSeparator: true,
       };
+    case "ssn":
+      return {
+        format: "###-##-####",
+        mask: "_",
+      };
     default:
       return {};
   }

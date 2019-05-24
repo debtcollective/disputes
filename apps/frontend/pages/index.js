@@ -20,8 +20,13 @@ const Page = () => {
     <React.Fragment>
       <Header links={links} />
       <div>
-        <Title>Working</Title>
+        <Title>Styled component</Title>
         <ul>
+          <li>
+            <Link href="/disputes/credit-report">
+              <a>Credit Report</a>
+            </Link>
+          </li>
           <li>
             <Link href="/disputes/general">
               <a>General Dispute</a>
