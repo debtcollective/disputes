@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/debtcollective/disputes/compare/v0.6.0...v0.7.0) (2019-05-25)
+
+
+### Features
+
+* add Wage Garnishment type D, E to index ([56fc18d](https://github.com/debtcollective/disputes/commit/56fc18d))
+* **wage:** add doe-privacy-release property to all forms ([27256ec](https://github.com/debtcollective/disputes/commit/27256ec))
+* **wage:** add type C using atb form from past definitions ([dcb4379](https://github.com/debtcollective/disputes/commit/dcb4379))
+* **wage:** add type D using "atb Disqualifying Form" from previous def ([c81dc49](https://github.com/debtcollective/disputes/commit/c81dc49))
+* **wage:** add type E form using "Unauthorized Signature Form" from previous definition ([66f4f80](https://github.com/debtcollective/disputes/commit/66f4f80))
+* **wage:** Add Wage Garnishment Dispute type A and type B ([34bd56c](https://github.com/debtcollective/disputes/commit/34bd56c)), closes [#10](https://github.com/debtcollective/disputes/issues/10)
+
+
+
+
+
 # [0.6.0](https://github.com/debtcollective/disputes/compare/v0.5.0...v0.6.0) (2019-05-24)
 
 
