@@ -95,8 +95,14 @@ const schema = {
             description:
               "Digital copy of letter you received in the mail from the collection agency or law firm",
             items: {
-              format: "data-url",
-              type: "string",
+              properties: {
+                file: {
+                  format: "data-url",
+                  title: "A collection Letter",
+                  type: "string",
+                },
+              },
+              type: "object",
             },
             title: "Collections Letter",
             type: "array",
