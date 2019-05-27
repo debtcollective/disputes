@@ -102,6 +102,11 @@ const Page = () => {
               </a>
             </Link>
           </li>
+          <li>
+            <Link href="/disputes/private-student-loan">
+              <a>Private Student Loan</a>
+            </Link>
+          </li>
         </ul>
       </div>
     </React.Fragment>
