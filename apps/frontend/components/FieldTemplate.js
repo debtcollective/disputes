@@ -25,7 +25,10 @@ const FieldTemplate = props => {
     return <SelectField {...props} />;
   }
 
-  if (includes(["string", "number"], schema.type)) {
+  if (
+    includes(["string", "number"], schema.type) &&
+    schema.format !== "data-url"
+  ) {
     return <TextField {...props} />;
   }
 

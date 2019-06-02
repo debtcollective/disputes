@@ -235,4 +235,26 @@ describe("<FieldTemplate />", () => {
       expect(wrapper.getByTestId("plain-template")).toBeTruthy();
     });
   });
+
+  describe("when format is 'data-url'", () => {
+    it("renders a <PlainTemplate />", () => {
+      const props = {
+        ...baseProps,
+        schema: { format: "data-url", type: "string" },
+      };
+
+      const wrapper = render(
+        <FieldTemplate {...props}>
+          <input
+            className="form-control"
+            id={baseProps.id}
+            label={baseProps.label}
+            placeholder="Introduce Foo"
+          />
+        </FieldTemplate>
+      );
+
+      expect(wrapper.getByTestId("plain-template")).toBeTruthy();
+    });
+  });
 });
