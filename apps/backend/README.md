@@ -6,11 +6,11 @@
 
 We are using Objection.js as our ORM and Knex needs to be configurated to work with it.
 
-We are using safe defaults and environment variables for production/staging deployments.
+First, run `cp knexfile.sample.js knexfile.js` to copy the Knex default configuration file. Then modify the file as needed with your Postgres configuration.
 
-You need to create databases for development and test environment. Run these commands
+You need to create databases for development and test environment, you can do that by running these commands.
 
-```
+```bash
 createdb disputes_development
 createdb disputes_test
 ```

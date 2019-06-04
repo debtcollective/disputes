@@ -1,31 +1,15 @@
 import express from "express";
 import { ApolloServer, gql } from "apollo-server-express";
-import typeDefs from "./schema";
 import { Model } from "objection";
-import knexConfig from "./knexfile";
 import Knex from "knex";
+import knexConfig from "../knexfile";
+import { typeDefs, resolvers } from "./schema";
 
-// Setup Objection with Knex
+// setup Objection.js with Knex
 const knex = Knex(knexConfig);
 Model.knex(knex);
 
-const books = [
-  {
-    title: "Harry Potter and the Chamber of Secrets",
-    author: "J.K. Rowling"
-  },
-  {
-    title: "Jurassic Park",
-    author: "Michael Crichton"
-  }
-];
-
-const resolvers = {
-  Query: {
-    books: () => books
-  }
-};
-
+// init ApolloServer
 const server = new ApolloServer({
   typeDefs,
   resolvers,

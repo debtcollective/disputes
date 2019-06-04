@@ -1,4 +1,4 @@
-import Model from "objection";
+import { Model } from "objection";
 
 class Dispute extends Model {
   static get tableName() {
