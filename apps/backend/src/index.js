@@ -1,6 +1,13 @@
 import express from "express";
 import { ApolloServer, gql } from "apollo-server-express";
 import typeDefs from "./schema";
+import { Model } from "objection";
+import knexConfig from "./knexfile";
+import Knex from "knex";
+
+// Setup Objection with Knex
+const knex = Knex(knexConfig);
+Model.knex(knex);
 
 const books = [
   {
