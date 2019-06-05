@@ -9,6 +9,7 @@ export const typeDef = gql`
     tool_version: String
     user_id: Int
     data: JSON
+    draft: Boolean
   }
 
   extend type Query {

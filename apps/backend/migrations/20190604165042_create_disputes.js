@@ -5,6 +5,7 @@ exports.up = knex =>
     t.string("tool_version");
     t.integer("user_id").unsigned();
     t.jsonb("data").defaultTo("{}");
+    t.boolean("draft").defaultTo(true);
     t.datetime("deleted_at");
     t.timestamps();
 
