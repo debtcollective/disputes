@@ -16,7 +16,7 @@ export const setupDatabase = () => {
  */
 export const cleanDatabase = () => {
   const knex = Knex(knexConfig);
-  const tables = ["disputes"];
+  const tables = ["disputes", "users"];
 
   return knex.raw(`TRUNCATE ${tables.join(", ")} CASCADE`);
 };

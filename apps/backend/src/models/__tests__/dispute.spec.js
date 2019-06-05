@@ -1,8 +1,13 @@
 import Dispute from "$models/dispute";
+import User from "$models/user";
 import { setupDatabase, cleanDatabase } from "$utils";
 
 describe("Dispute", () => {
-  beforeAll(() => setupDatabase());
+  beforeAll(() => {
+    setupDatabase();
+    return cleanDatabase();
+  });
+
   afterEach(() => cleanDatabase());
 
   describe("validations", () => {
@@ -11,14 +16,19 @@ describe("Dispute", () => {
     });
 
     it("validates data field when draft is true", async () => {
-      const props = {
+      const user = await User.fromJson({
+        external_id: 1,
+        username: "orlando"
+      })
+        .$query()
+        .insert();
+
+      const dispute = await Dispute.fromJson({
         tool_id: "credit-report-dispute",
         tool_version: "1",
-        user_id: 1,
+        user_id: user.id,
         draft: true
-      };
-
-      const dispute = await Dispute.fromJson(props)
+      })
         .$query()
         .insert();
 
