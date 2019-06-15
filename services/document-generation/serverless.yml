@@ -55,6 +55,10 @@ resources:
 
 package:
   artifact: ./package.zip
+  exclude:
+    - docs/**
+    - src/local/**
+    - src/__tests__/**
 
 plugins:
   - serverless-hooks-plugin
