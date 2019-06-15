@@ -1,0 +1,38 @@
+{
+  "name": "document-service",
+  "version": "1.0.0",
+  "description": "Starter Kit for running Headless-Chrome by Puppeteer on AWS Lambda",
+  "scripts": {
+    "package": "npm run package-prepare && cp chrome/headless_shell.tar.gz dist && cd dist && zip -rq ../package.zip .",
+    "package-nochrome": "npm run package-prepare && cd dist && zip -rq ../package.zip .",
+    "package-prepare": "npm run lint && npm run babel && cp -r package.json dist && cd dist && npm install --production",
+    "babel": "rm -rf dist && mkdir dist && ./node_modules/.bin/babel src --out-dir dist",
+    "local": "npm run babel && cp -r node_modules dist && node dist/local/index.js",
+    "lint": "./node_modules/.bin/eslint src"
+  },
+  "dependencies": {
+    "babel-eslint": "^10.0.1",
+    "chrome-aws-lambda": "^1.17.1",
+    "file-system": "^2.2.2",
+    "html-pdf-chrome": "^0.5.0",
+    "puppeteer-core": "^1.17.0",
+    "tar": "^4.0.1",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-proposal-decorators": "^7.4.4",
+    "@babel/plugin-proposal-export-namespace-from": "^7.2.0",
+    "@babel/plugin-proposal-function-sent": "^7.2.0",
+    "@babel/plugin-proposal-numeric-separator": "^7.2.0",
+    "@babel/plugin-proposal-throw-expressions": "^7.2.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-syntax-import-meta": "^7.2.0",
+    "@babel/preset-env": "^7.0.0",
+    "aws-sdk": "^2.473.0",
+    "eslint": "^5.16.0",
+    "serverless-hooks-plugin": "^1.1.0"
+  }
+}

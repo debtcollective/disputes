@@ -1,0 +1,61 @@
+service: document-service
+
+provider:
+  memorySize: 1536
+  name: aws
+  region: us-east-1
+  runtime: nodejs8.10
+  stage: dev
+  timeout: 180
+
+custom:
+  hooks:
+    package:initialize:
+      - npm run package-nochrome
+  prefix: ${self:custom.stage}-${self:service}
+  region: ${self:provider.region}
+  sqs: ${self:custom.prefix}-messages
+  stage: ${opt:stage, self:provider.stage}
+
+functions:
+  process:
+    handler: index.handler
+    name: ${self:custom.prefix}-process
+    events:
+      - sqs:
+        arn:
+          Fn::GetAtt:
+            - ${self:custom.sqs}
+            - Arn
+    environment:
+      region: ${self:custom.region}
+      sqs: ${self:custom.sqs}
+
+resources:
+  Resources:
+
+    Messages:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: ${self:custom.sqs}
+        MessageRetentionPeriod: 1209600
+        VisibilityTimeout: 60
+        RedrivePolicy:
+          deadLetterTargetArn:
+            Fn::GetAtt:
+            - MessagesDeadLetterQueue
+            - Arn
+          maxReceiveCount: 10
+
+    MessagesDeadLetterQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: ${self:custom.sqs}-dead-letter-queue
+        MessageRetentionPeriod: 1209600
+
+package:
+  artifact: ./package.zip
+
+plugins:
+  - serverless-hooks-plugin
+  
