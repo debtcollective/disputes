@@ -1,4 +1,6 @@
-const run = async (browser, { url }) => {
+// @flow
+
+const run = async (browser: Browser, { url }: { url: string } = {}) => {
   const page = await browser.newPage();
 
   await page.goto(url || "https://youtube.com");

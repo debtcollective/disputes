@@ -1,3 +1,5 @@
+// @flow
+
 import chromium from "chrome-aws-lambda";
 
 export const getBrowser = async () => {

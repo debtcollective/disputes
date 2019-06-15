@@ -1,7 +1,9 @@
+// @flow
+
 import { getBrowser } from "./setup";
 import worker from "./worker";
 
-export const handler = async (event, context) => {
+export const handler = async (event: MessageEvent, context: Context) => {
   let result = null;
   let browser = null;
 

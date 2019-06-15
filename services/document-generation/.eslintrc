@@ -5,8 +5,8 @@
     "jest": true,
     "node": true
   },
-  "extends": ["eslint:recommended"],
-  "plugins": [],
+  "extends": ["eslint:recommended", "plugin:flowtype/recommended"],
+  "plugins": ["flowtype"],
   "rules": {
     "comma-dangle": ["error", "always-multiline"],
     "jsx-quotes": ["error", "prefer-double"],
