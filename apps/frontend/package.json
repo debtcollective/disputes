@@ -47,7 +47,7 @@
     "lint-staged": "8.1.7",
     "react-testing-library": "7.0.1",
     "start-server-and-test": "1.9.1",
-    "waait": "1.0.4"
+    "waait": "1.0.5"
   },
   "scripts": {
     "build": "next build",
