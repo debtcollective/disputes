@@ -11,7 +11,7 @@ provider:
 custom:
   hooks:
     package:initialize:
-      - npm run package-nochrome
+      - yarn run package-nochrome
   prefix: ${self:custom.stage}-${self:service}
   region: ${self:provider.region}
   sqs: ${self:custom.prefix}-messages
