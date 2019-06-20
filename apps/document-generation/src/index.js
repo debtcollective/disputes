@@ -9,7 +9,7 @@ export const handler = async (event: MessageEvent, context: Context) => {
 
   try {
     browser = await getBrowser();
-    result = await worker.run(browser, event);
+    result = await worker.run(event);
   } catch (error) {
     return context.fail(error);
   } finally {

@@ -1,12 +1,22 @@
 // @flow
 
-const run = async (browser: Browser, { url }: { url: string } = {}) => {
-  const page = await browser.newPage();
+import { getAllTemplates } from "./templates";
+import { persistDisputeDocuments } from "./db";
+import { process } from "./creator";
+import { upload } from "./s3";
 
-  await page.goto(url || "https://youtube.com");
-  const result = await page.title();
+type Params = {
+  disputeId: string,
+  disputeType: DisputeType,
+  data: mixed,
+};
 
-  return result;
+const run = ({ disputeId, disputeType, data }: Params) => {
+  const templates = getAllTemplates(disputeType);
+  const documents = templates.map(template => process(template, data));
+  const links = documents.map(upload);
+
+  return persistDisputeDocuments(disputeId, links);
 };
 
 export default {
