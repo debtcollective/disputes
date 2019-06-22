@@ -8,12 +8,14 @@
     "package-prepare": "yarn lint && yarn babel && cp -r package.json dist && cd dist && yarn --production",
     "babel": "rm -rf dist && mkdir dist && ./node_modules/.bin/babel src --out-dir dist",
     "local": "yarn babel && cp -r node_modules dist && node dist/local/index.js",
+    "test": "jest",
     "lint": "./node_modules/.bin/eslint src"
   },
   "dependencies": {
     "babel-eslint": "^10.0.1",
     "chrome-aws-lambda": "^1.17.1",
     "file-system": "^2.2.2",
+    "handlebars": "^4.1.2",
     "html-pdf-chrome": "^0.5.0",
     "puppeteer-core": "^1.17.0",
     "tar": "^4.0.1",
@@ -38,5 +40,10 @@
     "faker": "^4.1.0",
     "flow-bin": "^0.101.0",
     "serverless-hooks-plugin": "^1.1.0"
+  },
+  "jest": {
+    "modulePathIgnorePatterns": [
+      "<rootDir>/dist/"
+    ]
   }
 }
