@@ -1,7 +1,6 @@
 declare type MessageEvent = {
   disputeId: string,
-  disputeType: DisputeType,
-  data: mixed,
+  userId: string,
 };
 
 declare type Context = {
