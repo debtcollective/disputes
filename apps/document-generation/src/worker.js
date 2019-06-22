@@ -1,22 +1,22 @@
 // @flow
 
-import { getAllTemplates } from "./templates";
-import { persistDisputeDocuments } from "./db";
-import { process } from "./creator";
-import { upload } from "./s3";
+import CreditReportDispute from "./documents/CreditReportDispute";
+import Dispute from "./models/Dispute";
+import User from "./models/User";
 
 type Params = {
+  userId: string,
   disputeId: string,
-  disputeType: DisputeType,
-  data: mixed,
 };
 
-const run = ({ disputeId, disputeType, data }: Params) => {
-  const templates = getAllTemplates(disputeType);
-  const documents = templates.map(template => process(template, data));
-  const links = documents.map(upload);
+const run = async ({ userId, disputeId }: Params) => {
+  const user = await User.findById(userId);
+  const dispute = await Dispute.findById(disputeId);
+  const data = { dispute, user };
 
-  return persistDisputeDocuments(disputeId, links);
+  const files = CreditReportDispute.generateFiles(data);
+
+  return files;
 };
 
 export default {

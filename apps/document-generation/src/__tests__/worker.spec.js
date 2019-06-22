@@ -1,45 +1,42 @@
+import CreditReportDispute from "../documents/CreditReportDispute";
+import Dispute from "../models/Dispute";
 import faker from "faker";
-import { getAllTemplates } from "../templates";
-import { persistDisputeDocuments } from "../db";
-import { process } from "../creator";
-import { upload } from "../s3";
+import User from "../models/User";
 import worker from "../worker";
 
-jest.mock("../templates");
-jest.mock("../creator");
-jest.mock("../s3");
-jest.mock("../db");
+jest.mock("../documents/CreditReportDispute");
+jest.mock("../models/User");
+jest.mock("../models/Dispute");
 
-describe("worker#run", () => {
-  const event = {
-    data: {
-      email: faker.internet.email(),
-      name: faker.name.findName(),
-    },
-    disputeId: faker.random.uuid(),
-    disputeType: "general-debt-dispute",
-  };
+const fakeData = {
+  disputeId: faker.random.uuid(),
+  userId: faker.random.uuid(),
+};
 
-  beforeAll(() => {
-    getAllTemplates.mockReturnValue(["hello #{{name}}", "email to #{{email}}"]);
-    process.mockReturnValueOnce(`hello ${event.name}`);
-    process.mockReturnValueOnce(`email to ${event.email}`);
-    upload.mockReturnValueOnce("path/to/one");
-    upload.mockReturnValueOnce("path/to/two");
+const fullData = {
+  dispute: {
+    date: faker.date.recent(1),
+    id: fakeData.disputeId,
+  },
+  user: {
+    id: fakeData.userId,
+    name: faker.name.findName(),
+  },
+};
+
+test("triggers a files generation method with user and dispute data", async () => {
+  User.findById.mockReturnValue(fullData.user);
+  Dispute.findById.mockReturnValue(fullData.dispute);
+
+  await worker.run({
+    disputeId: fakeData.disputeId,
+    userId: fakeData.userId,
   });
 
-  xit("orchestrates the whole workflow", () => {
-    worker.run(event);
+  expect(CreditReportDispute.generateFiles).toHaveBeenCalledTimes(1);
+  expect(CreditReportDispute.generateFiles).toHaveBeenCalledWith(fullData);
+});
 
-    expect(getAllTemplates).toHaveBeenCalledTimes(1);
-    expect(getAllTemplates).toHaveBeenCalledWith(event.disputeId);
-    expect(process).toHaveBeenCalledTimes(2);
-    expect(process).toHaveBeenLastCalledWith("hello #{{name}}", event.data);
-    expect(upload).toHaveBeenCalledTimes(2);
-    expect(upload).toHaveBeenLastCalledWith(`email to ${event.email}`);
-    expect(persistDisputeDocuments).toHaveBeenCalledWith([
-      "path/to/one",
-      "path/to/two",
-    ]);
-  });
+describe("when message belongs to a general dispute debt", () => {
+  it("runs the CreditReportDispute files generation method", () => {});
 });
