@@ -1,7 +1,9 @@
 // @flow
 
-class CreditReportDispute {
-  static generateFiles = (data: mixed) => data;
+import PDFEngine from "../engines/PDFEngine";
+
+class CreditReportDispute implements DocumentGenerator {
+  engine = PDFEngine;
 }
 
-export default CreditReportDispute;
+export default new CreditReportDispute();

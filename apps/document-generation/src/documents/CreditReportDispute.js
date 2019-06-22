@@ -1,6 +1,6 @@
 // @flow
 
-class CreditReportDispute {
+class CreditReportDispute implements DocumentGenerator {
   static generateFiles = (data: mixed) => data;
 }
 
