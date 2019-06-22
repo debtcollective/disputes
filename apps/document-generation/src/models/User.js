@@ -1,7 +1,7 @@
 // @flow
 
-class User {
-  static findById = (id: string) => id;
+class User implements DataModel {
+  findById = (id: string) => id;
 }
 
-export default User;
+export default new User();

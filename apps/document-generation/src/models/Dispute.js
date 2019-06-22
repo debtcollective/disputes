@@ -1,10 +1,10 @@
 // @flow
 
-class Dispute {
-  static findById = async (id: string) => ({
+class Dispute implements DataModel {
+  findById = async (id: string) => ({
     id,
     toolId: "credit-report-dispute",
   });
 }
 
-export default Dispute;
+export default new Dispute();
