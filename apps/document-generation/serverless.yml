@@ -7,8 +7,15 @@ provider:
   runtime: nodejs8.10
   stage: dev
   timeout: 180
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:PutObject
+        - s3:PutObjectAcl
+      Resource: "arn:aws:s3:::${self:custom.bucket}/*"
 
 custom:
+  bucket: sls-bucket-name
   hooks:
     package:initialize:
       - yarn run package-nochrome
@@ -30,6 +37,7 @@ functions:
     environment:
       region: ${self:custom.region}
       sqs: ${self:custom.sqs}
+      BUCKET: ${self:custom.bucket}
 
 resources:
   Resources:
