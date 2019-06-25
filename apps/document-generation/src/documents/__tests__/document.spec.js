@@ -52,6 +52,14 @@ describe("generateFiles", () => {
 
   it("creates a file for each template on the document", async () => {
     const files = await DocumentHandler.generateFiles(fullData, templates);
+
+    // simulate side effect after process files
+    await Promise.all(
+      files.map(async ({ fileName, file }) => {
+        const pathToFile = `pdf/${fileName}`;
+        await file.toFile(pathToFile);
+      })
+    );
     const readFiles = fs.readdirSync(pathToPDFfolder);
 
     expect(files.length).toEqual(templates.length);
