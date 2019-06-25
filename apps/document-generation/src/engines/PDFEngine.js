@@ -26,10 +26,11 @@ class PDFEngine implements DocumentGeneratorEngine {
 
   createFile = async (html: string) => {
     const fileName = `${uuid.v4()}.pdf`;
+    const pathToFile = `pdf/${fileName}`;
     const pdf = await htmlPdf.create(html, { port: 9222 });
-    const file = await pdf.toFile(fileName);
+    await pdf.toFile(pathToFile);
 
-    return file;
+    return fileName;
   };
 }
 

@@ -4,13 +4,17 @@ import PDFEngine from "../engines/PDFEngine";
 
 class GeneralDispute implements DocumentGenerator {
   engine = PDFEngine;
-  generateFiles = (data: mixed) => {
-    console.log("generate files", data);
+  generateFiles = async (data: mixed) => {
+    const pathsToTemplate = this.templates.map(
+      template => `../templates/${template}`
+    );
 
-    return [new File([], "fileName")];
+    const processedFiles = await this.engine.process(data, pathsToTemplate[0]);
+
+    return [processedFiles];
   };
   slug = "general-dispute";
-  templates = ["/general_debt_dispute_letter/0.hbs"];
+  templates = [`${this.slug}/0.hbs`];
   version = "v1";
 }
 

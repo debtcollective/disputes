@@ -14,7 +14,7 @@ const run = async ({ userId, disputeId }: Params) => {
   const dispute = await Dispute.findById(disputeId);
   const data = { dispute, user };
   const Document = findBySlug(dispute.toolId);
-  const files = Document.generateFiles(data);
+  const files = await Document.generateFiles(data);
 
   return files;
 };
