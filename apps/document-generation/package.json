@@ -2,10 +2,13 @@
   "name": "document-service",
   "version": "1.0.0",
   "description": "Starter Kit for running Headless-Chrome by Puppeteer on AWS Lambda",
+  "engines": {
+    "node": "^8.10.0"
+  },
   "scripts": {
     "package": "yarn package-prepare && cp chrome/headless_shell.tar.gz dist && cd dist && zip -rq ../package.zip .",
     "package-nochrome": "yarn package-prepare && cd dist && zip -rq ../package.zip .",
-    "package-prepare": "yarn lint && yarn babel && cp -r package.json dist && cd dist && yarn --production",
+    "package-prepare": "yarn lint && yarn babel && cp -r package.json dist && cd dist && yarn --production && cp -a ../src/templates/. ./templates",
     "babel": "rm -rf dist && mkdir dist && ./node_modules/.bin/babel src --out-dir dist",
     "local": "yarn babel && cp -a src/templates/. dist/templates && cp -r node_modules dist && node dist/local/index.js",
     "test": "jest",
@@ -13,8 +16,7 @@
   },
   "dependencies": {
     "babel-eslint": "^10.0.1",
-    "chrome-aws-lambda": "^1.17.1",
-    "file-system": "^2.2.2",
+    "chrome-aws-lambda": "1.18.0",
     "handlebars": "^4.1.2",
     "html-pdf-chrome": "^0.5.0",
     "puppeteer-core": "^1.17.0",
