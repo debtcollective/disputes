@@ -20,9 +20,7 @@ export const handler = async (event: MessageEvent, context: Context) => {
 
   return context.succeed({
     body: JSON.stringify({
-      context,
-      event,
-      result: result.map(f => f.fileName),
+      result,
     }),
     headers: { "Content-Type": "application/json" },
     statusCode: 200,

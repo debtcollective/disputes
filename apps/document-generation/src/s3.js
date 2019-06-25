@@ -5,7 +5,7 @@ import AWS from "aws-sdk";
 
 const s3 = new AWS.S3();
 
-const upload = ({
+const upload = async ({
   file,
   fileName,
 }: {
@@ -13,14 +13,20 @@ const upload = ({
   fileName: string,
 }) => {
   const buffer = file.toBuffer();
+  const params = {
+    Body: buffer,
+    Bucket: process.env.BUCKET,
+    Key: fileName,
+  };
 
-  return s3
-    .putObject({
-      Body: buffer,
-      Bucket: process.env.BUCKET || "sls-bucket-name",
-      Key: fileName,
-    })
-    .promise();
+  return new Promise((resolve, reject) => {
+    s3.getSignedUrl("putObject", params, (err, url) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(url);
+    });
+  });
 };
 
 export default {

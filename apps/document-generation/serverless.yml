@@ -42,6 +42,25 @@ functions:
 resources:
   Resources:
 
+    S3BucketAttachments:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.bucket}
+        CorsConfiguration:
+          CorsRules:
+            -
+              AllowedOrigins:
+                - '*'
+              AllowedHeaders:
+                - '*'
+              AllowedMethods:
+                - GET
+                - PUT
+                - POST
+                - DELETE
+                - HEAD
+              MaxAge: 3000
+
     Messages:
       Type: AWS::SQS::Queue
       Properties:

@@ -17,10 +17,9 @@ const run = async ({ userId, disputeId }: Params) => {
   const data = { dispute, user };
   const DocumentHandler: Document = findBySlug(dispute.toolId);
   const files = await DocumentHandler.generateFiles(data);
+  const filesUrls = await Promise.all(files.map(async f => await s3.upload(f)));
 
-  files.forEach(f => s3.upload(f));
-
-  return files;
+  return filesUrls;
 };
 
 export default {
