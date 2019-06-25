@@ -54,7 +54,8 @@ describe("generateFiles", () => {
     const files = await DocumentHandler.generateFiles(fullData, templates);
     const readFiles = fs.readdirSync(pathToPDFfolder);
 
-    expect(readFiles).toEqual(expect.arrayContaining(files));
     expect(files.length).toEqual(templates.length);
+    expect(files.filter(f => f.fileName === readFiles[0])).toHaveLength(1);
+    expect(files.filter(f => f.fileName === readFiles[1])).toHaveLength(1);
   });
 });

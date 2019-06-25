@@ -4,7 +4,7 @@ class DummyEngine implements DocumentGeneratorEngine {
   process = async (data: mixed, pathToTemplate: string) => {
     console.warn("calling process without proper engine", data, pathToTemplate);
 
-    return Promise.resolve("");
+    return Promise.resolve([null, ""]);
   };
 }
 
@@ -20,7 +20,9 @@ export default class Document implements DocumentGenerator {
 
     const processedFiles = await Promise.all(
       pathsToTemplate.map(async t => {
-        return await this.engine.process(data, t);
+        const [pdf, fileName] = await this.engine.process(data, t);
+
+        return { file: pdf, fileName };
       })
     );
 

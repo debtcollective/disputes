@@ -9,9 +9,9 @@ import uuid from "uuid";
 class PDFEngine implements DocumentGeneratorEngine {
   process = async (data: mixed, pathToTemplate: string) => {
     const html = await this.interpolateTemplate(data, pathToTemplate);
-    const file = await this.createFile(html);
+    const [pdf, fileName] = await this.createFile(html);
 
-    return file;
+    return [pdf, fileName];
   };
 
   interpolateTemplate = async (data: mixed, pathToTemplate: string) => {
@@ -30,7 +30,7 @@ class PDFEngine implements DocumentGeneratorEngine {
     const pdf = await htmlPdf.create(html, { port: 9222 });
     await pdf.toFile(pathToFile);
 
-    return fileName;
+    return [pdf, fileName];
   };
 }
 
