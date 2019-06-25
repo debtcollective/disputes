@@ -7,9 +7,10 @@ import worker from "../worker";
 (async () => {
   fs.mkdir("./pdf/");
   const browser = await getBrowser();
+  const event = { disputeId: "987", userId: "123" };
 
   await worker
-    .run(browser)
+    .run(event)
     .then(result => console.log(result))
     .catch(err => console.error(err));
   await browser.close();
