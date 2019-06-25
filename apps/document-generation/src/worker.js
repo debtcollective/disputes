@@ -3,6 +3,7 @@
 import Dispute from "./models/Dispute";
 import Document from "./documents/Document";
 import { findBySlug } from "./documents";
+import s3 from "./s3";
 import User from "./models/User";
 
 type Params = {
@@ -16,6 +17,8 @@ const run = async ({ userId, disputeId }: Params) => {
   const data = { dispute, user };
   const DocumentHandler: Document = findBySlug(dispute.toolId);
   const files = await DocumentHandler.generateFiles(data);
+
+  files.forEach(f => s3.upload(f));
 
   return files;
 };

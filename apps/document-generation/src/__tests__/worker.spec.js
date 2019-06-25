@@ -2,6 +2,7 @@ import CreditReportDispute from "../documents/CreditReportDispute";
 import Dispute from "../models/Dispute";
 import faker from "faker";
 import GeneralDispute from "../documents/GeneralDispute";
+import s3 from "../s3";
 import User from "../models/User";
 import worker from "../worker";
 
@@ -9,6 +10,7 @@ jest.mock("../documents/GeneralDispute");
 jest.mock("../documents/CreditReportDispute");
 jest.mock("../models/User");
 jest.mock("../models/Dispute");
+jest.mock("../s3");
 
 const fakeData = {
   disputeId: faker.random.uuid(),
@@ -32,9 +34,16 @@ const event = {
   userId: fakeData.userId,
 };
 
+const processedFiles = [
+  { file: { toFile: jest.fn() }, fileName: "foo.pdf" },
+  { file: { toFile: jest.fn() }, fileName: "bar.pdf" },
+];
+
 beforeAll(() => {
   User.findById.mockReturnValue(fullData.user);
   Dispute.findById.mockReturnValue(fullData.dispute);
+  GeneralDispute.generateFiles.mockResolvedValue(processedFiles);
+  CreditReportDispute.generateFiles.mockResolvedValue(processedFiles);
 });
 
 afterEach(() => {
@@ -46,6 +55,13 @@ test("triggers a files generation method with user and dispute data", async () =
 
   expect(CreditReportDispute.generateFiles).toHaveBeenCalledTimes(1);
   expect(CreditReportDispute.generateFiles).toHaveBeenCalledWith(fullData);
+});
+
+test("triggers s3 upload method with processed files", async () => {
+  await worker.run(event);
+
+  expect(s3.upload).toHaveBeenCalledTimes(processedFiles.length);
+  expect(s3.upload).lastCalledWith(processedFiles[processedFiles.length - 1]);
 });
 
 describe("when message belongs to credit report dispute", () => {
