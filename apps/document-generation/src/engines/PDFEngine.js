@@ -8,16 +8,14 @@ import uuid from "uuid";
 
 class PDFEngine implements DocumentGeneratorEngine {
   process = async (data: mixed, pathToTemplate: string) => {
-    const html = await this.interpolateTemplate(data, pathToTemplate);
+    const html = this.interpolateTemplate(data, pathToTemplate);
     const [pdf, fileName] = await this.createFile(html);
 
     return [pdf, fileName];
   };
 
-  interpolateTemplate = async (data: mixed, pathToTemplate: string) => {
-    const templateFile = await fs.promises.readFile(
-      path.join(__dirname, pathToTemplate)
-    );
+  interpolateTemplate = (data: mixed, pathToTemplate: string) => {
+    const templateFile = fs.readFileSync(path.join(__dirname, pathToTemplate));
     const template = handlebars.compile(templateFile.toString());
     const html = template(data);
 
