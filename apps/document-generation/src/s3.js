@@ -13,18 +13,20 @@ const upload = async ({
   fileName: string,
 }) => {
   const buffer = file.toBuffer();
+  const bucketName = process.env.BUCKET || "";
   const params = {
     Body: buffer,
-    Bucket: process.env.BUCKET,
+    Bucket: bucketName,
     Key: fileName,
   };
 
   return new Promise((resolve, reject) => {
-    s3.getSignedUrl("putObject", params, (err, url) => {
+    const expectedUrl = `https://${bucketName}.s3.amazonaws.com/${fileName}`;
+    s3.putObject(params, err => {
       if (err) {
         reject(err);
       }
-      resolve(url);
+      resolve(expectedUrl);
     });
   });
 };
