@@ -1,18 +1,10 @@
 // @flow
 
+import Document from "./Document";
 import PDFEngine from "../engines/PDFEngine";
 
-class GeneralDispute implements DocumentGenerator {
+class GeneralDispute extends Document implements DocumentGenerator {
   engine = PDFEngine;
-  generateFiles = async (data: mixed) => {
-    const pathsToTemplate = this.templates.map(
-      template => `../templates/${template}`
-    );
-
-    const processedFiles = await this.engine.process(data, pathsToTemplate[0]);
-
-    return [processedFiles];
-  };
   slug = "general-dispute";
   templates = [`${this.slug}/0.hbs`];
   version = "v1";

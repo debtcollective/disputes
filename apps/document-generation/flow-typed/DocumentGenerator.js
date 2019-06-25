@@ -1,7 +1,5 @@
 declare interface DocumentGeneratorEngine {
-  process(data: mixed, pathToTemplate: string): Promise<File>;
-  interpolateTemplate(data: mixed, pathToTemplate: string): Promise<string>;
-  createFile(htmlString: string): Promise<File>;
+  process(data: mixed, pathToTemplate: string): Promise<string>;
 }
 
 declare interface DocumentGenerator {
@@ -9,5 +7,5 @@ declare interface DocumentGenerator {
   slug: string;
   version: "v1";
   templates: Array<string>;
-  generateFiles(): Array<File>;
+  generateFiles(): Promise<Array<string>>;
 }
