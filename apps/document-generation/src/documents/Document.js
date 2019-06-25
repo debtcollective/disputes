@@ -18,8 +18,12 @@ export default class Document implements DocumentGenerator {
       template => `../templates/${template}`
     );
 
-    const processedFiles = await this.engine.process(data, pathsToTemplate[0]);
+    const processedFiles = await Promise.all(
+      pathsToTemplate.map(async t => {
+        return await this.engine.process(data, t);
+      })
+    );
 
-    return [processedFiles];
+    return processedFiles;
   };
 }

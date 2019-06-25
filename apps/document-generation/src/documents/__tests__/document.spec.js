@@ -1,8 +1,9 @@
-import CreditReportDispute from "../CreditReportDispute";
+import Document from "../Document";
 import faker from "faker";
 import fs from "fs";
 import { getBrowser } from "../../setup";
 import path from "path";
+import PDFEngine from "../../engines/PDFEngine";
 
 const fakeData = {
   disputeId: faker.random.uuid(),
@@ -22,6 +23,15 @@ const fullData = {
 };
 
 const pathToPDFfolder = path.join(__dirname, "../../../pdf");
+const templates = ["credit-report-dispute/0.hbs", "general-dispute/0.hbs"];
+const DocumentHandler = (() => {
+  class TestDocument extends Document {
+    engine = PDFEngine;
+    templates = templates;
+  }
+
+  return new TestDocument();
+})();
 
 describe("generateFiles", () => {
   let browser;
@@ -41,9 +51,10 @@ describe("generateFiles", () => {
   });
 
   it("creates a file for each template on the document", async () => {
-    const files = await CreditReportDispute.generateFiles(fullData);
+    const files = await DocumentHandler.generateFiles(fullData, templates);
     const readFiles = fs.readdirSync(pathToPDFfolder);
 
-    expect(readFiles).toEqual(files);
+    expect(readFiles).toEqual(expect.arrayContaining(files));
+    expect(files.length).toEqual(templates.length);
   });
 });
