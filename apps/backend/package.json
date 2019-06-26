@@ -37,7 +37,7 @@
     "eslint-plugin-jest": "22.6.4",
     "eslint-plugin-node": "9.1.0",
     "eslint-plugin-promise": "4.1.1",
-    "flow-bin": "0.100.0",
+    "flow-bin": "0.102.0",
     "jest": "24.8.0",
     "lint-staged": "8.2.1",
     "nodemon": "1.19.1",
