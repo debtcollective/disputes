@@ -37,6 +37,13 @@ describe("generateFiles", () => {
   let browser;
 
   beforeAll(() => {
+    // A place to store the created PDFs while development
+    const dir = pathToPDFfolder;
+
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir);
+    }
+
     browser = getBrowser();
   });
 
