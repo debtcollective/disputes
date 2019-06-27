@@ -1,18 +1,21 @@
 {
-  "name": "document-service",
+  "name": "@debtcollective/document-generation",
   "version": "1.0.0",
-  "description": "Starter Kit for running Headless-Chrome by Puppeteer on AWS Lambda",
+  "description": "Serverless service to handle document generation",
   "engines": {
     "node": "^8.10.0"
   },
   "scripts": {
-    "package": "yarn package-prepare && cp chrome/headless_shell.tar.gz dist && cd dist && zip -rq ../package.zip .",
+    "babel": "rm -rf dist && mkdir dist && ./node_modules/.bin/babel src --out-dir dist",
+    "lint": "./node_modules/.bin/eslint src",
+    "local": "yarn babel && cp -a src/templates/. dist/templates && cp -r node_modules dist && node dist/local/index.js",
     "package-nochrome": "yarn package-prepare && cd dist && zip -rq ../package.zip .",
     "package-prepare": "yarn lint && yarn babel && cp -r package.json dist && cd dist && yarn --production && cp -a ../src/templates/. ./templates",
-    "babel": "rm -rf dist && mkdir dist && ./node_modules/.bin/babel src --out-dir dist",
-    "local": "yarn babel && cp -a src/templates/. dist/templates && cp -r node_modules dist && node dist/local/index.js",
-    "test": "jest",
-    "lint": "./node_modules/.bin/eslint src"
+    "package": "yarn package-prepare && cp chrome/headless_shell.tar.gz dist && cd dist && zip -rq ../package.zip .",
+    "pre-commit": "lint-staged",
+    "test:ci": "yarn test:coverage",
+    "test:coverage": "jest --coverage",
+    "test": "jest"
   },
   "dependencies": {
     "babel-eslint": "^10.0.1",
@@ -43,9 +46,16 @@
     "flow-bin": "^0.101.0",
     "serverless-hooks-plugin": "^1.1.0"
   },
-  "jest": {
-    "modulePathIgnorePatterns": [
-      "<rootDir>/dist/"
+  "lint-staged": {
+    "*.js": [
+      "prettier-eslint --write",
+      "flow focus-check",
+      "git add",
+      "eslint --fix"
+    ],
+    "*.{json,md}": [
+      "prettier-eslint --write",
+      "git add"
     ]
   }
 }
