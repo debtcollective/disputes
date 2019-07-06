@@ -44,7 +44,7 @@
     "flow-bin": "0.102.0",
     "jest": "24.8.0",
     "jest-dom": "3.5.0",
-    "lint-staged": "8.2.1",
+    "lint-staged": "9.1.0",
     "react-testing-library": "7.0.1",
     "start-server-and-test": "1.9.1",
     "waait": "1.0.5"
