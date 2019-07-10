@@ -12,7 +12,7 @@
     "pre-commit": "lerna run pre-commit --concurrency 1 --since HEAD"
   },
   "devDependencies": {
-    "husky": "2.5.0",
+    "husky": "2.7.0",
     "lerna": "3.15.0",
     "prettier-eslint-cli": "5.0.0"
   },
