@@ -23,10 +23,10 @@
     "pg": "7.11.0"
   },
   "devDependencies": {
-    "@babel/cli": "7.4.4",
-    "@babel/core": "7.4.5",
-    "@babel/node": "7.4.5",
-    "@babel/preset-env": "7.4.5",
+    "@babel/cli": "7.5.0",
+    "@babel/core": "7.5.4",
+    "@babel/node": "7.5.0",
+    "@babel/preset-env": "7.5.4",
     "babel-eslint": "10.0.2",
     "babel-jest": "24.8.0",
     "babel-plugin-import-graphql": "2.7.0",
