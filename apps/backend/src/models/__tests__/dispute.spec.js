@@ -11,14 +11,10 @@ describe("Dispute", () => {
   afterEach(() => cleanDatabase());
 
   describe("validations", () => {
-    it("validates base fields", () => {
-      const dispute = new Dispute({});
-    });
-
-    it("validates data field when draft is true", async () => {
+    xit("validates data field when draft is true", async () => {
       const user = await User.fromJson({
         external_id: 1,
-        username: "orlando"
+        username: "orlando",
       })
         .$query()
         .insert();
@@ -27,7 +23,7 @@ describe("Dispute", () => {
         tool_id: "credit-report-dispute",
         tool_version: "1",
         user_id: user.id,
-        draft: true
+        draft: true,
       })
         .$query()
         .insert();
