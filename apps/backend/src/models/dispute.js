@@ -16,7 +16,12 @@ class Dispute extends Model {
         id: { type: "integer" },
         tool_id: { type: "string", minlength: 1, maxlength: 255 },
         tool_version: { type: "string", minlength: 1, maxlength: 255 },
-        draft: { type: "boolean" }
+        user_id: { type: "integer" },
+        data: { type: "object" },
+        draft: { type: "boolean" },
+        deleted_at: { type: "string", format: "date-time" },
+        created_at: { type: "string", format: "date-time" },
+        updated_at: { type: "string", format: "date-time" }
       }
     };
   }
