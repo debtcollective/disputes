@@ -54,15 +54,15 @@
     "dev": "next -p 8080",
     "now-build": "next build",
     "pre-commit": "lint-staged",
+    "setup": "",
     "start": "next start",
-    "test": "jest",
     "start:ci": "next dev -p 8080",
+    "test": "jest",
+    "test:ci": "yarn test:coverage && yarn test:cypress:ci",
     "test:coverage": "jest --coverage",
     "test:cypress": "start-server-and-test dev http://localhost:8080 'cypress run'",
     "test:cypress:ci": "start-server-and-test start:ci http://localhost:8080 'cypress run --record'",
-    "test:watch": "jest --watch",
-    "test:ci": "yarn test:coverage && yarn test:cypress:ci",
-    "test:ci:setup": ""
+    "test:watch": "jest --watch"
   },
   "browserslist": "> 0.25%, not dead",
   "lint-staged": {
