@@ -6,6 +6,7 @@ after_success: npx codecov
 jobs:
   include:
     - stage: test
+      script: yarn test:setup
       script: yarn test:ci
 
     - stage: release

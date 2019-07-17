@@ -61,7 +61,8 @@
     "test:cypress": "start-server-and-test dev http://localhost:8080 'cypress run'",
     "test:cypress:ci": "start-server-and-test start:ci http://localhost:8080 'cypress run --record'",
     "test:watch": "jest --watch",
-    "test:ci": "yarn test:coverage && yarn test:cypress:ci"
+    "test:ci": "yarn test:coverage && yarn test:cypress:ci",
+    "test:ci:setup": ""
   },
   "browserslist": "> 0.25%, not dead",
   "lint-staged": {
