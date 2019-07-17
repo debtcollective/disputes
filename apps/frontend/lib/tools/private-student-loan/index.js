@@ -220,7 +220,7 @@ export const privateStudentLoanSchema = {
   },
 };
 
-const PrivateStudentLoan = () => (
+const PrivateStudentLoanForm = () => (
   <Form
     showErrorList={false}
     FieldTemplate={FieldTemplate}
@@ -232,4 +232,4 @@ const PrivateStudentLoan = () => (
   />
 );
 
-export default PrivateStudentLoan;
+export default PrivateStudentLoanForm;

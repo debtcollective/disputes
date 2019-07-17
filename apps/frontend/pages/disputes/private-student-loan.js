@@ -1,3 +1,3 @@
-import PrivateStudentLoan from "../../lib/tools/student-loan";
+import { PrivateStudentLoanForm } from "../../lib/tools";
 
-export default PrivateStudentLoan;
+export default PrivateStudentLoanForm;

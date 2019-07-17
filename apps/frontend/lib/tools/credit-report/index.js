@@ -217,7 +217,7 @@ export const creditReportSchema = {
   },
 };
 
-const CreditReport = () => (
+const CreditReportForm = () => (
   <Form
     showErrorList={false}
     FieldTemplate={FieldTemplate}
@@ -229,4 +229,4 @@ const CreditReport = () => (
   />
 );
 
-export default CreditReport;
+export default CreditReportForm;
