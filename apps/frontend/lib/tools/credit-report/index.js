@@ -4,7 +4,7 @@ import Form from "react-jsonschema-form";
 import React from "react";
 import usaStates from "../schemas/usa-states";
 
-const creditReportSchema = {
+export const creditReportSchema = {
   json: {
     $schema: "http://json-schema.org/schema#",
     definitions: {
@@ -217,14 +217,12 @@ const creditReportSchema = {
   },
 };
 
-export const schema = creditReportSchema;
-
 const CreditReport = () => (
   <Form
     showErrorList={false}
     FieldTemplate={FieldTemplate}
-    uiSchema={schema.ui}
-    schema={schema.json}
+    uiSchema={creditReportSchema.ui}
+    schema={creditReportSchema.json}
     onChange={() => console.log("changed")}
     onSubmit={() => console.log("submitted")}
     onError={() => console.log("errors")}
