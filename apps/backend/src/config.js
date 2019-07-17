@@ -16,7 +16,9 @@ nconf
       "DB_USER",
       "DB_PWD",
       "DB_NAME",
-      "DB_SCHEMA"
+      "DB_SCHEMA",
+      "DB_POOL_MIN",
+      "DB_POOL_MAX"
     ]
   })
   .defaults({
@@ -27,6 +29,8 @@ nconf
     DB_PWD: "",
     DB_NAME: `disputes_${env}`,
     DB_SCHEMA: "dc_disputes",
+    DB_POOL_MIN: 1,
+    DB_POOL_MAX: 1,
     IS_PROD: isProd,
     IS_TEST: isTest
   });
