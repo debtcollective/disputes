@@ -12,7 +12,6 @@
     "db:test:prepare": "NODE_ENV=test yarn db:migrate",
     "now-build": "yarn build && yarn setup",
     "pre-commit": "lint-staged",
-    "setup": "cp knexfile.sample.js knexfile.js",
     "start": "nodemon --exec babel-node src/index.js",
     "test": "jest --watch",
     "test:ci": "yarn test:coverage",

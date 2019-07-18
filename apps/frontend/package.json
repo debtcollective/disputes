@@ -55,7 +55,6 @@
     "dev": "next -p 8080",
     "now-build": "next build",
     "pre-commit": "lint-staged",
-    "setup": "",
     "start": "next start",
     "start:ci": "next dev -p 8080",
     "test": "jest",

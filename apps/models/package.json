@@ -19,7 +19,8 @@
   },
   "scripts": {
     "test": "jest --watch",
-    "test:coverage": "jest --watch"
+    "test:ci": "yarn test:coverage",
+    "test:coverage": "jest --coverage"
   },
   "bugs": {
     "url": "https://github.com/debtcollective/disputes/issues"
