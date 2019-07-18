@@ -1,0 +1,26 @@
+{
+  "name": "@debtcollective/models",
+  "version": "0.7.0",
+  "description": "Disputes app models",
+  "author": "Orlando Del Aguila <orlando@hashlabs.com>",
+  "homepage": "https://github.com/debtcollective/disputes#readme",
+  "license": "BSD-3-Clause",
+  "main": "src/index.js",
+  "directories": {
+    "src": "src",
+    "test": "__tests__"
+  },
+  "files": [
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/debtcollective/disputes.git"
+  },
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "bugs": {
+    "url": "https://github.com/debtcollective/disputes/issues"
+  }
+}

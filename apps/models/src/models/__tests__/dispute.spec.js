@@ -1,13 +1,7 @@
 import Dispute from "$models/dispute";
 import User from "$models/user";
-import { setupDatabase, cleanDatabase } from "$utils";
 
 describe("Dispute", () => {
-  beforeAll(() => {
-    setupDatabase();
-    return cleanDatabase();
-  });
-
   afterEach(() => cleanDatabase());
 
   describe("validations", () => {
