@@ -18,13 +18,16 @@
     "url": "git+https://github.com/debtcollective/disputes.git"
   },
   "scripts": {
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "test:coverage": "jest --watch"
   },
   "bugs": {
     "url": "https://github.com/debtcollective/disputes/issues"
   },
   "devDependencies": {
+    "@babel/core": "7.5.5",
     "babel-eslint": "10.0.2",
+    "babel-jest": "24.8.0",
     "eslint": "6.0.1",
     "eslint-config-prettier": "6.0.0",
     "eslint-plugin-import": "2.18.0",
@@ -34,6 +37,7 @@
     "eslint-plugin-promise": "4.2.1",
     "eslint-plugin-standard": "4.0.0",
     "husky": "3.0.0",
+    "jest": "24.8.0",
     "lint-staged": "9.2.0",
     "prettier": "1.18.2"
   },
