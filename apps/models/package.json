@@ -24,6 +24,11 @@
   "bugs": {
     "url": "https://github.com/debtcollective/disputes/issues"
   },
+  "dependencies": {
+    "lodash": "4.17.14",
+    "nconf": "0.10.0",
+    "objection": "1.6.9"
+  },
   "devDependencies": {
     "@babel/core": "7.5.5",
     "@babel/preset-env": "7.5.5",
@@ -52,10 +57,5 @@
       "eslint --fix",
       "git add"
     ]
-  },
-  "dependencies": {
-    "lodash": "4.17.14",
-    "nconf": "0.10.0",
-    "objection": "1.6.9"
   }
 }
