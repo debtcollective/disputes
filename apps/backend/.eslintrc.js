@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es6: true,
     jest: true,
-    node: true
+    node: true,
   },
   extends: [
     "eslint:recommended",
@@ -11,7 +11,7 @@ module.exports = {
     "plugin:flowtype/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "plugin:jest/recommended"
+    "plugin:jest/recommended",
   ],
   plugins: ["flowtype", "promise", "jest", "graphql"],
   rules: {
@@ -35,37 +35,30 @@ module.exports = {
       "error",
       {
         ignoreCase: true,
-        memberSyntaxSortOrder: ["none", "all", "single", "multiple"]
-      }
+        memberSyntaxSortOrder: ["none", "all", "single", "multiple"],
+      },
     ],
     "sort-keys": ["warn", "asc", { natural: true }],
     "space-before-blocks": ["error", "always"],
     "space-before-function-paren": [
       "error",
-      { anonymous: "never", named: "never", asyncArrow: "always" }
+      { anonymous: "never", named: "never", asyncArrow: "always" },
     ],
     "space-in-parens": ["error", "never"],
     "wrap-iife": ["error", "inside"],
-    "graphql/template-strings": [
-      "error",
-      {
-        env: "apollo",
-        schemaJson: require("./src/schema.js")
-      }
-    ]
   },
   globals: {},
   parser: "babel-eslint",
   parserOptions: {
     ecmaVersion: 2018,
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
     },
-    flowVersion: "0.98.1"
+    flowVersion: "0.98.1",
   },
   settings: {
     react: {
-      version: "detect"
-    }
-  }
+      version: "detect",
+    },
+  },
 };
