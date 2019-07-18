@@ -18,8 +18,8 @@ nconf
       "DB_NAME",
       "DB_SCHEMA",
       "DB_POOL_MIN",
-      "DB_POOL_MAX"
-    ]
+      "DB_POOL_MAX",
+    ],
   })
   .defaults({
     DEBUG: false,
@@ -32,7 +32,7 @@ nconf
     DB_POOL_MIN: 1,
     DB_POOL_MAX: 1,
     IS_PROD: isProd,
-    IS_TEST: isTest
+    IS_TEST: isTest,
   });
 
 const conf = nconf.get();

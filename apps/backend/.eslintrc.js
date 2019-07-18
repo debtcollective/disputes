@@ -1,16 +1,15 @@
 module.exports = {
   env: {
-    browser: true,
     es6: true,
     jest: true,
     node: true,
   },
   extends: [
     "eslint:recommended",
-    "plugin:node/recommended",
-    "plugin:flowtype/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
+    "plugin:node/recommended",
+    "plugin:flowtype/recommended",
     "plugin:jest/recommended",
   ],
   plugins: ["flowtype", "promise", "jest", "graphql"],
@@ -29,7 +28,6 @@ module.exports = {
     "no-trailing-spaces": ["error"],
     "object-curly-spacing": ["error", "always"],
     quotes: ["error", "double"],
-    "react/prop-types": 0,
     semi: ["error", "always"],
     "sort-imports": [
       "error",
@@ -46,19 +44,14 @@ module.exports = {
     ],
     "space-in-parens": ["error", "never"],
     "wrap-iife": ["error", "inside"],
+    // complains about imports/export syntax but we are using babel
+    "node/no-unsupported-features/es-syntax": "off",
   },
   globals: {},
   parser: "babel-eslint",
   parserOptions: {
     ecmaVersion: 2018,
-    ecmaFeatures: {
-      jsx: true,
-    },
+    sourceType: "module",
     flowVersion: "0.98.1",
-  },
-  settings: {
-    react: {
-      version: "detect",
-    },
   },
 };
