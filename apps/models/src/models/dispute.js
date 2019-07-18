@@ -1,7 +1,6 @@
-import { Model, ValidationError } from "objection";
-import Tool from "./tool";
 import * as Ajv from "ajv";
 import _ from "lodash";
+import { Model, ValidationError } from "objection";
 
 class Dispute extends Model {
   static get tableName() {
@@ -13,16 +12,16 @@ class Dispute extends Model {
       type: "object",
       required: ["tool_id", "tool_version"],
       properties: {
+        created_at: { type: "string", format: "date-time" },
+        data: { type: "object" },
+        deleted_at: { type: "string", format: "date-time" },
+        draft: { type: "boolean" },
         id: { type: "integer" },
         tool_id: { type: "string", minlength: 1, maxlength: 255 },
         tool_version: { type: "string", minlength: 1, maxlength: 255 },
+        updated_at: { type: "string", format: "date-time" },
         user_id: { type: "integer" },
-        data: { type: "object" },
-        draft: { type: "boolean" },
-        deleted_at: { type: "string", format: "date-time" },
-        created_at: { type: "string", format: "date-time" },
-        updated_at: { type: "string", format: "date-time" }
-      }
+      },
     };
   }
 
@@ -41,7 +40,7 @@ class Dispute extends Model {
     throw new ValidationError({
       type: "InvalidToolDataError",
       message: "Some parts of your input are invalid",
-      data: errors
+      data: errors,
     });
   }
 
@@ -60,7 +59,7 @@ class Dispute extends Model {
   }
 
   tool() {
-    return Tool.findById(this.tool_id);
+    return {};
   }
 }
 

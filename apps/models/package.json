@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.5.5",
+    "@babel/preset-env": "7.5.5",
     "babel-eslint": "10.0.2",
     "babel-jest": "24.8.0",
     "eslint": "6.0.1",
@@ -51,5 +52,10 @@
       "eslint --fix",
       "git add"
     ]
+  },
+  "dependencies": {
+    "lodash": "4.17.14",
+    "nconf": "0.10.0",
+    "objection": "1.6.9"
   }
 }
