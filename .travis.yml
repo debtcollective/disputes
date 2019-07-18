@@ -11,16 +11,15 @@ jobs:
         yarn test:ci
 
     - stage: release
-      if: branch = master
       node_js: lts/*
       script: skip
       deploy:
         provider: script
         skip_cleanup: true
-        script:
-          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc && git
-          remote set-url origin https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git
-          && git checkout master && lerna version --yes
+        script: >-
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc &&
+          git remote set-url origin https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git &&
+          git checkout master && lerna version --yes
 
 notifications:
   email: false
