@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/debtcollective/disputes/compare/v0.7.0...v0.8.0) (2019-07-22)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @date-io/moment to v1.3.7 ([eeffe67](https://github.com/debtcollective/disputes/commit/eeffe67))
+* **deps:** update dependency @date-io/moment to v1.3.8 ([0c14b5b](https://github.com/debtcollective/disputes/commit/0c14b5b))
+* **deps:** update dependency graphql to v14.4.2 ([11f0709](https://github.com/debtcollective/disputes/commit/11f0709))
+* **deps:** update dependency lodash to v4.17.13 [security] ([c907387](https://github.com/debtcollective/disputes/commit/c907387))
+* **deps:** update dependency next to v9 ([20c4d49](https://github.com/debtcollective/disputes/commit/20c4d49))
+* **deps:** update dependency react-apollo to v2.5.8 ([5b2b236](https://github.com/debtcollective/disputes/commit/5b2b236))
+* **deps:** update dependency react-jsonschema-form to v1.6.1 ([5d17858](https://github.com/debtcollective/disputes/commit/5d17858))
+
+
+### Features
+
+* **student:** Add base to render student loan tool ([84aaa85](https://github.com/debtcollective/disputes/commit/84aaa85))
+* **student:** add support for upload multiple files ([5d68757](https://github.com/debtcollective/disputes/commit/5d68757))
+
+
+
+
+
 # [0.7.0](https://github.com/debtcollective/disputes/compare/v0.6.0...v0.7.0) (2019-05-25)
 
 

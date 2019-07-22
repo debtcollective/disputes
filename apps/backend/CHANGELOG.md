@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/debtcollective/disputes/compare/v0.7.0...v0.8.0) (2019-07-22)
+
+
+### Bug Fixes
+
+* **deps:** update dependency apollo-server-express to v2.6.1 ([32cb3bc](https://github.com/debtcollective/disputes/commit/32cb3bc))
+* **deps:** update dependency apollo-server-express to v2.6.3 ([580e034](https://github.com/debtcollective/disputes/commit/580e034))
+* **deps:** update dependency apollo-server-express to v2.6.7 ([223cd30](https://github.com/debtcollective/disputes/commit/223cd30))
+* **deps:** update dependency graphql to v14.4.2 ([11f0709](https://github.com/debtcollective/disputes/commit/11f0709))
+* **deps:** update dependency knex to v0.17.3 ([81acec3](https://github.com/debtcollective/disputes/commit/81acec3))
+* **deps:** update dependency knex to v0.17.6 ([a81c44f](https://github.com/debtcollective/disputes/commit/a81c44f))
+* **deps:** update dependency knex to v0.19.0 ([3a82c08](https://github.com/debtcollective/disputes/commit/3a82c08))
+
+
+
+
+
 # [0.7.0](https://github.com/debtcollective/disputes/compare/v0.6.0...v0.7.0) (2019-05-25)
 
 **Note:** Version bump only for package @debtcollective/disputes-backend

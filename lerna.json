@@ -3,7 +3,7 @@
   "packages": [
     "apps/*"
   ],
-  "version": "0.7.0",
+  "version": "0.8.0",
   "useWorkspaces": true,
   "ignoreChanges": [
     "**/__fixtures__/**",
@@ -16,7 +16,7 @@
     },
     "version": {
       "conventionalCommits": true,
-      "githubRelease": true
+      "createRelease": "github"
     }
   }
 }
