@@ -1,0 +1,49 @@
+version: 2
+jobs:
+  test:
+    working_directory: ~/disputes
+    docker:
+      - image: circleci/node:11.13.0
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install dependencies
+          command: yarn install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: test
+          command: yarn test:ci
+      - run:
+          name: codecov
+          command: npx codecov
+      # persist workspace for the next command
+      - persist_to_workspace:
+          root: .
+          paths: .
+  publish_packages:
+    working_directory: ~/disputes
+    docker:
+      - image: circleci/node:11.13.0
+    steps:
+      - attach_workspace:
+          at: ~/circleci-deployment
+      - run:
+          name: publish packages
+          command: "lerna publish"
+
+workflows:
+  version: 2
+  pipeline:
+    jobs:
+      - test
+      - publish:
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
