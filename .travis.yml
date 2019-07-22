@@ -6,7 +6,9 @@ after_success: npx codecov
 jobs:
   include:
     - stage: test
-      script: yarn test:ci
+      script: >-
+        yarn setup &&
+        yarn test:ci
 
     - stage: release
       if: branch = master

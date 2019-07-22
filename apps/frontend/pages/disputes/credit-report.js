@@ -1,3 +1,3 @@
-import CreditReport from "../../lib/tools/credit-report";
+import { CreditReportForm } from "../../lib/tools";
 
-export default CreditReport;
+export default CreditReportForm;

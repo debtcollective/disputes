@@ -1,7 +1,10 @@
-import debtTypes from "../../disputes/dispute-types";
-import usaStates from "../../disputes/usa-states";
+import debtTypes from "../schemas/debt-types";
+import FieldTemplate from "../../../components/FieldTemplate";
+import Form from "react-jsonschema-form";
+import React from "react";
+import usaStates from "../schemas/usa-states";
 
-const schema = {
+export const generalDebtSchema = {
   json: {
     $schema: "http://json-schema.org/schema#",
     definitions: {
@@ -16,14 +19,21 @@ const schema = {
         type: "string",
       },
     },
-    description: `
-    Please have a photo of your picture ID ready to upload (taking a picture with your camera phone is fine).
-    <br><br>
-    Please make a list of all the errors that you want to dispute and be prepared to write a short statement explaining why those items should not negatively impact your credit. You will also have the option to upload a document highlighting errors on your report.
-    <br><br>
-    Please prepare all these materials before beginning this dispute. Once you begin, it will only take a few minutes to complete the dispute. Once you complete the dispute, a hard copy will be mailed to the credit reporting agency or agencies.',
-    `,
+    description:
+      "This dispute is for all types of debt in collections except student loans.",
     properties: {
+      collectionNotice: {
+        properties: {
+          "collection-notice-date": {
+            format: "date",
+            title: "Collection notice date",
+            type: "string",
+          },
+        },
+        required: ["collection-notice-date"],
+        title: "Collection notice",
+        type: "object",
+      },
       debts: {
         dependencies: {
           debtType: {
@@ -55,13 +65,12 @@ const schema = {
                     title: debtTypes.labels[2],
                   },
                 },
-                required: ["debtDescription"],
               },
             ],
           },
         },
         description:
-          "Please provide the amount of debt collectors claim you owe. This will help us better understand the types of debt you and our members are fighting.",
+          "Please provide the amount of debt collectors claim you owe. This will help us better understand the types of debt you and our members are fighting. ",
         properties: {
           debtAmount: {
             $format: "currency",
@@ -84,52 +93,34 @@ const schema = {
             title: "Your Mailing Address",
             type: "string",
           },
-          agencies: {
-            description: "Reporting agencies your dispute will be sent to",
-            items: {
-              enum: ["Experian", "Equifax", "TransUnion"],
-              type: "string",
-            },
-            minItems: 1,
-            title: "Reporting agencies",
-            type: "array",
-            uniqueItems: true,
+          "agency-address": {
+            title: "Collection agency’s or law firm’s mailing address",
+            type: "string",
+          },
+          "agency-city": {
+            title: "Collection agency’s or law firm’s City",
+            type: "string",
+          },
+          "agency-name": {
+            title: "Name of collection agency or law firm",
+            type: "string",
+          },
+          "agency-state": {
+            $ref: "#/definitions/usa-states",
+            title: "Collection agency’s or law firm’s State",
+          },
+          "agency-zip-code": {
+            pattern: "[0-9]{5}",
+            title: "Collection agency’s or law firm’s Zip Code",
+            type: "string",
           },
           city: {
             title: "Your City",
             type: "string",
           },
-          currentCreditor: {
-            title: "Current Creditor",
-            type: "string",
-          },
-          dob: {
-            format: "date",
-            title: "Your date of birth?",
-            type: "string",
-          },
-          email: {
-            format: "email",
-            title: "Your email",
-            type: "string",
-          },
           name: {
             title: "Your Full Name",
             type: "string",
-          },
-          originalCreditor: {
-            title: "Original Creditor",
-            type: "string",
-          },
-          phone: {
-            $format: "telephone",
-            title: "Your telephone",
-            type: "number",
-          },
-          ssn: {
-            $format: "ssn",
-            title: "Your SSN",
-            type: "number",
           },
           state: {
             $ref: "#/definitions/usa-states",
@@ -143,15 +134,13 @@ const schema = {
         },
         required: [
           "address",
-          "agencies",
+          "agency-address",
+          "agency-city",
+          "agency-name",
+          "agency-state",
+          "agency-zip-code",
           "city",
-          "currentCreditor",
-          "dob",
-          "email",
           "name",
-          "originalCreditor",
-          "phone",
-          "ssn",
           "state",
           "zip-code",
         ],
@@ -176,8 +165,18 @@ const schema = {
       address: {
         "ui:placeholder": "Street, unit number, floor, door number",
       },
-      agencies: {
-        "ui:widget": "checkboxes",
+      "agency-address": {
+        "ui:placeholder": "Street, unit number, floor, door number",
+      },
+      "agency-city": {
+        classNames: "field-address",
+      },
+      "agency-state": {
+        classNames: "field-address",
+        "ui:placeholder": "Select one",
+      },
+      "agency-zip-code": {
+        classNames: "field-address",
       },
       city: {
         classNames: "field-address",
@@ -185,33 +184,42 @@ const schema = {
       name: {
         "ui:placeholder": "Jane Doe",
       },
-      ssn: {
-        "ui:placeholder": "###-##-####",
-      },
       state: {
         classNames: "field-address",
         "ui:placeholder": "Select one",
       },
       "ui:order": [
         "name",
-        "dob",
-        "ssn",
         "address",
         "city",
         "state",
         "zip-code",
-        "email",
-        "phone",
-        "currentCreditor",
-        "originalCreditor",
-        "agencies",
+        "agency-name",
+        "agency-address",
+        "agency-city",
+        "agency-state",
+        "agency-zip-code",
       ],
       "zip-code": {
         classNames: "field-address",
       },
     },
-    "ui:order": ["*", "debts", "personalInformation"],
+    "ui:order": ["*", "debts", "personalInformation", "collectionNotice"],
   },
 };
 
-export default schema;
+const log = type => console.log.bind(console, type);
+
+const GeneralDebtForm = () => (
+  <Form
+    showErrorList={false}
+    FieldTemplate={FieldTemplate}
+    uiSchema={generalDebtSchema.ui}
+    schema={generalDebtSchema.json}
+    onChange={log("changed")}
+    onSubmit={log("submitted")}
+    onError={log("errors")}
+  />
+);
+
+export default GeneralDebtForm;

@@ -1,10 +1,10 @@
 {
   "workbench.colorCustomizations": {
     "tab.unfocusedActiveBorder": "#fff0",
-    "tab.activeBorder": "#d9ffd8",
-    "titleBar.activeBackground": "#d9ffd8",
+    "tab.activeBorder": "#fcc8ff",
+    "titleBar.activeBackground": "#fcc8ff",
     "titleBar.activeForeground": "#000000",
-    "statusBar.background": "#d9ffd8",
+    "statusBar.background": "#fcc8ff",
     "statusBar.foreground": "#000000"
   },
   "colorTabs.titleBackground": true,

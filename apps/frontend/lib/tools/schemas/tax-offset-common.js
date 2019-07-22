@@ -1,4 +1,4 @@
-import debtTypes from "./dispute-types";
+import debtTypes from "./debt-types";
 import personalInfo from "./personal-info";
 import usaStates from "./usa-states";
 import yesnoSchema from "./yesno-schema";

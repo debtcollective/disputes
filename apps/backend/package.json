@@ -6,19 +6,25 @@
   "license": "3-clause BSD",
   "private": true,
   "scripts": {
-    "pre-commit": "lint-staged",
-    "start": "nodemon --exec babel-node src/index.js",
     "build": "babel src -d build",
-    "now-build": "yarn build",
+    "db:migrate": "yarn knex migrate:latest",
+    "db:migrate:down": "yarn knex migrate:down",
+    "db:test:prepare": "NODE_ENV=test yarn db:migrate",
+    "now-build": "yarn build && yarn setup",
+    "pre-commit": "lint-staged",
+    "setup": "cp knexfile.sample.js knexfile.js",
+    "start": "nodemon --exec babel-node src/index.js",
     "test": "jest --watch",
-    "test:coverage": "jest --coverage",
-    "test:ci": "yarn test:coverage"
+    "test:ci": "yarn test:coverage",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "apollo-server-express": "2.6.7",
     "express": "4.17.1",
     "graphql": "14.4.2",
     "knex": "0.19.0",
+    "graphql-type-json": "~0.3.0",
+    "lodash": "~4.17.11",
     "objection": "1.6.9",
     "pg": "7.11.0"
   },
@@ -32,6 +38,7 @@
     "babel-plugin-import-graphql": "2.7.0",
     "eslint": "6.0.1",
     "eslint-plugin-flowtype": "3.11.1",
+    "babel-plugin-module-resolver": "~3.2.0",
     "eslint-plugin-graphql": "3.0.3",
     "eslint-plugin-import": "2.18.0",
     "eslint-plugin-jest": "22.7.2",

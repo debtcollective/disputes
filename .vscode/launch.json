@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "jest backend",
+      "type": "node",
+      "request": "launch",
+      "address": "localhost",
+      "protocol": "inspector",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/lerna",
+      "runtimeArgs": ["exec", "--scope", "backend", "--", "node"],
+      "args": [
+        "${workspaceRoot}/node_modules/jest/bin/jest.js",
+        "--runInBand",
+        "--no-cache",
+        "apps/backend"
+      ]
+    }
+  ]
+}
