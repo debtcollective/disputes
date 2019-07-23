@@ -1,4 +1,6 @@
-version: 2
+version: 2.1
+orbs:
+  cypress: cypress-io/cypress@1
 jobs:
   test:
     working_directory: ~/disputes
@@ -25,7 +27,8 @@ jobs:
       - persist_to_workspace:
           root: .
           paths: .
-  publish_packages:
+
+  publish:
     working_directory: ~/disputes
     docker:
       - image: circleci/node:11.13.0
@@ -41,9 +44,13 @@ workflows:
   pipeline:
     jobs:
       - test
+      - cypress/run:
+          yarn: true
+          record: true
       - publish:
           requires:
             - test
+            - cypress/run
           filters:
             branches:
               only: master
