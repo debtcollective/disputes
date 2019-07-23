@@ -1,6 +1,6 @@
-import * as Ajv from "ajv";
+import Ajv from "ajv";
 import _ from "lodash";
-import { Model, ValidationError } from "objection";
+import Model from "./model";
 
 class Dispute extends Model {
   static get tableName() {
@@ -10,22 +10,24 @@ class Dispute extends Model {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["tool_id", "tool_version"],
+      required: ["toolId", "toolVersion"],
       properties: {
-        created_at: { type: "string", format: "date-time" },
+        createdAt: { type: "string", format: "date-time" },
         data: { type: "object" },
-        deleted_at: { type: "string", format: "date-time" },
-        draft: { type: "boolean" },
+        deletedAt: { type: "string", format: "date-time" },
+        draft: { type: "boolean", default: true },
         id: { type: "integer" },
-        tool_id: { type: "string", minlength: 1, maxlength: 255 },
-        tool_version: { type: "string", minlength: 1, maxlength: 255 },
+        toolId: { type: "string", minlength: 1, maxlength: 255 },
+        toolVersion: { type: "string", minlength: 1, maxlength: 255 },
         updated_at: { type: "string", format: "date-time" },
-        user_id: { type: "integer" },
+        userId: { type: "integer" },
       },
     };
   }
 
-  $beforeInsert() {
+  $beforeInsert(queryContext) {
+    super.$beforeInsert(queryContext);
+
     // don't run validations when is in draft mode
     if (this.draft) {
       return true;
@@ -59,7 +61,7 @@ class Dispute extends Model {
   }
 
   tool() {
-    return {};
+    return { schema: {} };
   }
 }
 
