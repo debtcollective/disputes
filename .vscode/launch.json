@@ -2,19 +2,32 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "jest backend",
+      "name": "Backend Jest",
       "type": "node",
       "request": "launch",
       "address": "localhost",
       "protocol": "inspector",
       "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/lerna",
-      "runtimeArgs": ["exec", "--scope", "backend", "--", "node"],
+      "runtimeArgs": [
+        "exec",
+        "--scope",
+        "@debtcollective/disputes-backend",
+        "--",
+        "node"
+      ],
       "args": [
         "${workspaceRoot}/node_modules/jest/bin/jest.js",
         "--runInBand",
-        "--no-cache",
-        "apps/backend"
+        "--no-cache"
       ]
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Backend Debug",
+      "processId": "${command:PickProcess}",
+      "restart": true,
+      "protocol": "inspector"
     }
   ]
 }
