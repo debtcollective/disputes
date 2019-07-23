@@ -1,25 +1,34 @@
+import path from "path";
+import { knexSnakeCaseMappers } from "objection";
 import {
   DB_CONNECTION_STRING,
   DB_HOST,
-  DB_PORT,
-  DB_USER,
-  DB_PWD,
   DB_NAME,
+  DB_POOL_MAX,
   DB_POOL_MIN,
-  DB_POOL_MAX
+  DB_PORT,
+  DB_PWD,
+  DB_USER,
 } from "./config";
 
 module.exports = {
   client: "postgresql",
   connection: DB_CONNECTION_STRING || {
+    database: DB_NAME,
     host: DB_HOST,
+    password: DB_PWD,
     port: DB_PORT,
     user: DB_USER,
-    password: DB_PWD,
-    database: DB_NAME
   },
   pool: {
+    max: DB_POOL_MAX,
     min: DB_POOL_MIN,
-    max: DB_POOL_MAX
-  }
+  },
+  migrations: {
+    directory: path.join(__dirname + "/knex/migrations"),
+  },
+  seeds: {
+    directory: path.join(__dirname + "/knex/seeds"),
+  },
+  ...knexSnakeCaseMappers(),
 };

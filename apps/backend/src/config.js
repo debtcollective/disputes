@@ -5,6 +5,9 @@ const env = process.env.NODE_ENV;
 const isProd = env === "production";
 const isTest = env === "test";
 
+// load dotenv config
+require("dotenv").config();
+
 nconf
   .env({
     separator: "__",
@@ -22,15 +25,15 @@ nconf
     ],
   })
   .defaults({
-    DEBUG: false,
     DB_HOST: "localhost",
-    DB_PORT: "5432",
-    DB_USER: "postgres",
-    DB_PWD: "",
     DB_NAME: `disputes_${env}`,
-    DB_SCHEMA: "dc_disputes",
-    DB_POOL_MIN: 1,
     DB_POOL_MAX: 1,
+    DB_POOL_MIN: 1,
+    DB_PORT: "5432",
+    DB_PWD: "",
+    DB_SCHEMA: "tdc_disputes",
+    DB_USER: "postgres",
+    DEBUG: false,
     IS_PROD: isProd,
     IS_TEST: isTest,
   });

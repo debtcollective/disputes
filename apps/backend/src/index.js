@@ -1,20 +1,18 @@
 import express from "express";
-import { ApolloServer, gql } from "apollo-server-express";
-import { Model } from "objection";
-import Knex from "knex";
-import knexConfig from "../knexfile";
-import { typeDefs, resolvers } from "./schema";
+import knex from "./knex";
+import { ApolloServer } from "apollo-server-express";
+import { Model } from "@debtcollective/models";
+import { resolvers, typeDefs } from "./schema";
 
-// setup Objection.js with Knex
-const knex = Knex(knexConfig);
+// setup Objection.js
 Model.knex(knex);
 
 // init ApolloServer
 const server = new ApolloServer({
-  typeDefs,
-  resolvers,
   introspection: true,
-  playground: true
+  playground: true,
+  resolvers,
+  typeDefs,
 });
 
 const app = express();
