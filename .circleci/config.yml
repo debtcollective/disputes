@@ -47,6 +47,11 @@ workflows:
       - cypress/run:
           yarn: true
           record: true
+          # we only run these in the front-end atm
+          working_directory: apps/frontend
+          start: yarn start:ci
+          wait-on: "http://localhost:8080"
+
       - publish:
           requires:
             - test
