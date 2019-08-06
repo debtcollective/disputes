@@ -28,7 +28,7 @@ nconf
   .defaults({
     DB_HOST: "localhost",
     DB_NAME: `disputes_${env}`,
-    DB_POOL_MAX: 1,
+    DB_POOL_MAX: 10,
     DB_POOL_MIN: 1,
     DB_PORT: "5432",
     DB_PWD: "",
@@ -40,7 +40,5 @@ nconf
   });
 
 const conf = nconf.get();
-
-console.log(conf.DB_CONNECTION_STRING);
 
 module.exports = conf;

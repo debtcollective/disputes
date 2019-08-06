@@ -6,6 +6,10 @@ describe("Dispute", () => {
     Dispute.knex(knex);
   });
 
+  afterAll(() => {
+    knex.destroy();
+  });
+
   it("creates a new record", async () => {
     const dispute = await Dispute.query().insert({
       toolId: "1",
