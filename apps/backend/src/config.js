@@ -1,4 +1,5 @@
 import nconf from "nconf";
+import path from "path";
 
 process.env.NODE_ENV = process.env.NODE_ENV || "development";
 const env = process.env.NODE_ENV;
@@ -6,7 +7,7 @@ const isProd = env === "production";
 const isTest = env === "test";
 
 // load dotenv config
-require("dotenv").config();
+require("dotenv").config({ path: path.join(__dirname, "../.env") });
 
 nconf
   .env({
@@ -40,4 +41,6 @@ nconf
 
 const conf = nconf.get();
 
-export default conf;
+console.log(conf.DB_CONNECTION_STRING);
+
+module.exports = conf;

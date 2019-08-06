@@ -12,8 +12,7 @@ jobs:
           POSTGRES_DB: disputes_test
 
     environment:
-      DB_CONNECTION_STRING: "postgres://postgres@localhost:5432/disputes_test?sslmode=disable"
-      DB_SCHEMA: "public"
+      DB_CONNECTION_STRING: "postgresql://postgres@localhost:5432/disputes_test?sslmode=disable"
 
     steps:
       - checkout
