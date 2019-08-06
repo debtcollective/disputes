@@ -10,10 +10,11 @@
     "db:migrate": "babel-node node_modules/.bin/knex migrate:latest --knexfile ./src/knexfile",
     "db:migrate:down": "babel-node node_modules/.bin/knex migrate:down --knexfile ./src/knexfile",
     "db:test:prepare": "NODE_ENV=test yarn db:migrate",
+    "debug": "nodemon --inspect --exec babel-node src/index.js",
     "now-build": "yarn build && yarn setup",
     "pre-commit": "lint-staged",
+    "setup:ci": "yarn db:test:prepare",
     "start": "nodemon --exec babel-node src/index.js",
-    "debug": "nodemon --inspect --exec babel-node src/index.js",
     "test": "jest --watch",
     "test:ci": "yarn test:coverage",
     "test:coverage": "jest --coverage"
