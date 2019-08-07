@@ -24,7 +24,7 @@
     "pre-commit": "lint-staged",
     "test": "jest",
     "test:ci": "yarn test:coverage",
-    "test:coverage": "jest --coverage --verbose --color",
+    "test:coverage": "jest --coverage --verbose --color --passWithNoTests",
     "test:watch": "jest --watch"
   },
   "bugs": {
@@ -54,12 +54,12 @@
   },
   "lint-staged": {
     "*.js": [
+      "prettier-eslint --write",
       "flow focus-check",
-      "eslint --fix",
       "git add"
     ],
     "*.{json,md}": [
-      "prettier --fix",
+      "prettier-eslint --write",
       "git add"
     ]
   }
