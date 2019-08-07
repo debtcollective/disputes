@@ -58,7 +58,7 @@ jobs:
           at: ~/disputes
       - run:
           name: publish packages
-          command: "yarn lerna publish"
+          command: "yarn lerna publish --yes"
 
 workflows:
   version: 2
