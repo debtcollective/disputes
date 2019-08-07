@@ -55,7 +55,7 @@ jobs:
       - image: circleci/node:11.13.0
     steps:
       - attach_workspace:
-          at: ~/circleci-deployment
+          at: ~/disputes
       - run:
           name: publish packages
           command: "yarn lerna publish"
