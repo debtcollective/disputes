@@ -57,6 +57,10 @@ jobs:
       - attach_workspace:
           at: ~/disputes
       - run:
+          name: add github.com to ssh known_hosts
+          command: "ssh-keyscan github.com >> ~/.ssh/known_hosts"
+
+      - run:
           name: publish packages
           command: "yarn lerna publish --yes"
 
