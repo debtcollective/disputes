@@ -3,7 +3,7 @@
   "version": "0.8.0",
   "description": "Dispute Tools back-end",
   "main": "index.js",
-  "license": "3-clause BSD",
+  "license": "BSD-3-Clause",
   "private": true,
   "scripts": {
     "build": "babel src -d build",

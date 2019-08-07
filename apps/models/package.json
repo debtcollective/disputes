@@ -21,9 +21,11 @@
     "url": "git+https://github.com/debtcollective/disputes.git"
   },
   "scripts": {
-    "test": "jest --watch",
+    "pre-commit": "lint-staged",
+    "test": "jest",
     "test:ci": "yarn test:coverage",
-    "test:coverage": "jest --coverage --verbose --color"
+    "test:coverage": "jest --coverage --verbose --color",
+    "test:watch": "jest --watch"
   },
   "bugs": {
     "url": "https://github.com/debtcollective/disputes/issues"
