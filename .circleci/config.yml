@@ -57,13 +57,15 @@ jobs:
       - attach_workspace:
           at: ~/disputes
       - run:
-          name: add github.com to ssh known_hosts
+          name: configure git
           command: |
             mkdir -p ~/.ssh
             chmod 700 ~/.ssh
             touch ~/.ssh/known_hosts
             chmod 644 ~/.ssh/known_hosts
             ssh-keyscan github.com >> ~/.ssh/known_hosts
+            git config user.email "bot@debtcollective.org"
+            git config user.name "DebtBot"
       - run:
           name: publish packages
           command: "yarn lerna publish --yes"
