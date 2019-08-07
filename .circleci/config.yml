@@ -56,6 +56,9 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/disputes
+      - add_ssh_keys:
+          fingerprints:
+            - "ec:c4:3f:5b:17:2f:30:52:8d:82:22:80:6a:eb:f4:54"
       - run:
           name: configure git
           command: |
