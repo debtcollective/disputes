@@ -11,7 +11,7 @@
     "db:migrate:down": "babel-node node_modules/.bin/knex migrate:down --knexfile ./src/knexfile.js",
     "db:test:prepare": "NODE_ENV=test yarn db:migrate",
     "debug": "nodemon --inspect --exec babel-node src/index.js",
-    "now-build": "yarn build && yarn setup",
+    "now-build": "yarn build",
     "pre-commit": "lint-staged",
     "setup:ci": "yarn db:test:prepare",
     "start": "nodemon --exec babel-node src/index.js",
