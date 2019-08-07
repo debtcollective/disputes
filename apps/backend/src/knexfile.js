@@ -1,5 +1,5 @@
-import path from "path";
 import { knexSnakeCaseMappers } from "objection";
+import path from "path";
 import {
   DB_CONNECTION_STRING,
   DB_HOST,
@@ -20,12 +20,12 @@ module.exports = {
     port: DB_PORT,
     user: DB_USER,
   },
+  migrations: {
+    directory: path.join(__dirname + "/knex/migrations"),
+  },
   pool: {
     max: DB_POOL_MAX,
     min: DB_POOL_MIN,
-  },
-  migrations: {
-    directory: path.join(__dirname + "/knex/migrations"),
   },
   seeds: {
     directory: path.join(__dirname + "/knex/seeds"),

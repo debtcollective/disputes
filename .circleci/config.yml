@@ -58,7 +58,7 @@ jobs:
           at: ~/circleci-deployment
       - run:
           name: publish packages
-          command: "lerna publish"
+          command: "yarn lerna publish"
 
 workflows:
   version: 2
