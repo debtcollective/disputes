@@ -14,6 +14,9 @@ coverage:
       models:
         target: 80%
         flags: models
+      tools:
+        target: 80%
+        flags: tools
 
 flags:
   backend:
@@ -25,3 +28,6 @@ flags:
   models:
     paths:
       - apps/models/
+  tools:
+    paths:
+      - apps/tools/
