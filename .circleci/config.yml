@@ -70,6 +70,9 @@ jobs:
             git config user.email "bot@debtcollective.org"
             git config user.name "DebtBot"
       - run:
+          name: configure npm credentials
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+      - run:
           name: publish packages
           command: "yarn lerna publish --yes"
 
