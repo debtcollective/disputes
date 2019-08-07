@@ -71,8 +71,7 @@
     "*.js": [
       "prettier-eslint --write",
       "flow focus-check",
-      "git add",
-      "eslint --fix"
+      "git add"
     ],
     "*.{json,md}": [
       "prettier-eslint --write",
