@@ -1,12 +1,9 @@
-/*eslint sort-keys: 0*/
+/* eslint sort-keys: 0 */
 
-import FieldTemplate from "../../../components/FieldTemplate";
-import Form from "react-jsonschema-form";
-import React from "react";
 import taxOffsetCommonSchema from "../schemas/tax-offset-common";
 import yesnoSchema from "../schemas/yesno-schema";
 
-export const taxOffsetCSchema = {
+const taxOffsetCSchema = {
   json: {
     ...taxOffsetCommonSchema.json,
     properties: {
@@ -234,18 +231,4 @@ export const taxOffsetCSchema = {
   },
 };
 
-const log = type => console.log.bind(console, type);
-
-const TaxOffsetCForm = () => (
-  <Form
-    showErrorList={false}
-    FieldTemplate={FieldTemplate}
-    uiSchema={taxOffsetCSchema.ui}
-    schema={taxOffsetCSchema.json}
-    onChange={log("changed")}
-    onSubmit={log("submitted")}
-    onError={log("errors")}
-  />
-);
-
-export default TaxOffsetCForm;
+export default taxOffsetCSchema;

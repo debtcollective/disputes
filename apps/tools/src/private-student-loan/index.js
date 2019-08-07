@@ -1,10 +1,7 @@
 import debtTypes from "../schemas/debt-types";
-import FieldTemplate from "../../../components/FieldTemplate";
-import Form from "react-jsonschema-form";
-import React from "react";
 import usaStates from "../schemas/usa-states";
 
-export const privateStudentLoanSchema = {
+const privateStudentLoanSchema = {
   json: {
     $schema: "http://json-schema.org/schema#",
     definitions: {
@@ -220,16 +217,4 @@ export const privateStudentLoanSchema = {
   },
 };
 
-const PrivateStudentLoanForm = () => (
-  <Form
-    showErrorList={false}
-    FieldTemplate={FieldTemplate}
-    uiSchema={privateStudentLoanSchema.ui}
-    schema={privateStudentLoanSchema.json}
-    onChange={() => console.log("changed")}
-    onSubmit={() => console.log("submitted")}
-    onError={() => console.log("errors")}
-  />
-);
-
-export default PrivateStudentLoanForm;
+export default privateStudentLoanSchema;

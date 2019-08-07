@@ -1,10 +1,7 @@
 import debtTypes from "../schemas/debt-types";
-import FieldTemplate from "../../../components/FieldTemplate";
-import Form from "react-jsonschema-form";
-import React from "react";
 import usaStates from "../schemas/usa-states";
 
-export const creditReportSchema = {
+const creditReportSchema = {
   json: {
     $schema: "http://json-schema.org/schema#",
     definitions: {
@@ -217,16 +214,4 @@ export const creditReportSchema = {
   },
 };
 
-const CreditReportForm = () => (
-  <Form
-    showErrorList={false}
-    FieldTemplate={FieldTemplate}
-    uiSchema={creditReportSchema.ui}
-    schema={creditReportSchema.json}
-    onChange={() => console.log("changed")}
-    onSubmit={() => console.log("submitted")}
-    onError={() => console.log("errors")}
-  />
-);
-
-export default CreditReportForm;
+export default creditReportSchema;

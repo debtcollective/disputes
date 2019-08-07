@@ -1,12 +1,9 @@
-/*eslint sort-keys: 0*/
+/* eslint sort-keys: 0 */
 
-import FieldTemplate from "../../../components/FieldTemplate";
-import Form from "react-jsonschema-form";
-import React from "react";
 import wageGarnishmentCommonSchema from "../schemas/wage-garnishment-common";
 import yesnoSchema from "../schemas/yesno-schema";
 
-export const wageGarnishmentESchema = {
+const wageGarnishmentESchema = {
   ...wageGarnishmentCommonSchema,
   json: {
     ...wageGarnishmentCommonSchema.json,
@@ -87,18 +84,4 @@ export const wageGarnishmentESchema = {
   },
 };
 
-const log = type => console.log.bind(console, type);
-
-const WageGarnishmentEForm = () => (
-  <Form
-    showErrorList={false}
-    FieldTemplate={FieldTemplate}
-    uiSchema={wageGarnishmentESchema.ui}
-    schema={wageGarnishmentESchema.json}
-    onChange={log("changed")}
-    onSubmit={log("submitted")}
-    onError={log("errors")}
-  />
-);
-
-export default WageGarnishmentEForm;
+export default wageGarnishmentESchema;

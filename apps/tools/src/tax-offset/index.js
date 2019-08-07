@@ -1,5 +1,5 @@
-export { default as TaxOffsetAForm, taxOffsetASchema } from "./a";
-export { default as TaxOffsetBForm, taxOffsetBSchema } from "./b";
-export { default as TaxOffsetCForm, taxOffsetCSchema } from "./c";
-export { default as TaxOffsetDForm, taxOffsetDSchema } from "./d";
-export { default as TaxOffsetEForm, taxOffsetESchema } from "./e";
+export { default as taxOffsetASchema } from "./a";
+export { default as taxOffsetBSchema } from "./b";
+export { default as taxOffsetCSchema } from "./c";
+export { default as taxOffsetDSchema } from "./d";
+export { default as taxOffsetESchema } from "./e";

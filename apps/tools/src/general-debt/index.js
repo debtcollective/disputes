@@ -1,10 +1,7 @@
 import debtTypes from "../schemas/debt-types";
-import FieldTemplate from "../../../components/FieldTemplate";
-import Form from "react-jsonschema-form";
-import React from "react";
 import usaStates from "../schemas/usa-states";
 
-export const generalDebtSchema = {
+const generalDebtSchema = {
   json: {
     $schema: "http://json-schema.org/schema#",
     definitions: {
@@ -208,18 +205,4 @@ export const generalDebtSchema = {
   },
 };
 
-const log = type => console.log.bind(console, type);
-
-const GeneralDebtForm = () => (
-  <Form
-    showErrorList={false}
-    FieldTemplate={FieldTemplate}
-    uiSchema={generalDebtSchema.ui}
-    schema={generalDebtSchema.json}
-    onChange={log("changed")}
-    onSubmit={log("submitted")}
-    onError={log("errors")}
-  />
-);
-
-export default GeneralDebtForm;
+export default generalDebtSchema;
