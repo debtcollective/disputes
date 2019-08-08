@@ -1,4 +1,4 @@
-# Back-end
+# Dispute Tools Backend
 
 ## Setup
 
@@ -13,6 +13,12 @@ You need to create databases for development and test environment, you can do th
 ```bash
 createdb disputes_development
 createdb disputes_test
+```
+
+Now you run migrations with
+
+```bash
+yarn db:migrate
 ```
 
 ## Usage
