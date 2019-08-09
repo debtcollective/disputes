@@ -1,0 +1,98 @@
+version: 2.1
+orbs:
+  cypress: cypress-io/cypress@1
+jobs:
+  test:
+    working_directory: ~/disputes
+    docker:
+      - image: circleci/node:11.13.0
+      - image: circleci/postgres:10-alpine-ram
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: disputes_test
+
+    environment:
+      DB_CONNECTION_STRING: "postgresql://postgres@localhost:5432/disputes_test?sslmode=disable"
+
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install dependencies
+          command: yarn install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: Waiting for Postgres to be ready
+          command: |
+            for i in `seq 1 10`;
+            do
+              nc -z localhost 5432 && echo Success && exit 0
+              echo -n .
+              sleep 1
+            done
+            echo Failed waiting for Postgres && exit 1
+      - run:
+          name: Setup test environment
+          command: yarn setup:ci
+      - run:
+          name: test
+          command: yarn test:ci
+      - run:
+          name: codecov
+          command: npx codecov
+      # persist workspace for the next command
+      - persist_to_workspace:
+          root: .
+          paths: .
+
+  publish:
+    working_directory: ~/disputes
+    docker:
+      - image: circleci/node:11.13.0
+    steps:
+      - attach_workspace:
+          at: ~/disputes
+      - add_ssh_keys:
+          fingerprints:
+            - "ec:c4:3f:5b:17:2f:30:52:8d:82:22:80:6a:eb:f4:54"
+      - run:
+          name: configure git
+          command: |
+            mkdir -p ~/.ssh
+            chmod 700 ~/.ssh
+            touch ~/.ssh/known_hosts
+            chmod 644 ~/.ssh/known_hosts
+            ssh-keyscan github.com >> ~/.ssh/known_hosts
+            git config user.email "bot@debtcollective.org"
+            git config user.name "DebtBot"
+      - run:
+          name: configure npm credentials
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+      - run:
+          name: publish packages
+          command: "yarn lerna publish --yes"
+
+workflows:
+  version: 2
+  pipeline:
+    jobs:
+      - test
+      - cypress/run:
+          yarn: true
+          record: true
+          # we only run it in the front-end
+          working_directory: apps/frontend
+          start: yarn start:ci
+          wait-on: "http://localhost:8080"
+
+      - publish:
+          requires:
+            - test
+            - cypress/run
+          filters:
+            branches:
+              only: master

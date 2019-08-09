@@ -1,19 +1,7 @@
 import FieldTemplate from "../../../components/FieldTemplate";
 import Form from "react-jsonschema-form";
 import React from "react";
-import wageGarnishmentCommonSchema from "../schemas/wage-garnishment-common";
-
-export const wageGarnishmentASchema = {
-  ...wageGarnishmentCommonSchema,
-  json: {
-    ...wageGarnishmentCommonSchema.json,
-  },
-  ui: {
-    ...wageGarnishmentCommonSchema.ui,
-  },
-};
-
-const log = type => console.log.bind(console, type);
+import { wageGarnishmentASchema } from "@debtcollective/tools";
 
 const WageGarnishmentAForm = () => (
   <Form
@@ -21,9 +9,9 @@ const WageGarnishmentAForm = () => (
     FieldTemplate={FieldTemplate}
     uiSchema={wageGarnishmentASchema.ui}
     schema={wageGarnishmentASchema.json}
-    onChange={log("changed")}
-    onSubmit={log("submitted")}
-    onError={log("errors")}
+    onChange={() => console.log("changed")}
+    onSubmit={() => console.log("submitted")}
+    onError={() => console.log("errors")}
   />
 );
 

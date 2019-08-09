@@ -1,17 +1,16 @@
 module.exports = {
   env: {
-    browser: true,
     es6: true,
     jest: true,
-    node: true
+    node: true,
   },
   extends: [
     "eslint:recommended",
-    "plugin:node/recommended",
-    "plugin:flowtype/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "plugin:jest/recommended"
+    "plugin:node/recommended",
+    "plugin:flowtype/recommended",
+    "plugin:jest/recommended",
   ],
   plugins: ["flowtype", "promise", "jest", "graphql"],
   rules: {
@@ -29,43 +28,30 @@ module.exports = {
     "no-trailing-spaces": ["error"],
     "object-curly-spacing": ["error", "always"],
     quotes: ["error", "double"],
-    "react/prop-types": 0,
     semi: ["error", "always"],
     "sort-imports": [
       "error",
       {
         ignoreCase: true,
-        memberSyntaxSortOrder: ["none", "all", "single", "multiple"]
-      }
+        memberSyntaxSortOrder: ["none", "all", "single", "multiple"],
+      },
     ],
     "sort-keys": ["warn", "asc", { natural: true }],
     "space-before-blocks": ["error", "always"],
     "space-before-function-paren": [
       "error",
-      { anonymous: "never", named: "never", asyncArrow: "always" }
+      { anonymous: "never", named: "never", asyncArrow: "always" },
     ],
     "space-in-parens": ["error", "never"],
     "wrap-iife": ["error", "inside"],
-    "graphql/template-strings": [
-      "error",
-      {
-        env: "apollo",
-        schemaJson: require("./src/schema.js")
-      }
-    ]
+    // complains about imports/export syntax but we are using babel
+    "node/no-unsupported-features/es-syntax": "off",
   },
   globals: {},
   parser: "babel-eslint",
   parserOptions: {
     ecmaVersion: 2018,
-    ecmaFeatures: {
-      jsx: true
-    },
-    flowVersion: "0.98.1"
+    sourceType: "module",
+    flowVersion: "0.98.1",
   },
-  settings: {
-    react: {
-      version: "detect"
-    }
-  }
 };

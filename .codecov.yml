@@ -11,6 +11,12 @@ coverage:
       frontend:
         target: 80%
         flags: frontend
+      models:
+        target: 80%
+        flags: models
+      tools:
+        target: 80%
+        flags: tools
 
 flags:
   backend:
@@ -19,3 +25,9 @@ flags:
   frontend:
     paths:
       - apps/frontend/
+  models:
+    paths:
+      - apps/models/
+  tools:
+    paths:
+      - apps/tools/
