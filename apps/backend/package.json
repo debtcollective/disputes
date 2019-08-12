@@ -1,6 +1,6 @@
 {
   "name": "@debtcollective/disputes-backend",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "Dispute Tools back-end",
   "main": "index.js",
   "license": "BSD-3-Clause",
@@ -20,8 +20,8 @@
     "test:coverage": "jest --coverage --verbose --color"
   },
   "dependencies": {
-    "@debtcollective/models": "^0.8.1",
-    "@debtcollective/tools": "^0.8.1",
+    "@debtcollective/models": "^0.8.2",
+    "@debtcollective/tools": "^0.8.2",
     "apollo-server-express": "2.8.1",
     "dotenv": "8.0.0",
     "express": "4.17.1",
