@@ -31,7 +31,7 @@
     "lodash": "4.17.14",
     "nconf": "0.10.0",
     "objection": "1.6.9",
-    "pg": "7.11.0"
+    "pg": "7.12.1"
   },
   "devDependencies": {
     "@babel/cli": "7.5.5",
