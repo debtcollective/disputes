@@ -1,7 +1,11 @@
 import "jest-dom/extend-expect";
 import RadioField from "../RadioField";
 import React from "react";
-import { cleanup, fireEvent, render as renderRtl } from "react-testing-library";
+import {
+  cleanup,
+  fireEvent,
+  render as renderRtl,
+} from "@testing-library/react";
 
 describe("<RadioField />", () => {
   const baseProps = {

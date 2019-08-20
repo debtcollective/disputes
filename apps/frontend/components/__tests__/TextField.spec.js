@@ -1,6 +1,6 @@
 import React from "react";
 import TextField from "../TextField";
-import { cleanup, fireEvent, render } from "react-testing-library";
+import { cleanup, fireEvent, render } from "@testing-library/react";
 
 describe("<TextField />", () => {
   const baseProps = {
