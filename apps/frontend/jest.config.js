@@ -6,4 +6,5 @@ module.exports = {
     "<rootDir>/node_modules/",
     "<rootDir>/cypress",
   ],
+  transformIgnorePatterns: ["/node_modules/(?!@debtcollective/header).+\\.js$"],
 };

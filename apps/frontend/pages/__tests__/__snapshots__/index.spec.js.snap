@@ -3,24 +3,24 @@
 exports[`index page Snapshot Should match Snapshot 1`] = `
 <DocumentFragment>
   <header
-    class="MuiPaper-root-10 MuiPaper-elevation4-16 MuiAppBar-root-1 MuiAppBar-positionStatic-5 MuiAppBar-colorPrimary-8"
+    class="MuiPaper-root-115 MuiPaper-elevation4-121 MuiAppBar-root-106 MuiAppBar-positionStatic-110 MuiAppBar-colorPrimary-113"
   >
     <div
-      class="MuiToolbar-root-37 MuiToolbar-regular-39 MuiToolbar-gutters-38 sc-bdVaJa gdvdOJ"
+      class="MuiToolbar-root-142 MuiToolbar-regular-144 MuiToolbar-gutters-143 sc-bdVaJa gdvdOJ"
     >
       <div>
         <button
           aria-label="Menu"
-          class="MuiButtonBase-root-47 MuiIconButton-root-41 MuiIconButton-colorInherit-42"
+          class="MuiButtonBase-root-152 MuiIconButton-root-146 MuiIconButton-colorInherit-147"
           tabindex="0"
           type="button"
         >
           <span
-            class="MuiIconButton-label-46"
+            class="MuiIconButton-label-151"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root-50"
+              class="MuiSvgIcon-root-155"
               focusable="false"
               role="presentation"
               viewBox="0 0 24 24"
@@ -35,37 +35,37 @@ exports[`index page Snapshot Should match Snapshot 1`] = `
             </svg>
           </span>
           <span
-            class="MuiTouchRipple-root-99"
+            class="MuiTouchRipple-root-204"
           />
         </button>
       </div>
       <div>
         <button
-          class="MuiButtonBase-root-47 MuiButton-root-73 MuiButton-text-75 MuiButton-flat-78 MuiButton-colorInherit-94"
+          class="MuiButtonBase-root-152 MuiButton-root-178 MuiButton-text-180 MuiButton-flat-183 MuiButton-colorInherit-199"
           tabindex="0"
           type="button"
         >
           <span
-            class="MuiButton-label-74"
+            class="MuiButton-label-179"
           >
             Login
           </span>
           <span
-            class="MuiTouchRipple-root-99"
+            class="MuiTouchRipple-root-204"
           />
         </button>
         <button
-          class="MuiButtonBase-root-47 MuiButton-root-73 MuiButton-text-75 MuiButton-flat-78 MuiButton-colorInherit-94"
+          class="MuiButtonBase-root-152 MuiButton-root-178 MuiButton-text-180 MuiButton-flat-183 MuiButton-colorInherit-199"
           tabindex="0"
           type="button"
         >
           <span
-            class="MuiButton-label-74"
+            class="MuiButton-label-179"
           >
             Signup
           </span>
           <span
-            class="MuiTouchRipple-root-99"
+            class="MuiTouchRipple-root-204"
           />
         </button>
       </div>
