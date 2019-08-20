@@ -1,6 +1,6 @@
 import React from "react";
 import SelectField from "../SelectField";
-import { cleanup, fireEvent, render } from "react-testing-library";
+import { cleanup, fireEvent, render } from "@testing-library/react";
 
 describe("<SelectField />", () => {
   const baseProps = {

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`With React Testing Library Snapshot Should match Snapshot 1`] = `
+exports[`index page Snapshot Should match Snapshot 1`] = `
 <DocumentFragment>
   <header
     class="MuiPaper-root-10 MuiPaper-elevation4-16 MuiAppBar-root-1 MuiAppBar-positionStatic-5 MuiAppBar-colorPrimary-8"
