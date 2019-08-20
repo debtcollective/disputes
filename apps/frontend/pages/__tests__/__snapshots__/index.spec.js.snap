@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`index page Snapshot Should match Snapshot 1`] = `
+exports[`index page snapshot should match snapshot 1`] = `
 <DocumentFragment>
   <header
     class="MuiPaper-root-115 MuiPaper-elevation4-121 MuiAppBar-root-106 MuiAppBar-positionStatic-110 MuiAppBar-colorPrimary-113"
