@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.3](https://github.com/debtcollective/disputes/compare/v0.8.2...v0.8.3) (2019-08-20)
+
+
+### Bug Fixes
+
+* **deps:** update dependency pg to v7.12.1 ([53f8ca6](https://github.com/debtcollective/disputes/commit/53f8ca6))
+
+
+
+
+
 ## [0.8.2](https://github.com/debtcollective/disputes/compare/v0.8.1...v0.8.2) (2019-08-12)
 
 

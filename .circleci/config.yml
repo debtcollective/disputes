@@ -26,15 +26,8 @@ jobs:
           paths:
             - ./node_modules
       - run:
-          name: Waiting for Postgres to be ready
-          command: |
-            for i in `seq 1 10`;
-            do
-              nc -z localhost 5432 && echo Success && exit 0
-              echo -n .
-              sleep 1
-            done
-            echo Failed waiting for Postgres && exit 1
+          name: wait for postgres
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run:
           name: Setup test environment
           command: yarn setup:ci
