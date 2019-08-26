@@ -31,7 +31,7 @@
     "url": "https://github.com/debtcollective/disputes/issues"
   },
   "dependencies": {
-    "lodash": "4.17.14",
+    "lodash": "4.17.15",
     "nconf": "0.10.0",
     "objection": "1.6.9"
   },
