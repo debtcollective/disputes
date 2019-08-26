@@ -22,7 +22,7 @@
   "dependencies": {
     "@debtcollective/models": "^0.8.2",
     "@debtcollective/tools": "^0.8.4",
-    "apollo-server-express": "2.8.1",
+    "apollo-server-express": "2.9.0",
     "dotenv": "8.0.0",
     "express": "4.17.1",
     "graphql": "14.4.2",
