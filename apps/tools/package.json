@@ -50,7 +50,7 @@
     "flow-bin": "0.105.1",
     "jest": "24.8.0",
     "jest-dom": "3.5.0",
-    "lint-staged": "9.2.1"
+    "lint-staged": "9.2.4"
   },
   "lint-staged": {
     "*.js": [
