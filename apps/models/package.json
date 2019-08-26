@@ -1,6 +1,6 @@
 {
   "name": "@debtcollective/models",
-  "version": "0.8.2",
+  "version": "0.8.5",
   "description": "Disputes app models",
   "author": "Orlando Del Aguila <orlando@hashlabs.com>",
   "homepage": "https://github.com/debtcollective/disputes#readme",
