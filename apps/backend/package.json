@@ -27,7 +27,7 @@
     "express": "4.17.1",
     "graphql": "14.5.3",
     "graphql-type-json": "0.3.0",
-    "knex": "0.19.2",
+    "knex": "0.19.4",
     "lodash": "4.17.15",
     "nconf": "0.10.0",
     "objection": "1.6.9",
