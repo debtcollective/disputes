@@ -33,7 +33,7 @@
   "dependencies": {
     "lodash": "4.17.15",
     "nconf": "0.10.0",
-    "objection": "1.6.9"
+    "objection": "1.6.11"
   },
   "devDependencies": {
     "@babel/core": "7.6.0",
