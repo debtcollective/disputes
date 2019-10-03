@@ -5,29 +5,17 @@ coverage:
         target: 80%
     project:
       default: off
-      backend:
-        target: 80%
-        flags: backend
       frontend:
         target: 80%
         flags: frontend
-      models:
-        target: 80%
-        flags: models
       tools:
         target: 80%
         flags: tools
 
 flags:
-  backend:
-    paths:
-      - apps/backend/
   frontend:
     paths:
       - apps/frontend/
-  models:
-    paths:
-      - apps/models/
   tools:
     paths:
       - apps/tools/

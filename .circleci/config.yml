@@ -61,7 +61,7 @@ jobs:
             chmod 644 ~/.ssh/known_hosts
             ssh-keyscan github.com >> ~/.ssh/known_hosts
             git config user.email "bot@debtcollective.org"
-            git config user.name "DebtBot"
+            git config user.name "Debt Bot"
       - run:
           name: configure npm credentials
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc

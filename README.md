@@ -11,13 +11,11 @@ This repository is a monorepo that uses [Lerna](https://github.com/lerna/lerna).
 
 ```bash
 apps/
-├── backend/  # GraphQL Apollo Server app
 ├── frontend/ # Next.js React Apollo app
 ├── tools/    # Dispute tools JSON schema package
-├── models/   # Dispute app Objection.js models package
 ```
 
-We don't publish `backend` or `frontend` apps, these are marked as `private: true` in `package.json`. Only packages are published under @debtcollective in NPM.
+We don't publish `frontend` to npm since is marked as `private: true` in `package.json`. Only packages are published under @debtcollective in NPM.
 
 ## Installation
 
