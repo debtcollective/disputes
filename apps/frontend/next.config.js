@@ -4,9 +4,5 @@ const withTM = require("next-transpile-modules");
 
 module.exports = withTM({
   target: "serverless",
-  transpileModules: [
-    "@debtcollective/header",
-    "@debtcollective/tools",
-    "@debtcollective/models",
-  ],
+  transpileModules: ["@debtcollective/header", "@debtcollective/tools"],
 });
