@@ -9,13 +9,12 @@ if (!process.browser) {
 }
 
 function create(initialState) {
-  // Check out https://github.com/zeit/next.js/pull/4611 if you want to use the AWSAppSyncClient
   return new ApolloClient({
     cache: new InMemoryCache().restore(initialState || {}),
     connectToDevTools: process.browser,
     link: new HttpLink({
       credentials: "same-origin", // Additional fetch() options like `credentials` or `headers`
-      uri: "https://api.graph.cool/simple/v1/cixmkt2ul01q00122mksg82pn", // Server URL (must be absolute)
+      uri: process.env.API_URL, // Server URL (must be absolute)
     }),
     ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
   });

@@ -1,34 +1,43 @@
 # Dispute Tools Frontend
 
-## How to install
+## Stack and Libraries
 
-Install it and run:
+- [Node.js](https://nodejs.org/)
+- [Next.js](https://nextjs.org/)
+- [Apollo Client](https://github.com/apollographql/apollo-client)
 
-```bash
-yarn
-yarn dev
-```
+# Setup
 
-## Run Tests
+## Dotenv
 
-```bash
-yarn test
-```
+Run `cp .env.sample .env` and replace the values with your specific configuration.
 
-## Run Cypress
+# Usage
 
-We are using [Cypress](https://www.cypress.io/) for our integration testing. You can run it with:
+`yarn start` will run the project in development mode.
+
+# Tests
+
+## Jest
+
+`yarn test` will run tests. We are using Jest for tests
+
+## Cypress
+
+We are using [Cypress](https://www.cypress.io/) for our integration testing.
+
+To run tests in the terminal
 
 ```bash
 yarn test:cypress
 ```
 
-That will run the tests in the terminal. If you prefer to run Cypress with GUI use:
+To run tests with GUI
 
 ```bash
 yarn cypress open
 ```
 
-## Things you need to know
+# Notes
 
 In order to satisfy all the needs of the project, there is some custom code on top of the tecnologies we use that will be further described in [our guide](./docs/GUIDE.md)
