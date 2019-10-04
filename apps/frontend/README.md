@@ -16,6 +16,10 @@ Run `cp .env.template .env` and replace the values with your specific configurat
 
 `yarn start` will run the project in development mode.
 
+## API
+
+You will want to run the [disputes-api](https://github.com/debtcollective/disputes-api) app along with this one in development. Follow setup instructions in [disputes-api](https://github.com/debtcollective/disputes-api).
+
 # Tests
 
 ## Jest
