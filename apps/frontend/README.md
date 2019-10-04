@@ -10,7 +10,7 @@
 
 ## Dotenv
 
-Run `cp .env.sample .env` and replace the values with your specific configuration.
+Run `cp .env.template .env` and replace the values with your specific configuration.
 
 # Usage
 

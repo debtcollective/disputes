@@ -1,4 +1,4 @@
-import { ApolloProvider } from "react-apollo";
+import { ApolloProvider } from "@apollo/react-hooks";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import getPageContext from "../lib/getPageContext";
 import JssProvider from "react-jss/lib/JssProvider";
