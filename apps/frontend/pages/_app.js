@@ -1,4 +1,5 @@
 import { ApolloProvider } from "@apollo/react-hooks";
+import App from "next/app";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import getPageContext from "../lib/getPageContext";
 import JssProvider from "react-jss/lib/JssProvider";
@@ -8,7 +9,6 @@ import { MuiThemeProvider } from "@material-ui/core/styles";
 import { Normalize } from "styled-normalize";
 import React from "react";
 import withApolloClient from "../lib/with-apollo-client";
-import App, { Container } from "next/app";
 
 // next.js custom App - https://nextjs.org/docs/#custom-app
 class MyApp extends App {
@@ -31,24 +31,22 @@ class MyApp extends App {
     return (
       <React.Fragment>
         <Normalize />
-        <Container>
-          <ApolloProvider client={apolloClient}>
-            <JssProvider
-              registry={this.pageContext.sheetsRegistry}
-              generateClassName={this.pageContext.generateClassName}
-            >
-              <MuiPickersUtilsProvider utils={MomentUtils}>
-                <MuiThemeProvider
-                  theme={this.pageContext.theme}
-                  sheetsManager={this.pageContext.sheetsManager}
-                >
-                  <CssBaseline />
-                  <Component pageContext={this.pageContext} {...pageProps} />
-                </MuiThemeProvider>
-              </MuiPickersUtilsProvider>
-            </JssProvider>
-          </ApolloProvider>
-        </Container>
+        <ApolloProvider client={apolloClient}>
+          <JssProvider
+            registry={this.pageContext.sheetsRegistry}
+            generateClassName={this.pageContext.generateClassName}
+          >
+            <MuiPickersUtilsProvider utils={MomentUtils}>
+              <MuiThemeProvider
+                theme={this.pageContext.theme}
+                sheetsManager={this.pageContext.sheetsManager}
+              >
+                <CssBaseline />
+                <Component pageContext={this.pageContext} {...pageProps} />
+              </MuiThemeProvider>
+            </MuiPickersUtilsProvider>
+          </JssProvider>
+        </ApolloProvider>
       </React.Fragment>
     );
   }
