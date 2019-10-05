@@ -19,9 +19,6 @@ jobs:
           paths:
             - ./node_modules
       - run:
-          name: wait for postgres
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
-      - run:
           name: test
           command: yarn test:ci
       - run:
@@ -36,7 +33,5 @@ workflows:
       - cypress/run:
           yarn: true
           record: true
-          # we only run it in the front-end
-          working_directory: apps/frontend
           start: yarn start:ci
           wait-on: "http://localhost:8080"
