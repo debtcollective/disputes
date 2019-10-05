@@ -6,13 +6,6 @@ jobs:
     working_directory: ~/disputes
     docker:
       - image: circleci/node:12.10.0
-      - image: circleci/postgres:10-alpine-ram
-        environment:
-          POSTGRES_USER: postgres
-          POSTGRES_DB: disputes_test
-
-    environment:
-      DB_CONNECTION_STRING: "postgresql://postgres@localhost:5432/disputes_test?sslmode=disable"
 
     steps:
       - checkout
@@ -26,48 +19,11 @@ jobs:
           paths:
             - ./node_modules
       - run:
-          name: wait for postgres
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
-      - run:
-          name: Setup test environment
-          command: yarn setup:ci
-      - run:
           name: test
           command: yarn test:ci
       - run:
           name: codecov
           command: npx codecov
-      # persist workspace for the next command
-      - persist_to_workspace:
-          root: .
-          paths: .
-
-  publish:
-    working_directory: ~/disputes
-    docker:
-      - image: circleci/node:11.15.0
-    steps:
-      - attach_workspace:
-          at: ~/disputes
-      - add_ssh_keys:
-          fingerprints:
-            - "ec:c4:3f:5b:17:2f:30:52:8d:82:22:80:6a:eb:f4:54"
-      - run:
-          name: configure git
-          command: |
-            mkdir -p ~/.ssh
-            chmod 700 ~/.ssh
-            touch ~/.ssh/known_hosts
-            chmod 644 ~/.ssh/known_hosts
-            ssh-keyscan github.com >> ~/.ssh/known_hosts
-            git config user.email "bot@debtcollective.org"
-            git config user.name "Debt Bot"
-      - run:
-          name: configure npm credentials
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
-      - run:
-          name: publish packages
-          command: "yarn lerna publish --yes"
 
 workflows:
   version: 2
@@ -77,15 +33,5 @@ workflows:
       - cypress/run:
           yarn: true
           record: true
-          # we only run it in the front-end
-          working_directory: apps/frontend
           start: yarn start:ci
           wait-on: "http://localhost:8080"
-
-      - publish:
-          requires:
-            - test
-            - cypress/run
-          filters:
-            branches:
-              only: master

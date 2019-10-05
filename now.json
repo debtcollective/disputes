@@ -1,6 +1,9 @@
 {
   "name": "disputes",
   "version": 2,
-  "builds": [{ "src": "apps/frontend/package.json", "use": "@now/next" }],
-  "routes": [{ "src": "/(.*)", "dest": "apps/frontend/$1" }]
+  "build": {
+    "env": {
+      "API_URL": "@api_url_stage"
+    }
+  }
 }

@@ -1,3 +1,5 @@
 {
-  "prettier.eslintIntegration": false
+  "workbench.colorCustomizations": {
+    "tab.unfocusedActiveBorder": "#fff0"
+  }
 }

@@ -3,19 +3,3 @@ coverage:
     patch:
       default:
         target: 80%
-    project:
-      default: off
-      frontend:
-        target: 80%
-        flags: frontend
-      tools:
-        target: 80%
-        flags: tools
-
-flags:
-  frontend:
-    paths:
-      - apps/frontend/
-  tools:
-    paths:
-      - apps/tools/
