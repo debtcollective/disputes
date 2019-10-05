@@ -1,7 +1,9 @@
 {
   "name": "disputes",
   "version": 2,
-  "env": {
-    "API_URL": "@api_url_stage"
+  "build": {
+    "env": {
+      "API_URL": "@api_url_stage"
+    }
   }
 }
