@@ -1,31 +1,47 @@
-# Dispute Tools
+# Dispute Tools Frontend
 
-[![CircleCI](https://circleci.com/gh/debtcollective/disputes.svg?style=svg)](https://circleci.com/gh/debtcollective/disputes)
-[![codecov](https://codecov.io/gh/debtcollective/disputes/branch/master/graph/badge.svg)](https://codecov.io/gh/debtcollective/disputes)
-[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
-[![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
+## Stack and Libraries
 
-## Project structure
+- [Node.js](https://nodejs.org/)
+- [Next.js](https://nextjs.org/)
+- [Apollo Client](https://github.com/apollographql/apollo-client)
 
-This repository is a monorepo that uses [Lerna](https://github.com/lerna/lerna). It is structured the following way:
+# Setup
+
+## Dotenv
+
+Run `cp .env.template .env` and replace the values with your specific configuration.
+
+# Usage
+
+`yarn start` will run the project in development mode.
+
+## API
+
+You will want to run the [disputes-api](https://github.com/debtcollective/disputes-api) app along with this one in development. Follow setup instructions in [disputes-api](https://github.com/debtcollective/disputes-api).
+
+# Tests
+
+## Jest
+
+`yarn test` will run tests. We are using Jest for tests
+
+## Cypress
+
+We are using [Cypress](https://www.cypress.io/) for our integration testing.
+
+To run tests in the terminal
 
 ```bash
-apps/
-├── frontend/ # Next.js React Apollo app
-├── tools/    # Dispute tools JSON schema package
+yarn test:cypress
 ```
 
-We don't publish `frontend` to npm since is marked as `private: true` in `package.json`. Only packages are published under @debtcollective in NPM.
-
-## Installation
-
-To get started run:
+To run tests with GUI
 
 ```bash
-yarn global add lerna
-lerna bootstrap
+yarn cypress open
 ```
 
-You can then run each application in a new Terminal to have better control of it.
+# Notes
 
-Go to the README.md of each app for usage information.
+In order to satisfy all the needs of the project, there is some custom code on top of the tecnologies we use that will be further described in [our guide](./docs/GUIDE.md)

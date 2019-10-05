@@ -1,6 +1,4 @@
 {
   "name": "disputes",
-  "version": 2,
-  "builds": [{ "src": "apps/frontend/package.json", "use": "@now/next" }],
-  "routes": [{ "src": "/(.*)", "dest": "apps/frontend/$1" }]
+  "version": 2
 }

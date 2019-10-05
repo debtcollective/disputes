@@ -5,7 +5,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [0.8.5](https://github.com/debtcollective/disputes/compare/v0.8.4...v0.8.5) (2019-08-26)
 
-**Note:** Version bump only for package @debtcollective/disputes
+**Note:** Version bump only for package @debtcollective/disputes-frontend
 
 
 
@@ -16,7 +16,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **deps:** update dependency pg to v7.12.1 ([53f8ca6](https://github.com/debtcollective/disputes/commit/53f8ca6))
 * **deps:** update dependency react-number-format to v4.2.0 ([58263a0](https://github.com/debtcollective/disputes/commit/58263a0))
 
 
@@ -28,7 +27,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **deps:** update dependency pg to v7.12.1 ([53f8ca6](https://github.com/debtcollective/disputes/commit/53f8ca6))
 * **deps:** update dependency react-number-format to v4.2.0 ([58263a0](https://github.com/debtcollective/disputes/commit/58263a0))
 
 
@@ -37,10 +35,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [0.8.2](https://github.com/debtcollective/disputes/compare/v0.8.1...v0.8.2) (2019-08-12)
 
-
-### Bug Fixes
-
-* **deps:** update dependency knex to v0.19.1 ([1ce486d](https://github.com/debtcollective/disputes/commit/1ce486d))
+**Note:** Version bump only for package @debtcollective/disputes-frontend
 
 
 
@@ -51,7 +46,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* disable eslint prettier integration in vscode ([c82c0a6](https://github.com/debtcollective/disputes/commit/c82c0a6))
 * **deps:** update dependency lodash to v4.17.15 ([2c2bf93](https://github.com/debtcollective/disputes/commit/2c2bf93))
 * **deps:** update dependency react-jsonschema-form to v1.7.0 ([5194a77](https://github.com/debtcollective/disputes/commit/5194a77))
 
@@ -66,13 +60,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **deps:** update dependency @date-io/moment to v1.3.7 ([eeffe67](https://github.com/debtcollective/disputes/commit/eeffe67))
 * **deps:** update dependency @date-io/moment to v1.3.8 ([0c14b5b](https://github.com/debtcollective/disputes/commit/0c14b5b))
-* **deps:** update dependency apollo-server-express to v2.6.1 ([32cb3bc](https://github.com/debtcollective/disputes/commit/32cb3bc))
-* **deps:** update dependency apollo-server-express to v2.6.3 ([580e034](https://github.com/debtcollective/disputes/commit/580e034))
-* **deps:** update dependency apollo-server-express to v2.6.7 ([223cd30](https://github.com/debtcollective/disputes/commit/223cd30))
 * **deps:** update dependency graphql to v14.4.2 ([11f0709](https://github.com/debtcollective/disputes/commit/11f0709))
-* **deps:** update dependency knex to v0.17.3 ([81acec3](https://github.com/debtcollective/disputes/commit/81acec3))
-* **deps:** update dependency knex to v0.17.6 ([a81c44f](https://github.com/debtcollective/disputes/commit/a81c44f))
-* **deps:** update dependency knex to v0.19.0 ([3a82c08](https://github.com/debtcollective/disputes/commit/3a82c08))
 * **deps:** update dependency lodash to v4.17.13 [security] ([c907387](https://github.com/debtcollective/disputes/commit/c907387))
 * **deps:** update dependency next to v9 ([20c4d49](https://github.com/debtcollective/disputes/commit/20c4d49))
 * **deps:** update dependency react-apollo to v2.5.8 ([5b2b236](https://github.com/debtcollective/disputes/commit/5b2b236))
@@ -207,28 +195,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **DateField:** change format to match with JSON schema date format ([7233b21](https://github.com/debtcollective/disputes/commit/7233b21))
 * **deps:** pin dependencies ([24227a5](https://github.com/debtcollective/disputes/commit/24227a5))
-* **deps:** update dependency apollo-server-express to v2.5.0 ([7fa9519](https://github.com/debtcollective/disputes/commit/7fa9519))
 * **deps:** update dependency graphql to v14.3.0 ([c3639c0](https://github.com/debtcollective/disputes/commit/c3639c0))
-* **deps:** update dependency pg to v7.11.0 ([e75ff16](https://github.com/debtcollective/disputes/commit/e75ff16))
 * **deps:** update dependency react-number-format to v4.0.8 ([8d5768c](https://github.com/debtcollective/disputes/commit/8d5768c))
-* **general:** definition of debts selection ([fcc2cf7](https://github.com/debtcollective/disputes/commit/fcc2cf7))
-* **general-dispute:** remove error list from form ([0ff4312](https://github.com/debtcollective/disputes/commit/0ff4312))
-* **general-dispute:** update schema to mark properties as require properly ([e7db953](https://github.com/debtcollective/disputes/commit/e7db953)), closes [#7](https://github.com/debtcollective/disputes/issues/7)
-* **SelectField:** map select inputs to selects from material ui instead menu ([3332182](https://github.com/debtcollective/disputes/commit/3332182))
 
 
 ### Features
 
 * **disputes:** Add base to render plain form for general debt ([46a4716](https://github.com/debtcollective/disputes/commit/46a4716))
-* **Fields:** Add support for helper text and errors ([fedea49](https://github.com/debtcollective/disputes/commit/fedea49)), closes [#7](https://github.com/debtcollective/disputes/issues/7)
-* **FieldTemplate:** add support for date inputs ([25aad16](https://github.com/debtcollective/disputes/commit/25aad16))
-* **FieldTemplate:** allow to map schema type number to input type number ([afa9208](https://github.com/debtcollective/disputes/commit/afa9208))
-* **FieldTemplate:** finish base to render custom input on schema string properties ([155deaa](https://github.com/debtcollective/disputes/commit/155deaa)), closes [#7](https://github.com/debtcollective/disputes/issues/7)
 * **NumberField:** add new component to handle currency values ([0d07da7](https://github.com/debtcollective/disputes/commit/0d07da7))
-* **PlainTemplate:** add new template to serve as a sort of fallback on FieldTemplate ([0a42f5f](https://github.com/debtcollective/disputes/commit/0a42f5f))
-* **SelectField:** add base to map select inputs to material menus ([e980679](https://github.com/debtcollective/disputes/commit/e980679))
 * **TextField:** add base to being able to inject improved date picker UI ([99b77bc](https://github.com/debtcollective/disputes/commit/99b77bc))
 * add Header component ([a10b048](https://github.com/debtcollective/disputes/commit/a10b048))
 
@@ -249,7 +224,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [0.0.3](https://github.com/debtcollective/disputes/compare/v0.0.2...v0.0.3) (2019-04-24)
 
-**Note:** Version bump only for package @debtcollective/disputes
+**Note:** Version bump only for package @debtcollective/disputes-frontend
 
 
 
@@ -257,10 +232,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [0.0.2](https://github.com/debtcollective/disputes/compare/v0.0.1...v0.0.2) (2019-04-24)
 
-
-### Bug Fixes
-
-* **deps:** pin dependencies ([3bc481c](https://github.com/debtcollective/disputes/commit/3bc481c))
+**Note:** Version bump only for package @debtcollective/disputes-frontend
 
 
 
@@ -268,24 +240,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.0.1 (2019-04-24)
 
-
-### Bug Fixes
-
-* **deps:** pin dependencies ([3c1c5f0](https://github.com/debtcollective/disputes/commit/3c1c5f0))
-* **deps:** update dependency graphql to v14.2.0 ([d54ffa0](https://github.com/debtcollective/disputes/commit/d54ffa0))
-* **deps:** update dependency graphql to v14.2.1 ([0211f43](https://github.com/debtcollective/disputes/commit/0211f43))
-* **deps:** update dependency next to v8.0.4 ([2231d15](https://github.com/debtcollective/disputes/commit/2231d15))
-* **deps:** update dependency react-apollo to v2.5.4 ([f941cd7](https://github.com/debtcollective/disputes/commit/f941cd7))
-* **deps:** update react monorepo to v16.8.6 ([02ff71c](https://github.com/debtcollective/disputes/commit/02ff71c))
-
-
-### Features
-
-* **apollo-client:** adding apollo-client ([a1e9f31](https://github.com/debtcollective/disputes/commit/a1e9f31))
-* **back-end:** adding apollo-server ([9565713](https://github.com/debtcollective/disputes/commit/9565713))
-* monorepo with now deployment ([a7b3fff](https://github.com/debtcollective/disputes/commit/a7b3fff))
-
-
-### Reverts
-
-* **back-end:** removing babel ([79f4d1b](https://github.com/debtcollective/disputes/commit/79f4d1b))
+**Note:** Version bump only for package @debtcollective/disputes-frontend

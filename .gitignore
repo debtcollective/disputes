@@ -1,3 +1,6 @@
+# Knex
+knexfile.js
+
 # Logs
 logs
 *.log
@@ -59,4 +62,7 @@ typings/
 
 # next.js build output
 .next
-.DS_Store
+
+# cypress
+cypress/videos
+cypress/screenshots
