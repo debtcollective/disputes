@@ -958,7 +958,7 @@
   resolved "https://registry.yarnpkg.com/@debtcollective/header/-/header-1.7.0.tgz#58b0f6662efae45929dfbb47675acaccfea96080"
   integrity sha512-jUHfwret9iMipyhh3axPGhcmxNYJy/JLqgtMGGMfxvHoxbelfBgEhmsjNWpa6aKA+r1tfS5Zbj/PePjWe6/6NA==
 
-"@debtcollective/tools@^0.8.5":
+"@debtcollective/tools@0.8.5":
   version "0.8.5"
   resolved "https://registry.yarnpkg.com/@debtcollective/tools/-/tools-0.8.5.tgz#62ed6b916975d00945d3acb93cd29d5e80244bd6"
   integrity sha512-4Ps+m7SVHATVha/jyA9SuQDjSZq2NlPD6J9+1RJKap+bX4VRCj53qCJBzd1tWfoO7F7lm6t8KjYcnB3/lidnhA==
