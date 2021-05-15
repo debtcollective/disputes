@@ -52,7 +52,7 @@
     "jest": "24.9.0",
     "jest-dom": "3.5.0",
     "lint-staged": "9.4.1",
-    "start-server-and-test": "1.10.2",
+    "start-server-and-test": "1.12.2",
     "waait": "1.0.5"
   },
   "scripts": {
